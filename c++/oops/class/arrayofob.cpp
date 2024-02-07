@@ -16,7 +16,7 @@ void employee :: getemployeedatails(){
     cin>>name;
     cout<<"\nEnter the salary :";
     cin>>salary;
-}
+} 
 void employee :: displayemployeedatails(){
     cout<<"\nEmployee Id = "<<id;
     cout<<"\nEmployee Name = "<<name;
