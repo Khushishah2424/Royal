@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+     *{
+        box-sizing: border-box;
+        margin: 0px;
+        padding: 0px;
+    }
+    .nav{
+        height: 70px;
+        width: 100%;
+        background-color: white;
+         
+    }
+    ul{
+        margin: 0px;
+        padding: 0px;
+        list-style: none;
+        overflow: hidden;
+        padding: 0px;
+    }
+    li{
+        float: left;
+        padding: 30px;
+    }
+    li a{
+        text-decoration: none;
+        display: block;
+        color: black;
+        padding: 5px;
+        font-size: 20px;
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .dlist{
+        display: none;
+        position: absolute;
+        width: 100px;
+    }
+    .dbutton:hover .dlist{
+        display: block;
+
+    }
+    .dlist a:hover{
+        background-color: rgb(213, 212, 211);
+
+    }
+
+
+    header::before{
+        content: '';
+        position: absolute;
+        background-image: url('/madir.jpeg');
+        width: 100%;
+        height: 400px;
+        background-size: cover;
+        background-position: center;
+        z-index: -1;
+        opacity: 0.5;
+    }
+    
+    
+</style>
+<body>
+    <header>
+        <div class="nav">
+            <ul>
+                <li class="dbutton">
+                    <a href="/krishnamam/ayoudhya/pra1.html" class="head">About us</a>
+                    <div class="dlist">
+                        <a href="/krishnamam/ayoudhya/aboutart.html">Architect</a>
+                        <a href="">2</a>
+                        <a href="">3</a>
+                        <a href="">4</a>
+                    </div>
+                </li>
+                <li class="dbutton">
+                    <a href=""  class="head">Destination</a>
+                    <div class="dlist">
+                        <a href="">1</a>
+                        <a href="">2</a>
+                        <a href="">3</a>
+                        <a href="">4</a>
+                    </div>
+                </li>
+                <li class="dbutton">
+                    <a href=""  class="head">Experience</a>
+                    <div class="dlist">
+                        <a href="">1</a>
+                        <a href="">2</a>
+                        <a href="">3</a>
+                        <a href="">4</a>
+                    </div>
+                </li>
+                <li class="dbutton">
+                    <a href=""  class="head">Online Booking</a>
+                    <div class="dlist">
+                        <a href="">1</a>
+                        <a href="">2</a>
+                        <a href="">3</a>
+                        <a href="">4</a>
+                    </div>
+                </li>
+                <li class="dbutton">
+                    <a href=""  class="head">Contact Us</a>
+                    <div class="dlist">
+                        <a href="">1</a>
+                        <a href="">2</a>
+                        <a href="">3</a>
+                        <a href="">4</a>
+                    </div>
+                </li>
+    
+            </ul>
+        </div>
+    </header>
+
+</body>
+</html>

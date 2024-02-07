@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        box-sizing: border-box;
+    }
+    body{
+        margin: 0px;
+        padding: 0px;
+    }
+    ul{
+        margin: 0px;
+        padding: 0px;
+        list-style: none;
+        background-color: #004445;
+        overflow: hidden;
+        font-size: 20px;
+       
+    }
+    li{
+        float: left;
+
+    }
+    li a{
+        text-decoration: none;
+        display: block;
+        padding: 10px;
+        text-align: center;
+        width: 100px;
+        color: white;
+        margin: 0px 20px;
+
+         
+    }
+    .dlist{
+        display: none; 
+        position: absolute; 
+        background-color: #2c786c;
+        width: 100px;
+        z-index: 1;
+        width: 100px;
+
+    }
+    .dbutton:hover .dlist{
+        display: block;
+        width: 130px;
+    }
+    .dlist a:hover{
+        background-color: #7fa99b;
+        color: #bfc2c7;
+        width: 130px;
+    }
+    .header{
+        width: 100%;
+        padding: 10px;
+        background-color: #303841;
+        height: 70px;
+        color: white;
+    }
+    h1{
+        text-align: center;
+        margin: 6px 0px;
+    }
+
+
+</style>
+<body>
+    <div class="header"><h1>Ayodhya Mandir</h1></div>
+    <div class="nav">
+        <ul>
+            <li class="dbutton">
+                <a href="">Information</a>
+                <div class="dlist">
+                    <a href="/krishnamam/ayoudhya/artitech.html">Architect</a>
+                    <a href="">Architectural style</a>
+                    <a href="/krishnamam/ayoudhya/location.html">Location</a>
+                    <a href="">Completed</a>
+                </div>
+            </li>
+
+            <li class="dbutton">
+                <a href="">About</a>
+                <div class="dlist">
+                    <a href="">About Trust</a>
+                    <a href="">Main Temple</a>
+                    <a href="">Trust Members</a>
+                </div>
+            </li>
+
+            <li class="dbutton">
+                <a href="">Ayodhya</a>
+                <div class="dlist">
+                    <a href="">How To Reach</a>
+                    <a href="">Places To See</a>
+                    <a href="">Accommdation</a>
+                </div>
+            </li>
+            
+        </ul>
+    </div>
+
+</body>
+</html>

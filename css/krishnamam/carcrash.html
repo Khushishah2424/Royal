@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .img{
+        height: 800px;
+        width: 100%;
+       
+    }
+    .car1{
+        position: absolute;
+        left: 50px;
+        top: 500px;
+        width: 300px;
+        animation-name: c1;
+        animation-timing-function: linear;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+    }
+    @keyframes c1{
+        0%{
+            left: 50px;
+            top: 500px;
+            width: 300px;
+        }
+        25%{
+            top: 500px;
+            width: 300px;
+            left: 100px;
+        }
+        50%{
+            top: 500px;
+            width: 300px;
+            left: 150px;
+        }
+        75%{
+            top: 500px;
+            width: 300px;
+            left: 200px;
+        }
+        85%{
+            top: 500px;
+            width: 300px;
+            left: 250px;
+        }
+        100%{
+            top: 500px;
+            width: 300px;
+            left: 320px;
+
+        }
+
+    }
+    .car2{
+        position: absolute;
+        left:1180px;
+        top: 470px;
+        width: 300px;
+        animation-name: c2;
+        animation-timing-function: linear;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+    }
+    @keyframes c2{
+        0%{
+            left:1180px;
+            top: 470px;
+            width: 300px;
+        }
+        25%{
+            top: 470px;
+            width: 300px;
+            left: 1000px;
+        }
+        50%{
+            top: 470px;
+            width: 300px;
+            left: 900px;
+        }
+        75%{
+            top: 470px;
+            width: 300px;
+            left: 700px;
+        }
+        100%{
+            top: 470px;
+            width: 300px;
+            left: 590px;
+        }
+
+    }
+    .fire{
+        animation-name: f1;
+        animation-timing-function: linear;
+        /* animation-duration: 3s; */
+        animation-iteration-count: 1;
+        position: absolute;
+        top: 440px;
+        left: 500px;
+        animation-delay: 30s;
+    }
+
+    @keyframes f1{
+        0%{
+            height: 200px;
+            width: 200px;
+            transform: scale(1);
+
+        }
+        100%{
+            height: 0px;
+            width: 0px;
+            transform: scale(0);
+
+        } 
+        
+    }
+    
+
+
+</style>
+<body>
+    <div class="body">
+        <img src="https://t3.ftcdn.net/jpg/01/23/60/66/360_F_123606607_Za4NHO4cn2akt1gToVCFFStsGSluacsz.jpg" class="img" alt="">
+
+    <div class="pic1">
+        <img src="https://www.pngall.com/wp-content/uploads/5/Vehicle-PNG-Image.png" class="car1" alt="">
+    </div>
+
+    <div>
+        <img src="https://www.freepnglogos.com/uploads/bike-png/red-honda-cbr-sport-motorcycle-bike-png-image-pngpix-16.png" alt="" class="car2">
+    </div>
+    <div>
+        <img src="https://media.tenor.com/igZCc-gVpjsAAAAj/%D0%B2%D0%B7%D1%80%D1%8B%D0%B2.gif" alt="" class="fire" style="transform: scale(0);">
+    </div>
+
+    </div>
+</body>
+</html>

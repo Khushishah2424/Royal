@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        box-sizing: border-box;
+    }
+    body{
+        margin: 0px;
+        padding: 0px;
+    }
+    ul{
+        margin: 0px;
+        padding: 0px;
+        list-style: none;
+        background-color: #004445;
+        overflow: hidden;
+    }
+    li{
+        float: left;
+
+    }
+    li a{
+        text-decoration: none;
+        display: block;
+        padding: 10px;
+        text-align: center;
+        width: 100px;
+        color: white;
+         
+    }
+    .dlist{
+        display: none; 
+        position: absolute; 
+        background-color: #2c786c;
+        width: 100px;
+        /* z-index: 1; */
+    }
+    .dbutton:hover .dlist{
+        display: block;
+    }
+    .dlist a:hover{
+        background-color: #7fa99b;
+        color: #bfc2c7;
+    }
+    .header{
+        width: 100%;
+        padding: 10px;
+        background-color: #303841;
+        height: 70px;
+        color: white;
+    }
+    h1{
+        text-align: center;
+        margin: 6px 0px;
+    }
+
+
+</style>
+<body>
+    <div class="header"><h1>Heading</h1></div>
+    <div class="nav">
+        <ul>
+            <li class="dbutton">
+                <a href="">Home</a>
+                <div class="dlist">
+                    <a href="">1</a>
+                    <a href="">2</a>
+                    <a href="">3</a>
+                    <a href="">4</a>
+                </div>
+            </li>
+            <li class="dbutton">
+                <a href="">Product</a>
+                <div class="dlist">
+                    <a href="">1</a>
+                    <a href="">2</a>
+                    <a href="">3</a>
+                    <a href="">4</a>
+                </div>
+            </li>
+            <li class="dbutton">
+                <a href="">Service</a>
+                <div class="dlist">
+                    <a href="">1</a>
+                    <a href="">2</a>
+                    <a href="">3</a>
+                    <a href="">4</a>
+                </div>
+            </li>
+            <li class="dbutton">
+                <a href="">About</a>
+                <div class="dlist">
+                    <a href="">1</a>
+                    <a href="">2</a>
+                    <a href="">3</a>
+                    <a href="">4</a>
+                </div>
+            </li>
+            <li class="dbutton">
+                <a href="">Login</a>
+                <div class="dlist">
+                    <a href="">1</a>
+                    <a href="">2</a>
+                    <a href="">3</a>
+                    <a href="">4</a>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .boxes{
+        display: flex;
+        margin: 250px 250px;
+    }
+    .box1{
+        height: 200px;
+        width: 200px;
+        border-radius: 50%;
+        border: 20px solid rgb(122, 114, 114);
+        animation-name: box1;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        border-top-color: rgb(43, 226, 64);
+        position: absolute;
+    }
+     @keyframes box1{
+        0%{
+            transform: rotate(0deg);
+            top: 250px;
+            left: 250px;
+            height: 200px;
+            width: 200px;
+        }
+        25%{
+            transform: rotate(60deg);
+            top: 250px;
+            left: 600px;
+            height: 200px;
+            width: 200px;
+
+        }
+        50%{
+            transform: rotate(100deg);
+            top: 250px;
+            left: 900px;
+            height: 200px;
+            width: 200px;
+        }
+        75%{
+            transform: rotate(160deg);
+            top: 250px;
+            left: 1200px;
+            height: 200px;
+            width: 200px;
+        }
+        100%{
+            transform: rotate(300deg);
+            height: 0px;
+            width: 0px;
+            height: 200px;
+            width: 200px;
+        }
+    }
+    .box2{
+        height: 200px;
+        width: 200px;
+        border-radius: 50%;
+        border: 20px solid rgb(122, 114, 114);
+        animation-name: box2;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        border-top-color: rgb(43, 226, 64);
+        position: absolute;
+        top: 250px;
+        left: 500px;
+    }
+    @keyframes box2{
+        0%{
+            transform: rotate(0deg);
+            top: 250px;
+            left: 490px;
+            height: 200px;
+            width: 200px;
+        }
+        25%{
+            transform: rotate(60deg);
+            top: 250px;
+            left: 600px;
+            height: 200px;
+            width: 200px;
+        }
+        50%{
+            transform: rotate(100deg);
+            top: 250px;
+            left: 800px;
+            height: 200px;
+            width: 200px;
+        }
+        75%{
+            transform: rotate(160deg);
+            top: 250px;
+            left: 1200px;
+            height: 200px;
+            width: 200px;
+        }
+        85%{
+            transform: rotate(160deg);
+            top: 250px;
+            left: 1500px;
+            height: 200px;
+            width: 200px; 
+        }
+        100%{
+            transform: rotate(300deg);
+            height: 0px;
+            width: 0px;
+        }
+    }
+    .box3{
+        height: 200px;
+        width: 200px;
+        border-radius: 50%;
+        border: 20px solid rgb(122, 114, 114);
+        animation-name: box3;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        border-top-color: rgb(43, 226, 64);
+        position: absolute;
+        top: 250px;
+        left: 740px;
+    }
+    @keyframes box3{
+        0%{
+            transform: rotate(0deg);
+            top: 250px;
+            left: 740px;
+            height: 200px;
+            width: 200px;
+        }
+        25%{
+            transform: rotate(60deg);
+            top: 250px;
+            left: 1200px;
+            height: 200px;
+            width: 200px;
+        }
+        50%{
+            transform: rotate(100deg);
+            top: 250px;
+            left: 1200px;
+            height: 200px;
+            width: 200px;
+        }
+        75%{
+            transform: rotate(160deg);
+            top: 250px;
+            left: 1500px;
+            height: 200px;
+            width: 200px;
+
+        }
+        85%{
+            transform: rotate(300deg);
+            top: 250px;
+            left: 4000px;
+            height: 200px;
+            width: 200px;
+
+        }
+        100%{
+           width: 0px;
+           height: 0px;
+            
+        }
+    }
+    
+</style>
+<body>
+    <div class="boxes">
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3"></div>
+    </div>
+</body>
+</html>

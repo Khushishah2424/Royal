@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        background-color: aquamarine;
+        animation-name: bg1;
+        animation-timing-function: linear;
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+
+     }
+     @keyframes bg1{
+        0%{
+            background-color: #ef476f;
+        }
+        25%{
+            background-color: #ffd166;
+        }
+        50%{
+            background-color: #06d6a0;
+        }
+        75%{
+            background-color: #118ab2;
+        }
+        100%{
+            background-color: #073b4c;
+        }
+     }
+     .box{
+        border: 10px solid black;
+        height: 300px;
+        width: 500px;
+        animation-name: bg2; 
+        animation-timing-function: linear;
+        animation-duration: 5s;
+        background-color: cadetblue;
+        animation-iteration-count: infinite;
+        margin: 200px 400px;
+     }
+
+     @keyframes bg2{
+        0%{
+            background-color: #442288; 
+        }
+        25%{
+            background-color: #6ca2ea;
+        }
+        50%{
+            background-color: #b5d33d;
+        }
+        75%{
+            background-color: #fed23f;
+        }
+        100%{
+            background-color: #eb7d5b;
+        }
+     }
+     h1{
+        top: 250px;
+        left: 480px;
+        position: absolute;
+        font-size: 50px;
+     }
+
+
+
+</style>
+<body>
+    <div class="box">
+        <p><h1>Royal Technosoft</h1></p>
+    </div>
+</body>
+</html>

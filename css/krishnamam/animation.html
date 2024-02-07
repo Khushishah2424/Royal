@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box{
+        height: 200px;
+        width: 200px;
+        background-image: linear-gradient(purple,gold);
+        animation-name: ani1;
+        animation-duration: 5s;
+        position: absolute;
+    }
+    @keyframes ani1{
+        0%{
+            top: 0px;
+            left: 0px;
+        }
+        25%{
+            top: 0px;
+            left: 400px;
+        }
+        50%{
+            top: 400px;
+            left: 400px;
+        }
+        75%{
+            top: 400px;
+            left: 0px;
+        }
+        100%{
+            top: 0px;
+            left: 0px;
+        }
+    }
+
+</style>
+<body>
+    <div class="box"></div>
+</body>
+</html>

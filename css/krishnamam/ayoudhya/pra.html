@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0px;
+        padding: 0px;
+    }
+    .nav{
+        height: 70px;
+        width: 100%;
+        border: 1px solid black;
+        position: absolute;
+        top: 0px;
+        background-color: aliceblue;  
+    }
+    .img{
+        height: 500px;
+        width: 100%;
+        /* opacity: 0.5; */
+    }
+    .logo{
+        width: 500px;
+        height: 70px;
+    }
+    ul{
+        list-style: none;
+        overflow: hidden;
+        font-size: 20px;
+        display: flex;
+        margin: -70px 760px;
+        position: absolute;
+        width: 100%;
+        
+    }
+    li{
+        float: left;
+        padding: 20px;
+    }
+    li a{
+        text-decoration: none;
+        padding: 10px;
+        text-align: center;
+        width: 100px;
+        color: white; 
+    }
+    .nav::before{
+            
+            content: '';
+            position: absolute;
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            opacity: 0.8;
+    }
+</style>
+<body>
+    <div class="main">
+        <div class="nav">
+            <img src="https://uptourism.gov.in/images/tourism_logo.png" class="logo" alt="">
+            <ul>
+                <li>About us</li>
+                <li>Destination</li>
+                <li>Experience</li>
+                <li>Online booking</li>
+                <li>Contact Us</li>
+
+            </ul>
+        </div>
+        <img src="https://uptourism.gov.in/site/writereaddata/PageGallary/PG_202401161030549074.jpg" class="img">
+    </div>
+</body>
+</html>
