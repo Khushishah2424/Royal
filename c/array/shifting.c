@@ -1,39 +1,26 @@
 #include<stdio.h>
+#define n 5
 int main(){
-    int a[5];
-    printf("Enter the 5 integers: \n");
-    for(int i = 0 ;i < 5 ; i++){
+    int a[n],i,temp,shift;
+    printf("Enter the %d integers: \n",n);
+    for(i = 0 ;i < n ; i++){
         scanf("%d",&a[i]);
     }
-    for(int i = 0 ;i < 5 ; i++){
-        int temp = a[0];   
-         for(int i = 0 ;i < 4 ; i++){
-            a[i] = a[i] + 1;
-        }
+    printf("Enter howmany times you want to shift arrya :",shift);
+    scanf("%d",&shift);
+    while(shift)
+    {
+        temp = a[0];
+         for( i = 0 ;i < n ; i++){
+            a[i]=a[i+1];
+         }
+            a[n-1]=temp;
+            shift--;  
     }
+    
+    for( i = 0 ;i < n ; i++){
+        printf(" %d ",a[i]);
+    }
+
 }
 
-// #include <stdio.h>
-
-// int main() {
-//     int arr[] = {10, 20, 30, 40, 50};
-//     int size = sizeof(arr) / sizeof(arr[0]);
-//     int temp;
-
-//     // Repeat the shift operation 3 times for a 3-position shift
-
-//     for (int shift = 0; shift < 3; shift++) {
-//         temp = arr[0];//10
-//         for (int i = 0; i < size - 1; i++) {// 20
-//             arr[i] = arr[i + 1];   
-//         }
-//         arr[size - 1] = temp;
-//     }
-
-//     for (int i = 0; i < size; i++) {
-//         printf("%d  ", arr[i]);
-//     }
-//     printf("\n");
-
-//     return 0;
-// }
