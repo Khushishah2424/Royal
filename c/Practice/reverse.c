@@ -16,10 +16,10 @@ int main(){
     for(int i = 0 ; i < n ; i++){
         scanf("%d",&a[i]);
     }
-    // 1 2 3 4 5 
+
     for(int i = 0 ; i < n/2; i++){
-        temp = a[i]; 
-        a[i]= a[n - i - 1]; 
+        temp = a[i];
+        a[i]= a[n - 1- i];
         a[n - i - 1] = temp;
     } printf("Reversed array:\n");
     for(int i = 0; i < n; i++) {

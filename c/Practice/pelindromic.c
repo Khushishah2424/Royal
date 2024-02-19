@@ -26,6 +26,4 @@ int main(){
         printf("not palindrome");
 
     }
-
-
 }
