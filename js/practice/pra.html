@@ -1,14 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="/practice/pra.js"></script>
+    <script src="pra.js"></script>
 </head>
 <body>
-    <button onclick="addition()" id="add">ADDITION</button>
-    <button onclick="substarction()" id="sub">SUBSTRACTION</button>
-    
+     <form>
+       Email :  <input type="email" name="" id="email" placeholder="Enter your email">
+       <span id="emailerror"  style="color: red;"></span>
+        <br><br>
+       First_name : <input type="text" id="name" placeholder="Enter your name">
+       <span id= "nameerror" style="color: red;"></span>
+        <br><br>
+        Last_name : <input type="text" id="lname" placeholder="Enter your last mame">
+        <span id="lnameerror"  style="color: red;"></span>
+     </form>
+     <br>
+     <button onclick="display()" id="btn">Click me</button>
+     <p id="output"></p>
 </body>
 </html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="pra.js"></script>
+</head>
+<body>
+     <form>
+       Email:  <input type="email" id="email" placeholder="Enter your email">
+        <br><br>
+       First Name: <input type="text" id="name" placeholder="Enter your name">
+       <span id="nameerror" style="color: red;"></span>
+        <br><br>
+        Last Name: <input type="text" id="lname" placeholder="Enter your last name">
+     </form>
+     <br>
+     <button onclick="display()" id="btn">Click me</button>
+     <p id="output"></p>
+</body>
+</html> -->

@@ -1,8 +1,13 @@
 #include<iostream>
 using namespace std;
-class vehicle{
-    public:
-    string vehicletype;
-    vehicle(string type){}
-    
-};
+int main(){
+    int a = 5;
+    int *p;
+    p = &a;
+    cout<<"value of a = "<<a;
+    *p = *p + 1;
+    cout<<"\nvalue of a = "<<*p;
+
+}
+
+ 
