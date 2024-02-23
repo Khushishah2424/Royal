@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="form.js"></script>
+</head>
+<body>
+    <form onsubmit="submithandler(event)">
+        <div>
+            <label for="name">Name : </label>
+            <input type="text" id="name" placeholder="Enter name">
+            <span id="nameerror"></span>
+        </div>
+
+        <div>
+            <label for="email">Email : </label>
+            <input type="email" id="email" placeholder="Enter Email">
+            <span id="emailerror" style="color: red;"></span>
+        </div>
+
+        <div>
+            <label for="age">Age : </label>
+            <input type="number" id="age" placeholder="Enter Age">
+            <span id="ageerror"></span>
+        </div>
+
+        <div>
+            <input type="submit" value="submit">
+        </div>
+        
+        <div id="result"></div>
+
+    </form>
+</body>
+</html>

@@ -16,10 +16,7 @@ function display(){
         nameerror.innerHTML = "Atleast 3 letters";
     }
 
-    if(lname.value<0 && name.value>9){
-        name.style.outline = "2px solid red";
-        nameerror.innerHTML = "Only char";
-    }
+   
 
 
 
