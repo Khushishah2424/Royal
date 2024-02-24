@@ -11,15 +11,14 @@ int main(){
     
     while(shift)
     {
-        if(shift == n  ){
-            break;
-        }
-
-        temp = a[0];
+        // if(shift == n  ){
+        //     break;
+        // }
+        temp = a[0];//2
          for( i = 0 ;i < n ; i++){
-            a[i]=a[i+1];// 
+            a[i]=a[i+1];
          }
-            a[n-1]=temp;
+            a[n-1]=temp;   //a[4] = 1 
             shift--;  
     }
     

@@ -14,7 +14,7 @@ int main(){
         }
         if( min == 0 ||min>a[i]){
             min = a[i];
-        }
+        } 
 
     }
     printf("%d",min);
