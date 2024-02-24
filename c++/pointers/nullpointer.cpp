@@ -8,4 +8,5 @@ int main(){
     else{
         cout<<"pointer is not null";
     }
+
 }

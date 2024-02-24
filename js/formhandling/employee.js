@@ -43,13 +43,21 @@ function submithandler(event){
         flag = false;
     }
     else{
-        ageerror.innerHTML = "";
-        age.style.outline = "1px solid green";
+
+        if(age.value<18){
+            ageerror.innerHTML = "Age should be grater than 18";
+            age.style.outline = "1px solid red";
+        }
+        else{
+            ageerror.innerHTML = "";
+            age.style.outline = "1px solid green";
+        }
+       
     }
 
 
     if(isNull(salary.value)){
-        salaryerror.innerHTML = "Name is required";
+        salaryerror.innerHTML = "Salary is required";
         salary.style.outline = "1px solid red";
         flag = false;
     }
@@ -69,7 +77,7 @@ function submithandler(event){
 
 
     if(isNull(blood.value)){
-        blooderror.innerHTML = "Name is required";
+        blooderror.innerHTML = "Blood-group is required";
         blood.style.outline = "1px solid red";
         flag = false;
     }
