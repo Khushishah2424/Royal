@@ -74,8 +74,6 @@ function submithandler(event){
         }
     }
 
-
-
     if(isNull(blood.value)){
         blooderror.innerHTML = "Blood-group is required";
         blood.style.outline = "1px solid red";
@@ -87,8 +85,8 @@ function submithandler(event){
     }
 
     if(flag){
-        result.innerHTML = `Id : ${id.value} <br> Name : ${name.value} <br> Age: ${age.value} <br> Salary :  ${salary.value} <br>
-        Blood- group : ${blood.value}`;
+        result.innerHTML = `ID : ${id.value} <br> NAME : ${name.value} <br> AGE: ${age.value} <br> SALARY :  ${salary.value} <br>
+        BLOOD - GROUP : ${blood.value}`;
     }
 
 
