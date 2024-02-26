@@ -8,8 +8,8 @@ int main(){
     }
     printf("Enter howmany times you want to shift arrya :");
     scanf("%d",&shift);
-    
-     
+
+
     while(shift)
     {
         temp = a[0];
@@ -19,7 +19,7 @@ int main(){
             a[n-1]=temp;  
             shift--;  
     }
-    
+
     for( i = 0 ;i < n ; i++){
         printf(" %d ",a[i]);
     }
