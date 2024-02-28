@@ -63,8 +63,8 @@ function submithandler(event){
     }
     else{
         salaryerror.innerHTML = "";
-        if(salary.value<1800){
-            salaryerror.innerHTML = "Salary should not be less than 1800";
+        if(salary.value<18000){
+            salaryerror.innerHTML = "Salary should not be less than 18000";
             salary.style.outline = "1px solid red";
             flag = false;
         }
