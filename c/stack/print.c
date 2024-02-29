@@ -20,9 +20,14 @@ void pop(){
         printf("\nStack UnderFlow\n");
     }
     else{
-        temp = stack[top];
+        // temp = stack[top];
+        printf("pop = %d",stack[top]);
         top--;
     }
+}
+
+int peek(){
+    return stack[top];
 }
 
 void display()
@@ -40,7 +45,7 @@ void display()
 int main(){
     int num , choice;
     while(1){
-        printf("\n1 For push\n2 For pop\n3 For display\n4 For exit");
+        printf("\n1 For push\n2 For pop\n3 For Peek\n4 For display\n5 For exit");
         printf("\nEnter your Choice :\n");
         scanf("%d",&choice);
 
@@ -56,15 +61,17 @@ int main(){
             break;
 
         case 3:
-            display();
+            printf("Top of stack %d",stack[top]);
             break;
 
         case 4:
+            display();
+            break;
+
+        case 5:
             exit(1);
             break;
 
-    
-        
         default:
             printf("\nINVLAID CHOICE");
             break;
