@@ -1,0 +1,589 @@
+SQL> 
+SQL> REM LOGICAL OPERATORS : NOT , AND , OR
+SQL> 
+SQL> REM LOGICAL OPERATORS PRECEDENCE : () -> NOT -> AND -> OR
+SQL> 
+SQL> REM NOT : IS USED TO REVERSE THE OUTCOME OF FOLLOWING CONDITION(S)
+SQL> 
+SQL> REM NOT IS PLACED JUST BEFORE CONDITION(S)
+SQL> 
+SQL> REM AND : IS USED WHEN WE WANT TO PROCESS ROWS WHICH SATISFIES BOTH CONDITIONS
+SQL> 
+SQL> REM OR : IS USED WHEN WE WANT TO PROCESS ROWS WHICH SATISFIED ATLEAST ONE CONDITION
+SQL> 
+SQL> REM AND & OR ARE PLACED BETWEEN TWO CONDITIONS, I.E. AND & OR ARE USED TO JOIN TWO CONDITIONS
+SQL> 
+SQL> SELECT * FROM EXAM;
+
+       RNO    ENGLISH      MATHS                                                                                                                                                                        
+---------- ---------- ----------                                                                                                                                                                        
+         1         30         70                                                                                                                                                                        
+         2         70         20                                                                                                                                                                        
+         3         30         10                                                                                                                                                                        
+         4         60         70                                                                                                                                                                        
+
+SQL> REM 33 PASSING LEVEL
+SQL> 
+SQL> REM DISPLAY THOSE WHO HAVE PASSED IN ENGLISH SUBJECT
+SQL> 
+SQL> SELECT * FROM EXAM WHERE ENGLISH >= 33;
+
+       RNO    ENGLISH      MATHS                                                                                                                                                                        
+---------- ---------- ----------                                                                                                                                                                        
+         2         70         20                                                                                                                                                                        
+         4         60         70                                                                                                                                                                        
+
+SQL> REM DISPLAY THOSE WHO HAVE FAILED IN MATHS SUBJECT
+SQL> 
+SQL> SELECT * FROM EXAM WHERE MATHS < 33;
+
+       RNO    ENGLISH      MATHS                                                                                                                                                                        
+---------- ---------- ----------                                                                                                                                                                        
+         2         70         20                                                                                                                                                                        
+         3         30         10                                                                                                                                                                        
+
+SQL> REM DISPLAY THOSE WHO HAVE FAILED IN ENGLISH SUBJECT
+SQL> 
+SQL> SELECT * FROM EXAM WHERE NOT ENGLISH >= 33;
+
+       RNO    ENGLISH      MATHS                                                                                                                                                                        
+---------- ---------- ----------                                                                                                                                                                        
+         1         30         70                                                                                                                                                                        
+         3         30         10                                                                                                                                                                        
+
+SQL> REM DISPLAY THOSE WHO HAVE PASSED IN MATHS SUBJECT
+SQL> 
+SQL> SELECT * FROM EXAM WHERE NOT MATHS < 33;
+
+       RNO    ENGLISH      MATHS                                                                                                                                                                        
+---------- ---------- ----------                                                                                                                                                                        
+         1         30         70                                                                                                                                                                        
+         4         60         70                                                                                                                                                                        
+
+SQL> REM DISPLAY THOSE WHOSE RESULT IS PASS
+SQL> 
+SQL> SELECT * FROM EXAM WHERE ENGLISH >= 33 AND MATHS >= 33;
+
+       RNO    ENGLISH      MATHS                                                                                                                                                                        
+---------- ---------- ----------                                                                                                                                                                        
+         4         60         70                                                                                                                                                                        
+
+SQL> REM DISPLAY THOSE WHOSE RESULT IS FAIL
+SQL> 
+SQL> SELECT * FROM EXAM WHERE ENGLISH < 33 OR MATHS < 33;
+
+       RNO    ENGLISH      MATHS                                                                                                                                                                        
+---------- ---------- ----------                                                                                                                                                                        
+         1         30         70                                                                                                                                                                        
+         2         70         20                                                                                                                                                                        
+         3         30         10                                                                                                                                                                        
+
+SQL> SELECT * FROM EXAM;
+
+       RNO    ENGLISH      MATHS                                                                                                                                                                        
+---------- ---------- ----------                                                                                                                                                                        
+         1         30         70                                                                                                                                                                        
+         2         70         20                                                                                                                                                                        
+         3         30         10                                                                                                                                                                        
+         4         60         70                                                                                                                                                                        
+
+SQL> SELECT * FROM EXAM WHERE NOT ENGLISH < 33;
+
+       RNO    ENGLISH      MATHS                                                                                                                                                                        
+---------- ---------- ----------                                                                                                                                                                        
+         2         70         20                                                                                                                                                                        
+         4         60         70                                                                                                                                                                        
+
+SQL> SELECT * FROM EXAM WHERE MATHS < 33 OR NOT ENGLISH >= 33;
+
+       RNO    ENGLISH      MATHS                                                                                                                                                                        
+---------- ---------- ----------                                                                                                                                                                        
+         1         30         70                                                                                                                                                                        
+         2         70         20                                                                                                                                                                        
+         3         30         10                                                                                                                                                                        
+
+SQL> SELECT * FROM EXAM WHERE MATHS < 33 AND NOT ENGLISH >= 33;
+
+       RNO    ENGLISH      MATHS                                                                                                                                                                        
+---------- ---------- ----------                                                                                                                                                                        
+         3         30         10                                                                                                                                                                        
+
+SQL> SELECT * FROM EXAM WHERE NOT MATHS < 33 AND ENGLISH >= 33;
+
+       RNO    ENGLISH      MATHS                                                                                                                                                                        
+---------- ---------- ----------                                                                                                                                                                        
+         4         60         70                                                                                                                                                                        
+
+SQL> SELECT * FROM EXAM WHERE NOT MATHS < 33 AND NOT ENGLISH >= 33;
+
+       RNO    ENGLISH      MATHS                                                                                                                                                                        
+---------- ---------- ----------                                                                                                                                                                        
+         1         30         70                                                                                                                                                                        
+
+SQL> SELECT * FROM EXAM WHERE NOT (MATHS < 33 AND ENGLISH >= 33);
+
+       RNO    ENGLISH      MATHS                                                                                                                                                                        
+---------- ---------- ----------                                                                                                                                                                        
+         1         30         70                                                                                                                                                                        
+         3         30         10                                                                                                                                                                        
+         4         60         70                                                                                                                                                                        
+
+SQL> SELECT * FROM EXAM;
+
+       RNO    ENGLISH      MATHS                                                                                                                                                                        
+---------- ---------- ----------                                                                                                                                                                        
+         1         30         70                                                                                                                                                                        
+         2         70         20                                                                                                                                                                        
+         3         30         10                                                                                                                                                                        
+         4         60         70                                                                                                                                                                        
+
+SQL> SELECT * FROM EXAM WHERE NOT (MATHS < 33 OR ENGLISH >= 33);
+
+       RNO    ENGLISH      MATHS                                                                                                                                                                        
+---------- ---------- ----------                                                                                                                                                                        
+         1         30         70                                                                                                                                                                        
+
+SQL> SELECT * FROM EXAM WHERE NOT (MATHS < 33 AND NOT ENGLISH >= 33);
+
+       RNO    ENGLISH      MATHS                                                                                                                                                                        
+---------- ---------- ----------                                                                                                                                                                        
+         1         30         70                                                                                                                                                                        
+         2         70         20                                                                                                                                                                        
+         4         60         70                                                                                                                                                                        
+
+SQL> SELECT FIRST_NAME , JOB_ID , HIRE_DATE , SALARY , MANAGER_ID , DEPARTMENT_ID FROM EMPLOYEES ORDER BY SALARY;
+
+FIRST_NAME      JOB_ID     HIRE_DATE     SALARY MANAGER_ID DEPARTMENT_ID                                                                                                                                
+--------------- ---------- --------- ---------- ---------- -------------                                                                                                                                
+Peter           ST_CLERK   09-JUL-98       2500        124            50                                                                                                                                
+Randall         ST_CLERK   15-MAR-98       2600        124            50                                                                                                                                
+Curtis          ST_CLERK   29-JAN-97       3100        124            50                                                                                                                                
+Trenna          ST_CLERK   17-OCT-95       3500        124            50                                                                                                                                
+Diana           IT_PROG    07-FEB-99       4200        103            60                                                                                                                                
+Jennifer        AD_ASST    17-SEP-87       4400        101            10                                                                                                                                
+Kevin           ST_MAN     16-NOV-99       5800        100            50                                                                                                                                
+Bruce           IT_PROG    21-MAY-91       6000        103            60                                                                                                                                
+Pat             MK_REP     17-AUG-97       6000        201            20                                                                                                                                
+Kimerely        SA_REP     24-MAY-99       7000        149                                                                                                                                              
+William         AC_ACCOUNT 07-JUN-94       8300        205           110                                                                                                                                
+Jonathon        SA_REP     24-MAR-98       8600        149            80                                                                                                                                
+Alexander       IT_PROG    03-JAN-90       9000        102            60                                                                                                                                
+Eleni           SA_MAN     29-JAN-00      10500        100            80                                                                                                                                
+Ellen           SA_REP     11-MAY-96      11000        149            80                                                                                                                                
+Shelley         AC_MGR     07-JUN-94      12000        101           110                                                                                                                                
+Michael         MK_MAN     17-FEB-96      13000        100            20                                                                                                                                
+Neena           AD_VP      21-SEP-89      17000        100            90                                                                                                                                
+Lex             AD_VP      13-JAN-93      17000        100            90                                                                                                                                
+Steven          AD_PRES    17-JUL-87      24000                       90                                                                                                                                
+
+20 rows selected.
+
+SQL> SELECT FIRST_NAME , JOB_ID , HIRE_DATE , SALARY , MANAGER_ID , DEPARTMENT_ID FROM EMPLOYEES
+  2  WHERE SALARY BETWEEN 6000 AND 12000 OR DEPARTMENT_ID NOT IN (90,50,110) ORDER BY SALARY;
+
+FIRST_NAME      JOB_ID     HIRE_DATE     SALARY MANAGER_ID DEPARTMENT_ID                                                                                                                                
+--------------- ---------- --------- ---------- ---------- -------------                                                                                                                                
+Diana           IT_PROG    07-FEB-99       4200        103            60                                                                                                                                
+Jennifer        AD_ASST    17-SEP-87       4400        101            10                                                                                                                                
+Pat             MK_REP     17-AUG-97       6000        201            20                                                                                                                                
+Bruce           IT_PROG    21-MAY-91       6000        103            60                                                                                                                                
+Kimerely        SA_REP     24-MAY-99       7000        149                                                                                                                                              
+William         AC_ACCOUNT 07-JUN-94       8300        205           110                                                                                                                                
+Jonathon        SA_REP     24-MAR-98       8600        149            80                                                                                                                                
+Alexander       IT_PROG    03-JAN-90       9000        102            60                                                                                                                                
+Eleni           SA_MAN     29-JAN-00      10500        100            80                                                                                                                                
+Ellen           SA_REP     11-MAY-96      11000        149            80                                                                                                                                
+Shelley         AC_MGR     07-JUN-94      12000        101           110                                                                                                                                
+Michael         MK_MAN     17-FEB-96      13000        100            20                                                                                                                                
+
+12 rows selected.
+
+SQL> SELECT FIRST_NAME , JOB_ID , HIRE_DATE , SALARY , MANAGER_ID , DEPARTMENT_ID FROM EMPLOYEES ORDER BY SALARY;
+
+FIRST_NAME      JOB_ID     HIRE_DATE     SALARY MANAGER_ID DEPARTMENT_ID                                                                                                                                
+--------------- ---------- --------- ---------- ---------- -------------                                                                                                                                
+Peter           ST_CLERK   09-JUL-98       2500        124            50                                                                                                                                
+Randall         ST_CLERK   15-MAR-98       2600        124            50                                                                                                                                
+Curtis          ST_CLERK   29-JAN-97       3100        124            50                                                                                                                                
+Trenna          ST_CLERK   17-OCT-95       3500        124            50                                                                                                                                
+Diana           IT_PROG    07-FEB-99       4200        103            60                                                                                                                                
+Jennifer        AD_ASST    17-SEP-87       4400        101            10                                                                                                                                
+Kevin           ST_MAN     16-NOV-99       5800        100            50                                                                                                                                
+Bruce           IT_PROG    21-MAY-91       6000        103            60                                                                                                                                
+Pat             MK_REP     17-AUG-97       6000        201            20                                                                                                                                
+Kimerely        SA_REP     24-MAY-99       7000        149                                                                                                                                              
+William         AC_ACCOUNT 07-JUN-94       8300        205           110                                                                                                                                
+Jonathon        SA_REP     24-MAR-98       8600        149            80                                                                                                                                
+Alexander       IT_PROG    03-JAN-90       9000        102            60                                                                                                                                
+Eleni           SA_MAN     29-JAN-00      10500        100            80                                                                                                                                
+Ellen           SA_REP     11-MAY-96      11000        149            80                                                                                                                                
+Shelley         AC_MGR     07-JUN-94      12000        101           110                                                                                                                                
+Michael         MK_MAN     17-FEB-96      13000        100            20                                                                                                                                
+Neena           AD_VP      21-SEP-89      17000        100            90                                                                                                                                
+Lex             AD_VP      13-JAN-93      17000        100            90                                                                                                                                
+Steven          AD_PRES    17-JUL-87      24000                       90                                                                                                                                
+
+20 rows selected.
+
+SQL> SELECT FIRST_NAME , JOB_ID , HIRE_DATE , SALARY , MANAGER_ID , DEPARTMENT_ID FROM EMPLOYEES
+  2  WHERE SALARY BETWEEN 6000 AND 12000 AND DEPARTMENT_ID NOT IN (90,50,110) ORDER BY SALARY;
+
+FIRST_NAME      JOB_ID     HIRE_DATE     SALARY MANAGER_ID DEPARTMENT_ID                                                                                                                                
+--------------- ---------- --------- ---------- ---------- -------------                                                                                                                                
+Bruce           IT_PROG    21-MAY-91       6000        103            60                                                                                                                                
+Pat             MK_REP     17-AUG-97       6000        201            20                                                                                                                                
+Jonathon        SA_REP     24-MAR-98       8600        149            80                                                                                                                                
+Alexander       IT_PROG    03-JAN-90       9000        102            60                                                                                                                                
+Eleni           SA_MAN     29-JAN-00      10500        100            80                                                                                                                                
+Ellen           SA_REP     11-MAY-96      11000        149            80                                                                                                                                
+
+6 rows selected.
+
+SQL> SELECT FIRST_NAME , JOB_ID , HIRE_DATE , SALARY , MANAGER_ID , DEPARTMENT_ID FROM EMPLOYEES
+  2  WHERE SALARY BETWEEN 6000 AND 12000 AND HIRE_DATE LIKE '%A%' ORDER BY SALARY;
+
+FIRST_NAME      JOB_ID     HIRE_DATE     SALARY MANAGER_ID DEPARTMENT_ID                                                                                                                                
+--------------- ---------- --------- ---------- ---------- -------------                                                                                                                                
+Bruce           IT_PROG    21-MAY-91       6000        103            60                                                                                                                                
+Pat             MK_REP     17-AUG-97       6000        201            20                                                                                                                                
+Kimerely        SA_REP     24-MAY-99       7000        149                                                                                                                                              
+Jonathon        SA_REP     24-MAR-98       8600        149            80                                                                                                                                
+Alexander       IT_PROG    03-JAN-90       9000        102            60                                                                                                                                
+Eleni           SA_MAN     29-JAN-00      10500        100            80                                                                                                                                
+Ellen           SA_REP     11-MAY-96      11000        149            80                                                                                                                                
+
+7 rows selected.
+
+SQL> SELECT FIRST_NAME , JOB_ID , HIRE_DATE , SALARY , MANAGER_ID , DEPARTMENT_ID FROM EMPLOYEES ORDER BY SALARY;
+
+FIRST_NAME      JOB_ID     HIRE_DATE     SALARY MANAGER_ID DEPARTMENT_ID                                                                                                                                
+--------------- ---------- --------- ---------- ---------- -------------                                                                                                                                
+Peter           ST_CLERK   09-JUL-98       2500        124            50                                                                                                                                
+Randall         ST_CLERK   15-MAR-98       2600        124            50                                                                                                                                
+Curtis          ST_CLERK   29-JAN-97       3100        124            50                                                                                                                                
+Trenna          ST_CLERK   17-OCT-95       3500        124            50                                                                                                                                
+Diana           IT_PROG    07-FEB-99       4200        103            60                                                                                                                                
+Jennifer        AD_ASST    17-SEP-87       4400        101            10                                                                                                                                
+Kevin           ST_MAN     16-NOV-99       5800        100            50                                                                                                                                
+Bruce           IT_PROG    21-MAY-91       6000        103            60                                                                                                                                
+Pat             MK_REP     17-AUG-97       6000        201            20                                                                                                                                
+Kimerely        SA_REP     24-MAY-99       7000        149                                                                                                                                              
+William         AC_ACCOUNT 07-JUN-94       8300        205           110                                                                                                                                
+Jonathon        SA_REP     24-MAR-98       8600        149            80                                                                                                                                
+Alexander       IT_PROG    03-JAN-90       9000        102            60                                                                                                                                
+Eleni           SA_MAN     29-JAN-00      10500        100            80                                                                                                                                
+Ellen           SA_REP     11-MAY-96      11000        149            80                                                                                                                                
+Shelley         AC_MGR     07-JUN-94      12000        101           110                                                                                                                                
+Michael         MK_MAN     17-FEB-96      13000        100            20                                                                                                                                
+Neena           AD_VP      21-SEP-89      17000        100            90                                                                                                                                
+Lex             AD_VP      13-JAN-93      17000        100            90                                                                                                                                
+Steven          AD_PRES    17-JUL-87      24000                       90                                                                                                                                
+
+20 rows selected.
+
+SQL> SELECT FIRST_NAME , JOB_ID , HIRE_DATE , SALARY , MANAGER_ID , DEPARTMENT_ID FROM EMPLOYEES
+  2  WHERE SALARY NOT BETWEEN 6000 AND 12000 OR HIRE_DATE LIKE '%A%' ORDER BY SALARY;
+
+FIRST_NAME      JOB_ID     HIRE_DATE     SALARY MANAGER_ID DEPARTMENT_ID                                                                                                                                
+--------------- ---------- --------- ---------- ---------- -------------                                                                                                                                
+Peter           ST_CLERK   09-JUL-98       2500        124            50                                                                                                                                
+Randall         ST_CLERK   15-MAR-98       2600        124            50                                                                                                                                
+Curtis          ST_CLERK   29-JAN-97       3100        124            50                                                                                                                                
+Trenna          ST_CLERK   17-OCT-95       3500        124            50                                                                                                                                
+Diana           IT_PROG    07-FEB-99       4200        103            60                                                                                                                                
+Jennifer        AD_ASST    17-SEP-87       4400        101            10                                                                                                                                
+Kevin           ST_MAN     16-NOV-99       5800        100            50                                                                                                                                
+Bruce           IT_PROG    21-MAY-91       6000        103            60                                                                                                                                
+Pat             MK_REP     17-AUG-97       6000        201            20                                                                                                                                
+Kimerely        SA_REP     24-MAY-99       7000        149                                                                                                                                              
+Jonathon        SA_REP     24-MAR-98       8600        149            80                                                                                                                                
+Alexander       IT_PROG    03-JAN-90       9000        102            60                                                                                                                                
+Eleni           SA_MAN     29-JAN-00      10500        100            80                                                                                                                                
+Ellen           SA_REP     11-MAY-96      11000        149            80                                                                                                                                
+Michael         MK_MAN     17-FEB-96      13000        100            20                                                                                                                                
+Neena           AD_VP      21-SEP-89      17000        100            90                                                                                                                                
+Lex             AD_VP      13-JAN-93      17000        100            90                                                                                                                                
+Steven          AD_PRES    17-JUL-87      24000                       90                                                                                                                                
+
+18 rows selected.
+
+SQL> SELECT FIRST_NAME , JOB_ID , HIRE_DATE , SALARY , MANAGER_ID , DEPARTMENT_ID FROM EMPLOYEES ORDER BY SALARY;
+
+FIRST_NAME      JOB_ID     HIRE_DATE     SALARY MANAGER_ID DEPARTMENT_ID                                                                                                                                
+--------------- ---------- --------- ---------- ---------- -------------                                                                                                                                
+Peter           ST_CLERK   09-JUL-98       2500        124            50                                                                                                                                
+Randall         ST_CLERK   15-MAR-98       2600        124            50                                                                                                                                
+Curtis          ST_CLERK   29-JAN-97       3100        124            50                                                                                                                                
+Trenna          ST_CLERK   17-OCT-95       3500        124            50                                                                                                                                
+Diana           IT_PROG    07-FEB-99       4200        103            60                                                                                                                                
+Jennifer        AD_ASST    17-SEP-87       4400        101            10                                                                                                                                
+Kevin           ST_MAN     16-NOV-99       5800        100            50                                                                                                                                
+Bruce           IT_PROG    21-MAY-91       6000        103            60                                                                                                                                
+Pat             MK_REP     17-AUG-97       6000        201            20                                                                                                                                
+Kimerely        SA_REP     24-MAY-99       7000        149                                                                                                                                              
+William         AC_ACCOUNT 07-JUN-94       8300        205           110                                                                                                                                
+Jonathon        SA_REP     24-MAR-98       8600        149            80                                                                                                                                
+Alexander       IT_PROG    03-JAN-90       9000        102            60                                                                                                                                
+Eleni           SA_MAN     29-JAN-00      10500        100            80                                                                                                                                
+Ellen           SA_REP     11-MAY-96      11000        149            80                                                                                                                                
+Shelley         AC_MGR     07-JUN-94      12000        101           110                                                                                                                                
+Michael         MK_MAN     17-FEB-96      13000        100            20                                                                                                                                
+Neena           AD_VP      21-SEP-89      17000        100            90                                                                                                                                
+Lex             AD_VP      13-JAN-93      17000        100            90                                                                                                                                
+Steven          AD_PRES    17-JUL-87      24000                       90                                                                                                                                
+
+20 rows selected.
+
+SQL> SELECT FIRST_NAME , JOB_ID , HIRE_DATE , SALARY , MANAGER_ID , DEPARTMENT_ID FROM EMPLOYEES
+  2  WHERE NOT SALARY BETWEEN 6000 AND 12000 AND JOB_ID LIKE '%A%A%' ORDER BY SALARY;
+
+FIRST_NAME      JOB_ID     HIRE_DATE     SALARY MANAGER_ID DEPARTMENT_ID                                                                                                                                
+--------------- ---------- --------- ---------- ---------- -------------                                                                                                                                
+Jennifer        AD_ASST    17-SEP-87       4400        101            10                                                                                                                                
+
+SQL> SELECT FIRST_NAME , JOB_ID , HIRE_DATE , SALARY , MANAGER_ID , DEPARTMENT_ID FROM EMPLOYEES
+  2  WHERE NOT SALARY BETWEEN 6000 AND 12000 OR JOB_ID LIKE '%A%A%' ORDER BY SALARY;
+
+FIRST_NAME      JOB_ID     HIRE_DATE     SALARY MANAGER_ID DEPARTMENT_ID                                                                                                                                
+--------------- ---------- --------- ---------- ---------- -------------                                                                                                                                
+Peter           ST_CLERK   09-JUL-98       2500        124            50                                                                                                                                
+Randall         ST_CLERK   15-MAR-98       2600        124            50                                                                                                                                
+Curtis          ST_CLERK   29-JAN-97       3100        124            50                                                                                                                                
+Trenna          ST_CLERK   17-OCT-95       3500        124            50                                                                                                                                
+Diana           IT_PROG    07-FEB-99       4200        103            60                                                                                                                                
+Jennifer        AD_ASST    17-SEP-87       4400        101            10                                                                                                                                
+Kevin           ST_MAN     16-NOV-99       5800        100            50                                                                                                                                
+William         AC_ACCOUNT 07-JUN-94       8300        205           110                                                                                                                                
+Eleni           SA_MAN     29-JAN-00      10500        100            80                                                                                                                                
+Michael         MK_MAN     17-FEB-96      13000        100            20                                                                                                                                
+Lex             AD_VP      13-JAN-93      17000        100            90                                                                                                                                
+Neena           AD_VP      21-SEP-89      17000        100            90                                                                                                                                
+Steven          AD_PRES    17-JUL-87      24000                       90                                                                                                                                
+
+13 rows selected.
+
+SQL> SELECT FIRST_NAME , JOB_ID , HIRE_DATE , SALARY , MANAGER_ID , DEPARTMENT_ID FROM EMPLOYEES
+  2  WHERE SALARY BETWEEN 6000 AND 12000 AND JOB_ID LIKE '%A%A%' ORDER BY SALARY;
+
+FIRST_NAME      JOB_ID     HIRE_DATE     SALARY MANAGER_ID DEPARTMENT_ID                                                                                                                                
+--------------- ---------- --------- ---------- ---------- -------------                                                                                                                                
+William         AC_ACCOUNT 07-JUN-94       8300        205           110                                                                                                                                
+Eleni           SA_MAN     29-JAN-00      10500        100            80                                                                                                                                
+
+SQL> SELECT FIRST_NAME , JOB_ID , HIRE_DATE , SALARY , MANAGER_ID , DEPARTMENT_ID FROM EMPLOYEES ORDER BY SALARY;
+
+FIRST_NAME      JOB_ID     HIRE_DATE     SALARY MANAGER_ID DEPARTMENT_ID                                                                                                                                
+--------------- ---------- --------- ---------- ---------- -------------                                                                                                                                
+Peter           ST_CLERK   09-JUL-98       2500        124            50                                                                                                                                
+Randall         ST_CLERK   15-MAR-98       2600        124            50                                                                                                                                
+Curtis          ST_CLERK   29-JAN-97       3100        124            50                                                                                                                                
+Trenna          ST_CLERK   17-OCT-95       3500        124            50                                                                                                                                
+Diana           IT_PROG    07-FEB-99       4200        103            60                                                                                                                                
+Jennifer        AD_ASST    17-SEP-87       4400        101            10                                                                                                                                
+Kevin           ST_MAN     16-NOV-99       5800        100            50                                                                                                                                
+Bruce           IT_PROG    21-MAY-91       6000        103            60                                                                                                                                
+Pat             MK_REP     17-AUG-97       6000        201            20                                                                                                                                
+Kimerely        SA_REP     24-MAY-99       7000        149                                                                                                                                              
+William         AC_ACCOUNT 07-JUN-94       8300        205           110                                                                                                                                
+Jonathon        SA_REP     24-MAR-98       8600        149            80                                                                                                                                
+Alexander       IT_PROG    03-JAN-90       9000        102            60                                                                                                                                
+Eleni           SA_MAN     29-JAN-00      10500        100            80                                                                                                                                
+Ellen           SA_REP     11-MAY-96      11000        149            80                                                                                                                                
+Shelley         AC_MGR     07-JUN-94      12000        101           110                                                                                                                                
+Michael         MK_MAN     17-FEB-96      13000        100            20                                                                                                                                
+Neena           AD_VP      21-SEP-89      17000        100            90                                                                                                                                
+Lex             AD_VP      13-JAN-93      17000        100            90                                                                                                                                
+Steven          AD_PRES    17-JUL-87      24000                       90                                                                                                                                
+
+20 rows selected.
+
+SQL> SELECT FIRST_NAME , JOB_ID , HIRE_DATE , SALARY , MANAGER_ID , DEPARTMENT_ID FROM EMPLOYEES
+  2  WHERE SALARY BETWEEN 6000 AND 12000 OR JOB_ID LIKE '%A%A%' ORDER BY SALARY;
+
+FIRST_NAME      JOB_ID     HIRE_DATE     SALARY MANAGER_ID DEPARTMENT_ID                                                                                                                                
+--------------- ---------- --------- ---------- ---------- -------------                                                                                                                                
+Jennifer        AD_ASST    17-SEP-87       4400        101            10                                                                                                                                
+Pat             MK_REP     17-AUG-97       6000        201            20                                                                                                                                
+Bruce           IT_PROG    21-MAY-91       6000        103            60                                                                                                                                
+Kimerely        SA_REP     24-MAY-99       7000        149                                                                                                                                              
+William         AC_ACCOUNT 07-JUN-94       8300        205           110                                                                                                                                
+Jonathon        SA_REP     24-MAR-98       8600        149            80                                                                                                                                
+Alexander       IT_PROG    03-JAN-90       9000        102            60                                                                                                                                
+Eleni           SA_MAN     29-JAN-00      10500        100            80                                                                                                                                
+Ellen           SA_REP     11-MAY-96      11000        149            80                                                                                                                                
+Shelley         AC_MGR     07-JUN-94      12000        101           110                                                                                                                                
+
+10 rows selected.
+
+SQL> REM DISPLAY EMPLOYEES WHO GETS HIGHER SALARY THAN 8000, WHO MAY WORK IN ANY OF THE 80 OR 60 DEPARTMENT.
+SQL> 
+SQL> SELECT FIRST_NAME , SALARY , DEPARTMENT_ID FROM EMPLOYEES
+  2  WHERE SALARY >= 8000 AND DEPARTMENT_ID (80 OR 60);
+WHERE SALARY >= 8000 AND DEPARTMENT_ID (80 OR 60)
+                                           *
+ERROR at line 2:
+ORA-00907: missing right parenthesis 
+
+
+SQL> SELECT FIRST_NAME , SALARY , DEPARTMENT_ID FROM EMPLOYEES
+  2  WHERE SALARY >= 8000 AND DEPARTMENT_ID (80 , 60);
+WHERE SALARY >= 8000 AND DEPARTMENT_ID (80 , 60)
+                                               *
+ERROR at line 2:
+ORA-00920: invalid relational operator 
+
+
+SQL> SELECT FIRST_NAME , SALARY , DEPARTMENT_ID FROM EMPLOYEES
+  2  WHERE SALARY >= 8000 AND DEPARTMENT_ID = 80 OR DEPARTMENT_ID = 60;
+
+FIRST_NAME          SALARY DEPARTMENT_ID                                                                                                                                                                
+--------------- ---------- -------------                                                                                                                                                                
+Alexander             9000            60                                                                                                                                                                
+Bruce                 6000            60                                                                                                                                                                
+Diana                 4200            60                                                                                                                                                                
+Eleni                10500            80                                                                                                                                                                
+Ellen                11000            80                                                                                                                                                                
+Jonathon              8600            80                                                                                                                                                                
+
+6 rows selected.
+
+SQL> REM LOGICAL OPERATORS PRECEDENCE : () -> NOT -> AND -> OR
+SQL> 
+SQL> SELECT FIRST_NAME , SALARY , DEPARTMENT_ID FROM EMPLOYEES
+  2  WHERE SALARY >= 8000 AND (DEPARTMENT_ID = 80 OR DEPARTMENT_ID = 60);
+
+FIRST_NAME          SALARY DEPARTMENT_ID                                                                                                                                                                
+--------------- ---------- -------------                                                                                                                                                                
+Alexander             9000            60                                                                                                                                                                
+Eleni                10500            80                                                                                                                                                                
+Ellen                11000            80                                                                                                                                                                
+Jonathon              8600            80                                                                                                                                                                
+
+SQL> SELECT * FROM EMPLOYEES;
+
+EMPLOYEE_ID FIRST_NAME      LAST_NAME       EMAIL      PHONE_NUMBER         HIRE_DATE JOB_ID         SALARY COMMISSION_PCT MANAGER_ID DEPARTMENT_ID                                                     
+----------- --------------- --------------- ---------- -------------------- --------- ---------- ---------- -------------- ---------- -------------                                                     
+        100 Steven          King            SKING      515.123.4567         17-JUL-87 AD_PRES         24000                                      90                                                     
+        101 Neena           Kochhar         NKOCHHAR   515.123.4568         21-SEP-89 AD_VP           17000                       100            90                                                     
+        102 Lex             De Haan         LDEHAAN    515.123.4569         13-JAN-93 AD_VP           17000                       100            90                                                     
+        103 Alexander       Hunold          AHUNOLD    590.423.4567         03-JAN-90 IT_PROG          9000                       102            60                                                     
+        104 Bruce           Ernst           BERNST     590.423.4568         21-MAY-91 IT_PROG          6000                       103            60                                                     
+        107 Diana           Lorentz         DLORENTZ   590.423.5567         07-FEB-99 IT_PROG          4200                       103            60                                                     
+        124 Kevin           Mourgos         KMOURGOS   650.123.5234         16-NOV-99 ST_MAN           5800                       100            50                                                     
+        141 Trenna          Rajs            TRAJS      650.121.8009         17-OCT-95 ST_CLERK         3500                       124            50                                                     
+        142 Curtis          Davies          CDAVIES    650.121.2994         29-JAN-97 ST_CLERK         3100                       124            50                                                     
+        143 Randall         Matos           RMATOS     650.121.2874         15-MAR-98 ST_CLERK         2600                       124            50                                                     
+        144 Peter           Vargas          PVARGAS    650.121.2004         09-JUL-98 ST_CLERK         2500                       124            50                                                     
+        149 Eleni           Zlotkey         EZLOTKEY   011.44.1344.429018   29-JAN-00 SA_MAN          10500             .2        100            80                                                     
+        174 Ellen           Abel            EABEL      011.44.1644.429267   11-MAY-96 SA_REP          11000             .3        149            80                                                     
+        176 Jonathon        Taylor          JTAYLOR    011.44.1644.429265   24-MAR-98 SA_REP           8600             .3        149            80                                                     
+        178 Kimerely        Grant           KGRANT     011.44.1644.429263   24-MAY-99 SA_REP           7000            .15        149                                                                   
+        200 Jennifer        Whalen          JWHALEN    515.123.4444         17-SEP-87 AD_ASST          4400                       101            10                                                     
+        201 Michael         Hartstein       MHARTSTE   515.123.5555         17-FEB-96 MK_MAN          13000                       100            20                                                     
+        202 Pat             Fay             PFAY       603.123.6666         17-AUG-97 MK_REP           6000                       201            20                                                     
+        205 Shelley         Higgins         SHIGGINS   515.123.8080         07-JUN-94 AC_MGR          12000                       101           110                                                     
+        206 William         Gietz           WGIETZ     515.123.8181         07-JUN-94 AC_ACCOUNT       8300                       205           110                                                     
+
+20 rows selected.
+
+SQL> REM DISPLAY THOSE WHOSE SALARY IS HIGHER THAN 7000 WHO MAY BE REPORTING TO 124 OR 149
+SQL> 
+SQL> SELECT FIRST_NAME , SALARY , DEPARTMENT_ID FROM EMPLOYEES
+  2  WHERE SALARY > 7000 AND (MANAGER_ID = 124 OR MANAGER_ID 149);
+WHERE SALARY > 7000 AND (MANAGER_ID = 124 OR MANAGER_ID 149)
+                                    *
+ERROR at line 2:
+ORA-00920: invalid relational operator 
+
+
+SQL> SELECT FIRST_NAME , SALARY , DEPARTMENT_ID FROM EMPLOYEES
+  2  WHERE SALARY > 7000 AND (MANAGER_ID = 124 OR MANAGER_ID = 149);
+
+FIRST_NAME          SALARY DEPARTMENT_ID                                                                                                                                                                
+--------------- ---------- -------------                                                                                                                                                                
+Ellen                11000            80                                                                                                                                                                
+Jonathon              8600            80                                                                                                                                                                
+
+SQL> SELECT FIRST_NAME , SALARY , MANAGER_ID FROM EMPLOYEES
+  2  WHERE SALARY > 7000 AND (MANAGER_ID = 124 OR MANAGER_ID = 149);
+
+FIRST_NAME          SALARY MANAGER_ID                                                                                                                                                                   
+--------------- ---------- ----------                                                                                                                                                                   
+Ellen                11000        149                                                                                                                                                                   
+Jonathon              8600        149                                                                                                                                                                   
+
+SQL> SELECT FIRST_NAME , SALARY , DEPARTMENT_ID FROM EMPLOYEES ORDER BY SALARY;
+
+FIRST_NAME          SALARY DEPARTMENT_ID                                                                                                                                                                
+--------------- ---------- -------------                                                                                                                                                                
+Peter                 2500            50                                                                                                                                                                
+Randall               2600            50                                                                                                                                                                
+Curtis                3100            50                                                                                                                                                                
+Trenna                3500            50                                                                                                                                                                
+Diana                 4200            60                                                                                                                                                                
+Jennifer              4400            10                                                                                                                                                                
+Kevin                 5800            50                                                                                                                                                                
+Bruce                 6000            60                                                                                                                                                                
+Pat                   6000            20                                                                                                                                                                
+Kimerely              7000                                                                                                                                                                              
+William               8300           110                                                                                                                                                                
+Jonathon              8600            80                                                                                                                                                                
+Alexander             9000            60                                                                                                                                                                
+Eleni                10500            80                                                                                                                                                                
+Ellen                11000            80                                                                                                                                                                
+Shelley              12000           110                                                                                                                                                                
+Michael              13000            20                                                                                                                                                                
+Neena                17000            90                                                                                                                                                                
+Lex                  17000            90                                                                                                                                                                
+Steven               24000            90                                                                                                                                                                
+
+20 rows selected.
+
+SQL> SELECT * FROM EMPLOYEES ORDER BY SALARY;
+
+EMPLOYEE_ID FIRST_NAME      LAST_NAME       EMAIL      PHONE_NUMBER         HIRE_DATE JOB_ID         SALARY COMMISSION_PCT MANAGER_ID DEPARTMENT_ID                                                     
+----------- --------------- --------------- ---------- -------------------- --------- ---------- ---------- -------------- ---------- -------------                                                     
+        144 Peter           Vargas          PVARGAS    650.121.2004         09-JUL-98 ST_CLERK         2500                       124            50                                                     
+        143 Randall         Matos           RMATOS     650.121.2874         15-MAR-98 ST_CLERK         2600                       124            50                                                     
+        142 Curtis          Davies          CDAVIES    650.121.2994         29-JAN-97 ST_CLERK         3100                       124            50                                                     
+        141 Trenna          Rajs            TRAJS      650.121.8009         17-OCT-95 ST_CLERK         3500                       124            50                                                     
+        107 Diana           Lorentz         DLORENTZ   590.423.5567         07-FEB-99 IT_PROG          4200                       103            60                                                     
+        200 Jennifer        Whalen          JWHALEN    515.123.4444         17-SEP-87 AD_ASST          4400                       101            10                                                     
+        124 Kevin           Mourgos         KMOURGOS   650.123.5234         16-NOV-99 ST_MAN           5800                       100            50                                                     
+        104 Bruce           Ernst           BERNST     590.423.4568         21-MAY-91 IT_PROG          6000                       103            60                                                     
+        202 Pat             Fay             PFAY       603.123.6666         17-AUG-97 MK_REP           6000                       201            20                                                     
+        178 Kimerely        Grant           KGRANT     011.44.1644.429263   24-MAY-99 SA_REP           7000            .15        149                                                                   
+        206 William         Gietz           WGIETZ     515.123.8181         07-JUN-94 AC_ACCOUNT       8300                       205           110                                                     
+        176 Jonathon        Taylor          JTAYLOR    011.44.1644.429265   24-MAR-98 SA_REP           8600             .3        149            80                                                     
+        103 Alexander       Hunold          AHUNOLD    590.423.4567         03-JAN-90 IT_PROG          9000                       102            60                                                     
+        149 Eleni           Zlotkey         EZLOTKEY   011.44.1344.429018   29-JAN-00 SA_MAN          10500             .2        100            80                                                     
+        174 Ellen           Abel            EABEL      011.44.1644.429267   11-MAY-96 SA_REP          11000             .3        149            80                                                     
+        205 Shelley         Higgins         SHIGGINS   515.123.8080         07-JUN-94 AC_MGR          12000                       101           110                                                     
+        201 Michael         Hartstein       MHARTSTE   515.123.5555         17-FEB-96 MK_MAN          13000                       100            20                                                     
+        101 Neena           Kochhar         NKOCHHAR   515.123.4568         21-SEP-89 AD_VP           17000                       100            90                                                     
+        102 Lex             De Haan         LDEHAAN    515.123.4569         13-JAN-93 AD_VP           17000                       100            90                                                     
+        100 Steven          King            SKING      515.123.4567         17-JUL-87 AD_PRES         24000                                      90                                                     
+
+20 rows selected.
+
+SQL> REM DISPLAY THOSE WHOSE SALARY MAY BE LESS THAN OR EQUALS TO 6000 OR HIGHER THAN OR EQUALS TO 12000 AND HIRE YEAR MAY BE 89 OR 98.
+SQL> 
+SQL> SELECT * FROM EMPLOYEES
+  2  WHERE (SALARY <= 6000 OR SALARY >= 12000) AND (HIRE_DATE LIKE '%89' OR HIRE_DATE LIKE '%98');q
+
+EMPLOYEE_ID FIRST_NAME      LAST_NAME       EMAIL      PHONE_NUMBER         HIRE_DATE JOB_ID         SALARY COMMISSION_PCT MANAGER_ID DEPARTMENT_ID                                                     
+----------- --------------- --------------- ---------- -------------------- --------- ---------- ---------- -------------- ---------- -------------                                                     
+        101 Neena           Kochhar         NKOCHHAR   515.123.4568         21-SEP-89 AD_VP           17000                       100            90                                                     
+        143 Randall         Matos           RMATOS     650.121.2874         15-MAR-98 ST_CLERK         2600                       124            50                                                     
+        144 Peter           Vargas          PVARGAS    650.121.2004         09-JUL-98 ST_CLERK         2500                       124            50                                                     
+
+SQL> SELECT * FROM EMPLOYEES
+  2  WHERE SALARY NOT BETWEEN 6000 AND 12000 AND (HIRE_DATE LIKE '%89' OR HIRE_DATE LIKE '%98');
+
+EMPLOYEE_ID FIRST_NAME      LAST_NAME       EMAIL      PHONE_NUMBER         HIRE_DATE JOB_ID         SALARY COMMISSION_PCT MANAGER_ID DEPARTMENT_ID                                                     
+----------- --------------- --------------- ---------- -------------------- --------- ---------- ---------- -------------- ---------- -------------                                                     
+        101 Neena           Kochhar         NKOCHHAR   515.123.4568         21-SEP-89 AD_VP           17000                       100            90                                                     
+        143 Randall         Matos           RMATOS     650.121.2874         15-MAR-98 ST_CLERK         2600                       124            50                                                     
+        144 Peter           Vargas          PVARGAS    650.121.2004         09-JUL-98 ST_CLERK         2500                       124            50                                                     
+
+SQL> SPOOL OFF

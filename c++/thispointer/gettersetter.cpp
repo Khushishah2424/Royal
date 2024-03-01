@@ -4,7 +4,6 @@ using namespace std;
 class user{
     string name;
     int age;
-
     public:
     void setname(string name){
         this->name = name;
@@ -30,6 +29,5 @@ int main(){
 
     u1.setage(20);
     cout<<"Age = "<<u1.getage()<<endl;
-
 
 }

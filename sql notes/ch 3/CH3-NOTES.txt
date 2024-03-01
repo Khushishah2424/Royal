@@ -1,0 +1,20 @@
+
+												CHAPTER  - 3
+	
+	
+		CHAPTER 3 : 1 CHARACTER 2 NUMBER 3 DATE		
+		
+	* TYPES OF CHARACTER FUNCTIONS :   1 CASE MANIPULATION 
+										  2 CHARACTER MANIPULATION
+
+	1.CASE MANIPULATION :    1 UPPER 
+                             2 LOWER 		  
+							   3 INITCAP
+
+	2.CHARACTER MANIPULATION :
+
+
+
+	
+	
+	
