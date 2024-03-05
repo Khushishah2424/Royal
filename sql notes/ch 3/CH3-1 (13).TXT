@@ -1,0 +1,383 @@
+SQL> 
+SQL> CL SCR
+
+SQL> REM FUNCTIONS : IT IS NAMED ROUTINE, WHICH MAY OR MAY NOT TAKE SINGLE OR MULTIPLE INPUTS/PARAMETERS/ARGUMENTS AND RETURNS SINGLE VALUE.
+SQL> 
+SQL> SELECT POWER(5,2) FROM DUAL;
+
+POWER(5,2)                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+        25                                                                                                                                                                                              
+
+SQL> SELECT POWER(5,3) FROM DUAL;
+
+POWER(5,3)                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+       125                                                                                                                                                                                              
+
+SQL> SELECT POWER(5,5) FROM DUAL;
+
+POWER(5,5)                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+      3125                                                                                                                                                                                              
+
+SQL> SELECT POWER(25,1/2) FROM DUAL;
+
+POWER(25,1/2)                                                                                                                                                                                           
+-------------                                                                                                                                                                                           
+            5                                                                                                                                                                                           
+
+SQL> SELECT POWER(125,1/3) FROM DUAL;
+
+POWER(125,1/3)                                                                                                                                                                                          
+--------------                                                                                                                                                                                          
+             5                                                                                                                                                                                          
+
+SQL> REM TYPES OF FUNCTIONS : 1 SINGLE ROW 2 MULTI ROW 3 TIMESTAMP AND INTERVAL
+SQL> 
+SQL> REM SINGLE ROW/SCALAR FUNCTION
+SQL> 
+SQL> REM MULTI ROW / GROUP / AGGRGATE / SUMMARY
+SQL> 
+SQL> REM SINGLE ROW FUNCTION TAKES SINGLE ROW AS INPUT AND RETURNS SINGLE FOR EACH INPUT ROW.
+SQL> 
+SQL> REM SINGLE ROW FUNCTION : NO. OF INPUT ROWS ARE ALWAYS EQUALS TO NO. OF OUTPUT ROWS
+SQL> 
+SQL> SELECT FIRST_NAME , UPPER(FIRST_NAME) FROM EMPLOYEES;
+
+FIRST_NAME      UPPER(FIRST_NAM                                                                                                                                                                         
+--------------- ---------------                                                                                                                                                                         
+Steven          STEVEN                                                                                                                                                                                  
+Neena           NEENA                                                                                                                                                                                   
+Lex             LEX                                                                                                                                                                                     
+Alexander       ALEXANDER                                                                                                                                                                               
+Bruce           BRUCE                                                                                                                                                                                   
+Diana           DIANA                                                                                                                                                                                   
+Kevin           KEVIN                                                                                                                                                                                   
+Trenna          TRENNA                                                                                                                                                                                  
+Curtis          CURTIS                                                                                                                                                                                  
+Randall         RANDALL                                                                                                                                                                                 
+Peter           PETER                                                                                                                                                                                   
+Eleni           ELENI                                                                                                                                                                                   
+Ellen           ELLEN                                                                                                                                                                                   
+Jonathon        JONATHON                                                                                                                                                                                
+Kimerely        KIMERELY                                                                                                                                                                                
+Jennifer        JENNIFER                                                                                                                                                                                
+Michael         MICHAEL                                                                                                                                                                                 
+Pat             PAT                                                                                                                                                                                     
+Shelley         SHELLEY                                                                                                                                                                                 
+William         WILLIAM                                                                                                                                                                                 
+
+20 rows selected.
+
+SQL> REM MULTI ROW FUNCTIONS : TAKES MULTIPLE ROWS AS INPUT AND RETURNS SINGLE ROW AS OUTPUT
+SQL> 
+SQL> SELECT SALARY FROM EMPLOYEES;
+
+    SALARY                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+     24000                                                                                                                                                                                              
+     17000                                                                                                                                                                                              
+     17000                                                                                                                                                                                              
+      9000                                                                                                                                                                                              
+      6000                                                                                                                                                                                              
+      4200                                                                                                                                                                                              
+      5800                                                                                                                                                                                              
+      3500                                                                                                                                                                                              
+      3100                                                                                                                                                                                              
+      2600                                                                                                                                                                                              
+      2500                                                                                                                                                                                              
+     10500                                                                                                                                                                                              
+     11000                                                                                                                                                                                              
+      8600                                                                                                                                                                                              
+      7000                                                                                                                                                                                              
+      4400                                                                                                                                                                                              
+     13000                                                                                                                                                                                              
+      6000                                                                                                                                                                                              
+     12000                                                                                                                                                                                              
+      8300                                                                                                                                                                                              
+
+20 rows selected.
+
+SQL> SELECT SUM(SALARY) FROM EMPLOYEES;
+
+SUM(SALARY)                                                                                                                                                                                             
+-----------                                                                                                                                                                                             
+     175500                                                                                                                                                                                             
+
+SQL> REM MULTI ROWS WITH GROUP BY : TAKES MULTIPLE ROWS AS INPUT AND RETURNS MULTIPLE ROWS AS OUTPUT
+SQL> 
+SQL> SELECT DEPARTMENT_ID , SALARY FROM EMPLOYEES ORDER BY 1,2 DESC;
+
+DEPARTMENT_ID     SALARY                                                                                                                                                                                
+------------- ----------                                                                                                                                                                                
+           10       4400                                                                                                                                                                                
+           20      13000                                                                                                                                                                                
+           20       6000                                                                                                                                                                                
+           50       5800                                                                                                                                                                                
+           50       3500                                                                                                                                                                                
+           50       3100                                                                                                                                                                                
+           50       2600                                                                                                                                                                                
+           50       2500                                                                                                                                                                                
+           60       9000                                                                                                                                                                                
+           60       6000                                                                                                                                                                                
+           60       4200                                                                                                                                                                                
+           80      11000                                                                                                                                                                                
+           80      10500                                                                                                                                                                                
+           80       8600                                                                                                                                                                                
+           90      24000                                                                                                                                                                                
+           90      17000                                                                                                                                                                                
+           90      17000                                                                                                                                                                                
+          110      12000                                                                                                                                                                                
+          110       8300                                                                                                                                                                                
+                    7000                                                                                                                                                                                
+
+20 rows selected.
+
+SQL> SELECT DEPARTMENT_ID , MAX(SALARY) FROM EMPLOYEES GROUP BY DEPARTMENT_ID ORDER BY 1,2 DESC;
+
+DEPARTMENT_ID MAX(SALARY)                                                                                                                                                                               
+------------- -----------                                                                                                                                                                               
+           10        4400                                                                                                                                                                               
+           20       13000                                                                                                                                                                               
+           50        5800                                                                                                                                                                               
+           60        9000                                                                                                                                                                               
+           80       11000                                                                                                                                                                               
+           90       24000                                                                                                                                                                               
+          110       12000                                                                                                                                                                               
+                     7000                                                                                                                                                                               
+
+8 rows selected.
+
+SQL> SELECT JOB_ID , SUM(SALARY) FROM EMPLOYEES GROUP BY JOB_ID ORDER BY 1,2 DESC;
+
+JOB_ID     SUM(SALARY)                                                                                                                                                                                  
+---------- -----------                                                                                                                                                                                  
+AC_ACCOUNT        8300                                                                                                                                                                                  
+AC_MGR           12000                                                                                                                                                                                  
+AD_ASST           4400                                                                                                                                                                                  
+AD_PRES          24000                                                                                                                                                                                  
+AD_VP            34000                                                                                                                                                                                  
+IT_PROG          19200                                                                                                                                                                                  
+MK_MAN           13000                                                                                                                                                                                  
+MK_REP            6000                                                                                                                                                                                  
+SA_MAN           10500                                                                                                                                                                                  
+SA_REP           26600                                                                                                                                                                                  
+ST_CLERK         11700                                                                                                                                                                                  
+ST_MAN            5800                                                                                                                                                                                  
+
+12 rows selected.
+
+SQL> SELECT JOB_ID , SALARY FROM EMPLOYEES ORDER BY 1,2;
+
+JOB_ID         SALARY                                                                                                                                                                                   
+---------- ----------                                                                                                                                                                                   
+AC_ACCOUNT       8300                                                                                                                                                                                   
+AC_MGR          12000                                                                                                                                                                                   
+AD_ASST          4400                                                                                                                                                                                   
+AD_PRES         24000                                                                                                                                                                                   
+AD_VP           17000                                                                                                                                                                                   
+AD_VP           17000                                                                                                                                                                                   
+IT_PROG          4200                                                                                                                                                                                   
+IT_PROG          6000                                                                                                                                                                                   
+IT_PROG          9000                                                                                                                                                                                   
+MK_MAN          13000                                                                                                                                                                                   
+MK_REP           6000                                                                                                                                                                                   
+SA_MAN          10500                                                                                                                                                                                   
+SA_REP           7000                                                                                                                                                                                   
+SA_REP           8600                                                                                                                                                                                   
+SA_REP          11000                                                                                                                                                                                   
+ST_CLERK         2500                                                                                                                                                                                   
+ST_CLERK         2600                                                                                                                                                                                   
+ST_CLERK         3100                                                                                                                                                                                   
+ST_CLERK         3500                                                                                                                                                                                   
+ST_MAN           5800                                                                                                                                                                                   
+
+20 rows selected.
+
+SQL> REM TYPES OF SINGLE ROW FUNCTIONS : 1 CHARACTER 2 NUMBER 3 DATE 4 CONVERSION 5 GENERAL
+SQL> 
+SQL> REM MULTI ROW FUNCTIONS : MIN MAX COUNT SUM AVG
+SQL> 
+SQL> REM TIMESTAMP AND INTERVAL FUNCTIONS : 11
+SQL> 
+SQL> 
+SQL> REM TYPES OF SINGLE ROW FUNCTIONS : 1 CHARACTER (14) 2 NUMBER (7) 3 DATE (8) 4 CONVERSION (3) 5 GENERAL (7)
+SQL> 
+SQL> REM TYPES OF SINGLE ROW FUNCTIONS : 1 CHARACTER (14) 2 NUMBER (7) 3 DATE (8) 4 CONVERSION (3) 5 GENERAL (7) = 39 TOTAL SINGLE ROW FUNCTIONS
+SQL> 
+SQL> REM 39 + 5 + 11 : 55 FUNCTIONS IN ALL
+SQL> 
+SQL> REM ORACLE SUPPORTS MORE THAN 350 FUNCTIONS
+SQL> 
+SQL> 
+SQL> REM CHAPTER 3 : 1 CHARACTER 2 NUMBER 3 DATE
+SQL> 
+SQL> REM CHAPTER 4 : 4 CONVERSION 5 GENERAL
+SQL> 
+SQL> REM CHAPTER 5 : SUMMARY / GROUP / MULTI ROW / AGGREGATE FUNCTIONS ( MIN MAX COUNT SUM AVG )
+SQL> 
+SQL> REM CHAPTER 19 : TIMESTAMP AND INTERVAL FUNCTIONS
+SQL> 
+SQL> 
+SQL> 
+SQL> REM CHAPTER 3 : 1 CHARACTER 2 NUMBER 3 DATE
+SQL> 
+SQL> REM TYPES OF CHARACTER FUNCTIONS : 1 CASE MANIPULATION 2 CHARACTER MANIPULATION
+SQL> 
+SQL> REM MANIPULATION MEANS ANY TYPE OF CHANGES
+SQL> 
+SQL> REM LIST OF CASE MANIPULATION FUNCTIONS : 1 UPPER 2 LOWER 3 INITCAP
+SQL> 
+SQL> SELECT FIRST_NAME , UPPER(FIRST_NAME) FROM EMPLOYEES;
+
+FIRST_NAME      UPPER(FIRST_NAM                                                                                                                                                                         
+--------------- ---------------                                                                                                                                                                         
+Steven          STEVEN                                                                                                                                                                                  
+Neena           NEENA                                                                                                                                                                                   
+Lex             LEX                                                                                                                                                                                     
+Alexander       ALEXANDER                                                                                                                                                                               
+Bruce           BRUCE                                                                                                                                                                                   
+Diana           DIANA                                                                                                                                                                                   
+Kevin           KEVIN                                                                                                                                                                                   
+Trenna          TRENNA                                                                                                                                                                                  
+Curtis          CURTIS                                                                                                                                                                                  
+Randall         RANDALL                                                                                                                                                                                 
+Peter           PETER                                                                                                                                                                                   
+Eleni           ELENI                                                                                                                                                                                   
+Ellen           ELLEN                                                                                                                                                                                   
+Jonathon        JONATHON                                                                                                                                                                                
+Kimerely        KIMERELY                                                                                                                                                                                
+Jennifer        JENNIFER                                                                                                                                                                                
+Michael         MICHAEL                                                                                                                                                                                 
+Pat             PAT                                                                                                                                                                                     
+Shelley         SHELLEY                                                                                                                                                                                 
+William         WILLIAM                                                                                                                                                                                 
+
+20 rows selected.
+
+SQL> SELECT EMAIL , LOWER(EMAIL) FROM EMPLOYEES;
+
+EMAIL      LOWER(EMAI                                                                                                                                                                                   
+---------- ----------                                                                                                                                                                                   
+SKING      sking                                                                                                                                                                                        
+NKOCHHAR   nkochhar                                                                                                                                                                                     
+LDEHAAN    ldehaan                                                                                                                                                                                      
+AHUNOLD    ahunold                                                                                                                                                                                      
+BERNST     bernst                                                                                                                                                                                       
+DLORENTZ   dlorentz                                                                                                                                                                                     
+KMOURGOS   kmourgos                                                                                                                                                                                     
+TRAJS      trajs                                                                                                                                                                                        
+CDAVIES    cdavies                                                                                                                                                                                      
+RMATOS     rmatos                                                                                                                                                                                       
+PVARGAS    pvargas                                                                                                                                                                                      
+EZLOTKEY   ezlotkey                                                                                                                                                                                     
+EABEL      eabel                                                                                                                                                                                        
+JTAYLOR    jtaylor                                                                                                                                                                                      
+KGRANT     kgrant                                                                                                                                                                                       
+JWHALEN    jwhalen                                                                                                                                                                                      
+MHARTSTE   mhartste                                                                                                                                                                                     
+PFAY       pfay                                                                                                                                                                                         
+SHIGGINS   shiggins                                                                                                                                                                                     
+WGIETZ     wgietz                                                                                                                                                                                       
+
+20 rows selected.
+
+SQL> SELECT UPPER('Abcd456@#$%') FROM DUAL;
+
+UPPER('ABCD                                                                                                                                                                                             
+-----------                                                                                                                                                                                             
+ABCD456@#$%                                                                                                                                                                                             
+
+SQL> SELECT LOWER('AbCd456@#$%') FROM DUAL;
+
+LOWER('ABCD                                                                                                                                                                                             
+-----------                                                                                                                                                                                             
+abcd456@#$%                                                                                                                                                                                             
+
+SQL> SELECT UPPER('AMar akBAR anTHOny') FROM DUAL;
+
+UPPER('AMARAKBARAN                                                                                                                                                                                      
+------------------                                                                                                                                                                                      
+AMAR AKBAR ANTHONY                                                                                                                                                                                      
+
+SQL> SELECT UPPER('AMar6akBAR7anTHOny') FROM DUAL;
+
+UPPER('AMAR6AKBAR7                                                                                                                                                                                      
+------------------                                                                                                                                                                                      
+AMAR6AKBAR7ANTHONY                                                                                                                                                                                      
+
+SQL> SELECT UPPER('AMar_akBAR#anTHOny') FROM DUAL;
+
+UPPER('AMAR_AKBAR#                                                                                                                                                                                      
+------------------                                                                                                                                                                                      
+AMAR_AKBAR#ANTHONY                                                                                                                                                                                      
+
+SQL> SELECT LOWER('AMar akBAR anTHOny') FROM DUAL;
+
+LOWER('AMARAKBARAN                                                                                                                                                                                      
+------------------                                                                                                                                                                                      
+amar akbar anthony                                                                                                                                                                                      
+
+SQL> SELECT LOWER('AMar6akBAR7anTHOny') FROM DUAL;
+
+LOWER('AMAR6AKBAR7                                                                                                                                                                                      
+------------------                                                                                                                                                                                      
+amar6akbar7anthony                                                                                                                                                                                      
+
+SQL> SELECT LOWER('AMar_akBAR#anTHOny') FROM DUAL;
+
+LOWER('AMAR_AKBAR#                                                                                                                                                                                      
+------------------                                                                                                                                                                                      
+amar_akbar#anthony                                                                                                                                                                                      
+
+SQL> SELECT EMAIL, INITCAP(EMAIL) FROM EMPLOYEES;
+
+EMAIL      INITCAP(EM                                                                                                                                                                                   
+---------- ----------                                                                                                                                                                                   
+SKING      Sking                                                                                                                                                                                        
+NKOCHHAR   Nkochhar                                                                                                                                                                                     
+LDEHAAN    Ldehaan                                                                                                                                                                                      
+AHUNOLD    Ahunold                                                                                                                                                                                      
+BERNST     Bernst                                                                                                                                                                                       
+DLORENTZ   Dlorentz                                                                                                                                                                                     
+KMOURGOS   Kmourgos                                                                                                                                                                                     
+TRAJS      Trajs                                                                                                                                                                                        
+CDAVIES    Cdavies                                                                                                                                                                                      
+RMATOS     Rmatos                                                                                                                                                                                       
+PVARGAS    Pvargas                                                                                                                                                                                      
+EZLOTKEY   Ezlotkey                                                                                                                                                                                     
+EABEL      Eabel                                                                                                                                                                                        
+JTAYLOR    Jtaylor                                                                                                                                                                                      
+KGRANT     Kgrant                                                                                                                                                                                       
+JWHALEN    Jwhalen                                                                                                                                                                                      
+MHARTSTE   Mhartste                                                                                                                                                                                     
+PFAY       Pfay                                                                                                                                                                                         
+SHIGGINS   Shiggins                                                                                                                                                                                     
+WGIETZ     Wgietz                                                                                                                                                                                       
+
+20 rows selected.
+
+SQL> SELECT INITCAP('AMar akBAR anTHOny') FROM DUAL;
+
+INITCAP('AMARAKBAR                                                                                                                                                                                      
+------------------                                                                                                                                                                                      
+Amar Akbar Anthony                                                                                                                                                                                      
+
+SQL> REM ALL SPECIAL CHARACTERS ARE CONSIDERED/USED AS WORD SEPARATOR.
+SQL> 
+SQL> REM TYPES OF CHARACTERS : 1 ALPHABETS (A-Z,a-z)       2 DIGITS/NUMBERS : 0-9          3 SPEICAL CHARACTERS : ~!@#$%^&*)_+|{}:	"< >?[];',./
+SQL> 
+SQL> SELECT INITCAP('AMar_akBAR#anTHOny') FROM DUAL;
+
+INITCAP('AMAR_AKBA                                                                                                                                                                                      
+------------------                                                                                                                                                                                      
+Amar_Akbar#Anthony                                                                                                                                                                                      
+
+SQL> SELECT INITCAP('AMar5akBAR7anTHOny') FROM DUAL;
+
+INITCAP('AMAR5AKBA                                                                                                                                                                                      
+------------------                                                                                                                                                                                      
+Amar5akbar7anthony                                                                                                                                                                                      
+
+SQL> SPOOL OFF

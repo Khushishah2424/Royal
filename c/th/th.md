@@ -25,6 +25,12 @@ Secondary Stack Operations:
 
 
  
+**QUEUE**
 
+A queue is a linear data structures to store and manipulate the data elements
+It follows the order of FIFO OR LIFO 
+
+Woorking of queue : 1. Front
+                    2. Rear  
 
  

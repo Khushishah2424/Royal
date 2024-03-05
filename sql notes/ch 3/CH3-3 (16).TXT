@@ -1,0 +1,1360 @@
+SQL> 
+SQL> CL SCR
+
+SQL> REM NUMBER FUNCTIONS
+SQL> 
+SQL> REM LIST OF NUMBER FUNCTIONS : POWER SQRT MOD FLOOR CEIL TRUNC ROUND
+SQL> 
+SQL> SELECT POWER(5,2) FROM DUAL;
+
+POWER(5,2)                                                                      
+----------                                                                      
+        25                                                                      
+
+SQL> SELECT POWER(5,3) FROM DUAL;
+
+POWER(5,3)                                                                      
+----------                                                                      
+       125                                                                      
+
+SQL> SELECT POWER(5,4) FROM DUAL;
+
+POWER(5,4)                                                                      
+----------                                                                      
+       625                                                                      
+
+SQL> SELECT POWER(5.4,4) FROM DUAL;
+
+POWER(5.4,4)                                                                    
+------------                                                                    
+    850.3056                                                                    
+
+SQL> SELECT POWER(5.4,4.23) FROM DUAL;
+
+POWER(5.4,4.23)                                                                 
+---------------                                                                 
+     1253.21506                                                                 
+
+SQL> SELECT POWER(25,1/2) FROM DUAL;
+
+POWER(25,1/2)                                                                   
+-------------                                                                   
+            5                                                                   
+
+SQL> SELECT POWER(125,1/3) FROM DUAL;
+
+POWER(125,1/3)                                                                  
+--------------                                                                  
+             5                                                                  
+
+SQL> SELECT POWER(5,-2) FROM DUAL;
+
+POWER(5,-2)                                                                     
+-----------                                                                     
+        .04                                                                     
+
+SQL> REM 1/POWER(5,2)
+SQL> 
+SQL> SELECT 1/POWER(5,2) FROM DUAL;
+
+1/POWER(5,2)                                                                    
+------------                                                                    
+         .04                                                                    
+
+SQL> REM SQRT : TO FIND OUT ONLY SQUARE ROOT
+SQL> 
+SQL> SELECT SQRT(36) FROM DUAL;
+
+  SQRT(36)                                                                      
+----------                                                                      
+         6                                                                      
+
+SQL> SELECT SQRT(64) FROM DUAL;
+
+  SQRT(64)                                                                      
+----------                                                                      
+         8                                                                      
+
+SQL> SELECT SQRT(60) FROM DUAL;
+
+  SQRT(60)                                                                      
+----------                                                                      
+7.74596669                                                                      
+
+SQL> SELECT SQRT(-60) FROM DUAL;
+SELECT SQRT(-60) FROM DUAL
+            *
+ERROR at line 1:
+ORA-01428: argument '-60' is out of range 
+
+
+SQL> SELECT POWER(-5,2) FROM DUAL;
+
+POWER(-5,2)                                                                     
+-----------                                                                     
+         25                                                                     
+
+SQL> SELECT POWER(-5,3) FROM DUAL;
+
+POWER(-5,3)                                                                     
+-----------                                                                     
+       -125                                                                     
+
+SQL> SELECT POWER(5.2,3.4) FROM DUAL;
+
+POWER(5.2,3.4)                                                                  
+--------------                                                                  
+    271.901353                                                                  
+
+SQL> SELECT POWER(-5.2,3.4) FROM DUAL;
+SELECT POWER(-5.2,3.4) FROM DUAL
+             *
+ERROR at line 1:
+ORA-01428: argument '-5.2' is out of range 
+
+
+SQL> SELECT POWER(-5.2,3) FROM DUAL;
+
+POWER(-5.2,3)                                                                   
+-------------                                                                   
+     -140.608                                                                   
+
+SQL> REM FLOOR/CEIL :
+SQL> 
+SQL> SELECT FLOOR(2.5) , CEIL(2.5) FROM DUAL;
+
+FLOOR(2.5)  CEIL(2.5)                                                           
+---------- ----------                                                           
+         2          3                                                           
+
+SQL> SELECT FLOOR(2.1) , CEIL(2.1) FROM DUAL;
+
+FLOOR(2.1)  CEIL(2.1)                                                           
+---------- ----------                                                           
+         2          3                                                           
+
+SQL> SELECT FLOOR(2.9) , CEIL(2.9) FROM DUAL;
+
+FLOOR(2.9)  CEIL(2.9)                                                           
+---------- ----------                                                           
+         2          3                                                           
+
+SQL> SELECT FLOOR(2) , CEIL(2) FROM DUAL;
+
+  FLOOR(2)    CEIL(2)                                                           
+---------- ----------                                                           
+         2          2                                                           
+
+SQL> SELECT FLOOR(2.000000000000000000000000000001) , CEIL(2.00000000000000000000000000000001) FROM DUAL;
+
+FLOOR(2.000000000000000000000000000001) CEIL(2.00000000000000000000000000000001)
+--------------------------------------- ----------------------------------------
+                                      2                                        3
+
+SQL> SELECT FLOOR(-2.000000000000000000000000000001) , CEIL(-2.00000000000000000000000000000001) FROM DUAL;
+
+FLOOR(-2.000000000000000000000000000001)                                        
+----------------------------------------                                        
+CEIL(-2.00000000000000000000000000000001)                                       
+-----------------------------------------                                       
+                                      -3                                        
+                                       -2                                       
+                                                                                
+
+SQL> SET LINES 200 PAGES 24
+SQL> 
+SQL> R
+  1* SELECT FLOOR(-2.000000000000000000000000000001) , CEIL(-2.00000000000000000000000000000001) FROM DUAL
+
+FLOOR(-2.000000000000000000000000000001) CEIL(-2.00000000000000000000000000000001)                                                                                                                      
+---------------------------------------- -----------------------------------------                                                                                                                      
+                                      -3                                        -2                                                                                                                      
+
+SQL> REM FLOOR WILL RETURN LOWER INTEGER OF THE TWO, WHERE INPUT NUMBER FALLS
+SQL> 
+SQL> REM CEIL WILL RETURN HIGHER INTEGER OF THE TWO, WHERE INPUT NUMBER FALLS
+SQL> 
+SQL> REM TRUNC / ROUND
+SQL> 
+SQL> SELECT 3972.48 , TRUNC(3972.48) FROM DUAL;
+
+   3972.48 TRUNC(3972.48)                                                                                                                                                                               
+---------- --------------                                                                                                                                                                               
+   3972.48           3972                                                                                                                                                                               
+
+SQL> SELECT 3972.48 , TRUNC(3972.48,0) FROM DUAL;
+
+   3972.48 TRUNC(3972.48,0)                                                                                                                                                                             
+---------- ----------------                                                                                                                                                                             
+   3972.48             3972                                                                                                                                                                             
+
+SQL> SELECT 3972.48 , TRUNC(3972.48,1) FROM DUAL;
+
+   3972.48 TRUNC(3972.48,1)                                                                                                                                                                             
+---------- ----------------                                                                                                                                                                             
+   3972.48           3972.4                                                                                                                                                                             
+
+SQL> SELECT 3972.48 , TRUNC(3972.48,2) FROM DUAL;
+
+   3972.48 TRUNC(3972.48,2)                                                                                                                                                                             
+---------- ----------------                                                                                                                                                                             
+   3972.48          3972.48                                                                                                                                                                             
+
+SQL> SELECT 3972.48 , TRUNC(3972.48,3) FROM DUAL;
+
+   3972.48 TRUNC(3972.48,3)                                                                                                                                                                             
+---------- ----------------                                                                                                                                                                             
+   3972.48          3972.48                                                                                                                                                                             
+
+SQL> SELECT 3972.48 , TRUNC(3972.48,-1) FROM DUAL;
+
+   3972.48 TRUNC(3972.48,-1)                                                                                                                                                                            
+---------- -----------------                                                                                                                                                                            
+   3972.48              3970                                                                                                                                                                            
+
+SQL> SELECT 3972.48 , TRUNC(3972.48,-2) FROM DUAL;
+
+   3972.48 TRUNC(3972.48,-2)                                                                                                                                                                            
+---------- -----------------                                                                                                                                                                            
+   3972.48              3900                                                                                                                                                                            
+
+SQL> SELECT 3972.48 , TRUNC(3972.48,-3) FROM DUAL;
+
+   3972.48 TRUNC(3972.48,-3)                                                                                                                                                                            
+---------- -----------------                                                                                                                                                                            
+   3972.48              3000                                                                                                                                                                            
+
+SQL> SELECT 3972.48 , TRUNC(3972.48,-4) FROM DUAL;
+
+   3972.48 TRUNC(3972.48,-4)                                                                                                                                                                            
+---------- -----------------                                                                                                                                                                            
+   3972.48                 0                                                                                                                                                                            
+
+SQL> 
+SQL> 
+SQL> REM ROUND : AVAILABLE DIGITS : 0 1 2 3 4 5 6 7 8 9
+SQL> 
+SQL> REM FIRST HALF : 0 1 2 3 4
+SQL> 
+SQL> REM SECOND HALF : 5 6 7 8 9
+SQL> 
+SQL> REM ROUND WILL CHECK THE DIGIT AGAINST BOTH HALVES
+SQL> 
+SQL> REM IF DIGIT TO BE COMPARE FALLS IN FIRST HALF, NO CHANGE WILL BE APPLIED
+SQL> 
+SQL> REM IF DIGIT TO BE COMPARE FALLS IN SECOND HALF, IT WILL ADD 1 TO PREVIOUS DIGIT
+SQL> 
+SQL> SELECT 3972.48 , ROUND(3972.48) FROM DUAL;
+
+   3972.48 ROUND(3972.48)                                                                                                                                                                               
+---------- --------------                                                                                                                                                                               
+   3972.48           3972                                                                                                                                                                               
+
+SQL> SELECT 3972.48 , ROUND(3972.48,0) FROM DUAL;
+
+   3972.48 ROUND(3972.48,0)                                                                                                                                                                             
+---------- ----------------                                                                                                                                                                             
+   3972.48             3972                                                                                                                                                                             
+
+SQL> SELECT 3972.48 , ROUND(3972.48,1) FROM DUAL;
+
+   3972.48 ROUND(3972.48,1)                                                                                                                                                                             
+---------- ----------------                                                                                                                                                                             
+   3972.48           3972.5                                                                                                                                                                             
+
+SQL> SELECT 3972.48 , ROUND(3972.48,2) FROM DUAL;
+
+   3972.48 ROUND(3972.48,2)                                                                                                                                                                             
+---------- ----------------                                                                                                                                                                             
+   3972.48          3972.48                                                                                                                                                                             
+
+SQL> SELECT 3972.48 , ROUND(3972.48,-1) FROM DUAL;
+
+   3972.48 ROUND(3972.48,-1)                                                                                                                                                                            
+---------- -----------------                                                                                                                                                                            
+   3972.48              3970                                                                                                                                                                            
+
+SQL> SELECT 3972.48 , ROUND(3972.48,-2) FROM DUAL;
+
+   3972.48 ROUND(3972.48,-2)                                                                                                                                                                            
+---------- -----------------                                                                                                                                                                            
+   3972.48              4000                                                                                                                                                                            
+
+SQL> SELECT 3872.48 , ROUND(3872.48,-2) FROM DUAL;
+
+   3872.48 ROUND(3872.48,-2)                                                                                                                                                                            
+---------- -----------------                                                                                                                                                                            
+   3872.48              3900                                                                                                                                                                            
+
+SQL> SELECT 3872.48 , ROUND(3872.48,-3) FROM DUAL;
+
+   3872.48 ROUND(3872.48,-3)                                                                                                                                                                            
+---------- -----------------                                                                                                                                                                            
+   3872.48              4000                                                                                                                                                                            
+
+SQL> SELECT 3872.48 , ROUND(3872.48,-4) FROM DUAL;
+
+   3872.48 ROUND(3872.48,-4)                                                                                                                                                                            
+---------- -----------------                                                                                                                                                                            
+   3872.48                 0                                                                                                                                                                            
+
+SQL> SELECT 6872.48 , ROUND(6872.48,-4) FROM DUAL;
+
+   6872.48 ROUND(6872.48,-4)                                                                                                                                                                            
+---------- -----------------                                                                                                                                                                            
+   6872.48             10000                                                                                                                                                                            
+
+SQL> SELECT TRUNC(67,-2) FROM DUAL;
+
+TRUNC(67,-2)                                                                                                                                                                                            
+------------                                                                                                                                                                                            
+           0                                                                                                                                                                                            
+
+SQL> SELECT ROUND(67,-2) FROM DUAL;
+
+ROUND(67,-2)                                                                                                                                                                                            
+------------                                                                                                                                                                                            
+         100                                                                                                                                                                                            
+
+SQL> SELECT TRUNC(67,-3) FROM DUAL;
+
+TRUNC(67,-3)                                                                                                                                                                                            
+------------                                                                                                                                                                                            
+           0                                                                                                                                                                                            
+
+SQL> SELECT ROUND(67,-3) FROM DUAL;
+
+ROUND(67,-3)                                                                                                                                                                                            
+------------                                                                                                                                                                                            
+           0                                                                                                                                                                                            
+
+SQL> SELECT TRUNC(9951,-2) FROM DUAL;
+
+TRUNC(9951,-2)                                                                                                                                                                                          
+--------------                                                                                                                                                                                          
+          9900                                                                                                                                                                                          
+
+SQL> SELECT ROUND(9951,-2) FROM DUAL;
+
+ROUND(9951,-2)                                                                                                                                                                                          
+--------------                                                                                                                                                                                          
+         10000                                                                                                                                                                                          
+
+SQL> SELECT TRUNC(9949,-2) FROM DUAL;
+
+TRUNC(9949,-2)                                                                                                                                                                                          
+--------------                                                                                                                                                                                          
+          9900                                                                                                                                                                                          
+
+SQL> SELECT ROUND(9949,-2) FROM DUAL;
+
+ROUND(9949,-2)                                                                                                                                                                                          
+--------------                                                                                                                                                                                          
+          9900                                                                                                                                                                                          
+
+SQL> SELECT MOD(20,6) FROM DUAL;
+
+ MOD(20,6)                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+         2                                                                                                                                                                                              
+
+SQL> REM MOD RETURNS REMAINDER
+SQL> 
+SQL> SELECT MOD(30,7) FROM DUAL;
+
+ MOD(30,7)                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+         2                                                                                                                                                                                              
+
+SQL> SELECT MOD(30,8) FROM DUAL;
+
+ MOD(30,8)                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+         6                                                                                                                                                                                              
+
+SQL> SELECT MOD(30.34,8) FROM DUAL;
+
+MOD(30.34,8)                                                                                                                                                                                            
+------------                                                                                                                                                                                            
+        6.34                                                                                                                                                                                            
+
+SQL> SELECT MOD(30.34,8.12) FROM DUAL;
+
+MOD(30.34,8.12)                                                                                                                                                                                         
+---------------                                                                                                                                                                                         
+           5.98                                                                                                                                                                                         
+
+SQL> SELECT MOD(-30.34,8.12) FROM DUAL;
+
+MOD(-30.34,8.12)                                                                                                                                                                                        
+----------------                                                                                                                                                                                        
+           -5.98                                                                                                                                                                                        
+
+SQL> SELECT MOD(30.34,-8.12) FROM DUAL;
+
+MOD(30.34,-8.12)                                                                                                                                                                                        
+----------------                                                                                                                                                                                        
+            5.98                                                                                                                                                                                        
+
+SQL> SELECT MOD(-30.34,-8.12) FROM DUAL;
+
+MOD(-30.34,-8.12)                                                                                                                                                                                       
+-----------------                                                                                                                                                                                       
+            -5.98                                                                                                                                                                                       
+
+SQL> REM DATE ARITHMATIC :
+SQL> 
+SQL> REM DATE HAS TOTAL 7 PARTS/COMPONENTS
+SQL> 
+SQL> REM DATE 7 COMPONENTS ARE : CENTURY YEAR MONTH DAY HOUR(24) MINUTE SECOND
+SQL> 
+SQL> SELECT HIRE_dATE FROM EMPLOYEES;
+
+HIRE_DATE                                                                                                                                                                                               
+---------                                                                                                                                                                                               
+17-JUL-87                                                                                                                                                                                               
+21-SEP-89                                                                                                                                                                                               
+13-JAN-93                                                                                                                                                                                               
+03-JAN-90                                                                                                                                                                                               
+21-MAY-91                                                                                                                                                                                               
+07-FEB-99                                                                                                                                                                                               
+16-NOV-99                                                                                                                                                                                               
+17-OCT-95                                                                                                                                                                                               
+29-JAN-97                                                                                                                                                                                               
+15-MAR-98                                                                                                                                                                                               
+09-JUL-98                                                                                                                                                                                               
+29-JAN-00                                                                                                                                                                                               
+11-MAY-96                                                                                                                                                                                               
+24-MAR-98                                                                                                                                                                                               
+24-MAY-99                                                                                                                                                                                               
+17-SEP-87                                                                                                                                                                                               
+17-FEB-96                                                                                                                                                                                               
+17-AUG-97                                                                                                                                                                                               
+07-JUN-94                                                                                                                                                                                               
+07-JUN-94                                                                                                                                                                                               
+
+20 rows selected.
+
+SQL> SELECT * FROM NLS_SESSION_PARAMETERS;
+
+PARAMETER                                                                                                                                                                                               
+------------------------------------------------------------------------------------------------------------------------                                                                                
+VALUE                                                                                                                                                                                                   
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+NLS_LANGUAGE                                                                                                                                                                                            
+AMERICAN                                                                                                                                                                                                
+                                                                                                                                                                                                        
+NLS_TERRITORY                                                                                                                                                                                           
+AMERICA                                                                                                                                                                                                 
+                                                                                                                                                                                                        
+NLS_CURRENCY                                                                                                                                                                                            
+$                                                                                                                                                                                                       
+                                                                                                                                                                                                        
+NLS_ISO_CURRENCY                                                                                                                                                                                        
+AMERICA                                                                                                                                                                                                 
+                                                                                                                                                                                                        
+NLS_NUMERIC_CHARACTERS                                                                                                                                                                                  
+.,                                                                                                                                                                                                      
+                                                                                                                                                                                                        
+NLS_CALENDAR                                                                                                                                                                                            
+GREGORIAN                                                                                                                                                                                               
+                                                                                                                                                                                                        
+NLS_DATE_FORMAT                                                                                                                                                                                         
+
+PARAMETER                                                                                                                                                                                               
+------------------------------------------------------------------------------------------------------------------------                                                                                
+VALUE                                                                                                                                                                                                   
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DD-MON-RR                                                                                                                                                                                               
+                                                                                                                                                                                                        
+NLS_DATE_LANGUAGE                                                                                                                                                                                       
+AMERICAN                                                                                                                                                                                                
+                                                                                                                                                                                                        
+NLS_SORT                                                                                                                                                                                                
+BINARY                                                                                                                                                                                                  
+                                                                                                                                                                                                        
+NLS_TIME_FORMAT                                                                                                                                                                                         
+HH.MI.SSXFF AM                                                                                                                                                                                          
+                                                                                                                                                                                                        
+NLS_TIMESTAMP_FORMAT                                                                                                                                                                                    
+DD-MON-RR HH.MI.SSXFF AM                                                                                                                                                                                
+                                                                                                                                                                                                        
+NLS_TIME_TZ_FORMAT                                                                                                                                                                                      
+HH.MI.SSXFF AM TZR                                                                                                                                                                                      
+                                                                                                                                                                                                        
+NLS_TIMESTAMP_TZ_FORMAT                                                                                                                                                                                 
+DD-MON-RR HH.MI.SSXFF AM TZR                                                                                                                                                                            
+
+PARAMETER                                                                                                                                                                                               
+------------------------------------------------------------------------------------------------------------------------                                                                                
+VALUE                                                                                                                                                                                                   
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                                                                                                                                                        
+NLS_DUAL_CURRENCY                                                                                                                                                                                       
+$                                                                                                                                                                                                       
+                                                                                                                                                                                                        
+NLS_COMP                                                                                                                                                                                                
+BINARY                                                                                                                                                                                                  
+                                                                                                                                                                                                        
+NLS_LENGTH_SEMANTICS                                                                                                                                                                                    
+BYTE                                                                                                                                                                                                    
+                                                                                                                                                                                                        
+NLS_NCHAR_CONV_EXCP                                                                                                                                                                                     
+FALSE                                                                                                                                                                                                   
+                                                                                                                                                                                                        
+
+17 rows selected.
+
+SQL> COL PARAMETER FORMAT A30
+SQL> COL VALUE FORMAT A30
+SQL> 
+SQL> R
+  1* SELECT * FROM NLS_SESSION_PARAMETERS
+
+PARAMETER                      VALUE                                                                                                                                                                    
+------------------------------ ------------------------------                                                                                                                                           
+NLS_LANGUAGE                   AMERICAN                                                                                                                                                                 
+NLS_TERRITORY                  AMERICA                                                                                                                                                                  
+NLS_CURRENCY                   $                                                                                                                                                                        
+NLS_ISO_CURRENCY               AMERICA                                                                                                                                                                  
+NLS_NUMERIC_CHARACTERS         .,                                                                                                                                                                       
+NLS_CALENDAR                   GREGORIAN                                                                                                                                                                
+NLS_DATE_FORMAT                DD-MON-RR                                                                                                                                                                
+NLS_DATE_LANGUAGE              AMERICAN                                                                                                                                                                 
+NLS_SORT                       BINARY                                                                                                                                                                   
+NLS_TIME_FORMAT                HH.MI.SSXFF AM                                                                                                                                                           
+NLS_TIMESTAMP_FORMAT           DD-MON-RR HH.MI.SSXFF AM                                                                                                                                                 
+NLS_TIME_TZ_FORMAT             HH.MI.SSXFF AM TZR                                                                                                                                                       
+NLS_TIMESTAMP_TZ_FORMAT        DD-MON-RR HH.MI.SSXFF AM TZR                                                                                                                                             
+NLS_DUAL_CURRENCY              $                                                                                                                                                                        
+NLS_COMP                       BINARY                                                                                                                                                                   
+NLS_LENGTH_SEMANTICS           BYTE                                                                                                                                                                     
+NLS_NCHAR_CONV_EXCP            FALSE                                                                                                                                                                    
+
+17 rows selected.
+
+SQL> ALTER SESSION SET NLS_DATE_FORMAT = 'RRRR-MM-DD HH:MI.SS';
+
+Session altered.
+
+SQL> SELECT SYSDATE FROM DUAL;
+
+SYSDATE                                                                                                                                                                                                 
+-------------------                                                                                                                                                                                     
+2021-11-14 07:42.42                                                                                                                                                                                     
+
+SQL> REM DATE 7 COMPONENTS ARE : CENTURY YEAR MONTH DAY HOUR(24) MINUTE SECOND
+SQL> 
+SQL> REM DATE 7 COMPONENTS ARE : 20      21   11    14  07       42     42
+SQL> 
+SQL> ALTER SESSION SET NLS_DATE_FORMAT = 'RRRR-MM-DD HH24:MI.SS';
+
+Session altered.
+
+SQL> 
+SQL> REM 12 NOON : MERIDIAN
+SQL> 
+SQL> REM AM : ANTI MERIDIAN / BEFORE MERIDIAN
+SQL> 
+SQL> REM PM : PAST/POST MERIDIAN / AFTER MERIDIAN
+SQL> 
+SQL> REM 9:30AM : 9:30PM
+SQL> 
+SQL> REM DATE 7 COMPONENTS ARE : CENTURY YEAR MONTH DAY HOUR(24) MINUTE SECOND
+SQL> 
+SQL> SELECT SYSDATE FROM DUAL;
+
+SYSDATE                                                                                                                                                                                                 
+-------------------                                                                                                                                                                                     
+2021-11-14 19:44.52                                                                                                                                                                                     
+
+SQL> REM DATE 7 COMPONENTS ARE : CENTURY YEAR MONTH DAY HOUR(24) MINUTE SECOND
+SQL> 
+SQL> REM DATE 7 COMPONENTS ARE : 20      21   11    14  19       42     42
+SQL> 
+SQL> SELECT FIRST_NAME , HIRE_DATE FROM EMPLOYEES;
+
+FIRST_NAME      HIRE_DATE                                                                                                                                                                               
+--------------- -------------------                                                                                                                                                                     
+Steven          1987-07-17 00:00.00                                                                                                                                                                     
+Neena           1989-09-21 00:00.00                                                                                                                                                                     
+Lex             1993-01-13 00:00.00                                                                                                                                                                     
+Alexander       1990-01-03 00:00.00                                                                                                                                                                     
+Bruce           1991-05-21 00:00.00                                                                                                                                                                     
+Diana           1999-02-07 00:00.00                                                                                                                                                                     
+Kevin           1999-11-16 00:00.00                                                                                                                                                                     
+Trenna          1995-10-17 00:00.00                                                                                                                                                                     
+Curtis          1997-01-29 00:00.00                                                                                                                                                                     
+Randall         1998-03-15 00:00.00                                                                                                                                                                     
+Peter           1998-07-09 00:00.00                                                                                                                                                                     
+Eleni           2000-01-29 00:00.00                                                                                                                                                                     
+Ellen           1996-05-11 00:00.00                                                                                                                                                                     
+Jonathon        1998-03-24 00:00.00                                                                                                                                                                     
+Kimerely        1999-05-24 00:00.00                                                                                                                                                                     
+Jennifer        1987-09-17 00:00.00                                                                                                                                                                     
+Michael         1996-02-17 00:00.00                                                                                                                                                                     
+Pat             1997-08-17 00:00.00                                                                                                                                                                     
+Shelley         1994-06-07 00:00.00                                                                                                                                                                     
+William         1994-06-07 00:00.00                                                                                                                                                                     
+
+20 rows selected.
+
+SQL> REM WE CAN ADD ALL ABOVE 7 INTERVALS TO DATE
+SQL> 
+SQL> REM WE CAN SUBTRACT ALL ABOVE 7 INTERVALS FROM DATE
+SQL> 
+SQL> REM DATE - DATE = IT WILL RETURN NO. OF DAYS BETWEEN TWO DATES
+SQL> 
+SQL> REM DATE FUNCTIONS : SYSDATE CURRENT_DATE ADD_MONTHS MONTHS_BETWEEN LAST_DAY NEXT_DAY TRUNC ROUND
+SQL> 
+SQL> REM SYSDATE : IT RETURNS SERVER'S DATE AND TIME INFO.
+SQL> 
+SQL> REM SERVER : IT IS COMPUTER WITH HI-FI CONFIGURATION, IN WHICH ORACLE SERVER SOFTWARE IS INSTALLED AND DATABASE IS STORED
+SQL> 
+SQL> REM CURRENT_DATE : IT RETURNS CURRENT/CLIENT/LOCAL MACHINE'S DATE AND TIME INFO.
+SQL> 
+SQL> SELECT SYSDATE , CURRENT_DATE FROM DUAL;
+
+SYSDATE             CURRENT_DATE                                                                                                                                                                        
+------------------- -------------------                                                                                                                                                                 
+2021-11-14 20:00.35 2021-11-14 20:00.35                                                                                                                                                                 
+
+SQL> REM WE CAN ADD ALL ABOVE 7 INTERVALS TO DATE
+SQL> 
+SQL> SELECT SYSDATE , SYSDATE + 4 , SYSDATE - 2 FROM DUAL;
+
+SYSDATE             SYSDATE+4           SYSDATE-2                                                                                                                                                       
+------------------- ------------------- -------------------                                                                                                                                             
+2021-11-14 20:02.12 2021-11-18 20:02.12 2021-11-12 20:02.12                                                                                                                                             
+
+SQL> REM DATE 7 COMPONENTS ARE : CENTURY YEAR MONTH DAY HOUR(24) MINUTE SECOND
+SQL> 
+SQL> REM 1 DAY = 24 HOURS
+SQL> 
+SQL> REM 1 DAY = 24*60 MINUTES / 1440 MINUTES
+SQL> 
+SQL> REM 1 DAY = 24*60*60 SECONDS / 86400 SECONDS
+SQL> 
+SQL> SELECT SYSDATE , SYSDATE + (4/24) , SYSDATE - (2/24) FROM DUAL;
+
+SYSDATE             SYSDATE+(4/24)      SYSDATE-(2/24)                                                                                                                                                  
+------------------- ------------------- -------------------                                                                                                                                             
+2021-11-14 20:04.33 2021-11-15 00:04.33 2021-11-14 18:04.33                                                                                                                                             
+
+SQL> SELECT SYSDATE , SYSDATE + (4/(24*60)) , SYSDATE - (2/1440) FROM DUAL;
+
+SYSDATE             SYSDATE+(4/(24*60)) SYSDATE-(2/1440)                                                                                                                                                
+------------------- ------------------- -------------------                                                                                                                                             
+2021-11-14 20:05.52 2021-11-14 20:09.52 2021-11-14 20:03.52                                                                                                                                             
+
+SQL> SELECT SYSDATE , SYSDATE + (4/(24*60*60)) , SYSDATE - (2/86400) FROM DUAL;
+
+SYSDATE             SYSDATE+(4/(24*60*6 SYSDATE-(2/86400)                                                                                                                                               
+------------------- ------------------- -------------------                                                                                                                                             
+2021-11-14 20:06.22 2021-11-14 20:06.26 2021-11-14 20:06.20                                                                                                                                             
+
+SQL> REM 1 MONTH = 28 OR 29 OR 30 OR 31 DAYS
+SQL> 
+SQL> REM DATE FUNCTIONS : SYSDATE CURRENT_DATE ADD_MONTHS MONTHS_BETWEEN LAST_DAY NEXT_DAY TRUNC ROUND
+SQL> 
+SQL> SELECT SYSDATE , ADD_MONTHS(SYSDATE,3) , ADD_MONTHS(SYSDATE,-4) FROM DUAL;
+
+SYSDATE             ADD_MONTHS(SYSDATE, ADD_MONTHS(SYSDATE,                                                                                                                                             
+------------------- ------------------- -------------------                                                                                                                                             
+2021-11-14 20:08.05 2022-02-14 20:08.05 2021-07-14 20:08.05                                                                                                                                             
+
+SQL> REM 1 YEAR = 12 MONTHS
+SQL> 
+SQL> REM 1 CENTURY = 100 YEARS
+SQL> 
+SQL> REM 1 CENTURY = 100 YEARS = 100 * 12 MONTHS = 1200 MONTHS
+SQL> 
+SQL> SELECT SYSDATE , ADD_MONTHS(SYSDATE,12) , ADD_MONTHS(SYSDATE,-12) FROM DUAL;
+
+SYSDATE             ADD_MONTHS(SYSDATE, ADD_MONTHS(SYSDATE,                                                                                                                                             
+------------------- ------------------- -------------------                                                                                                                                             
+2021-11-14 20:10.34 2022-11-14 20:10.34 2020-11-14 20:10.34                                                                                                                                             
+
+SQL> SELECT SYSDATE , ADD_MONTHS(SYSDATE,12*5) , ADD_MONTHS(SYSDATE,-12*3) FROM DUAL;
+
+SYSDATE             ADD_MONTHS(SYSDATE, ADD_MONTHS(SYSDATE,                                                                                                                                             
+------------------- ------------------- -------------------                                                                                                                                             
+2021-11-14 20:10.54 2026-11-14 20:10.54 2018-11-14 20:10.54                                                                                                                                             
+
+SQL> SELECT SYSDATE , ADD_MONTHS(SYSDATE,12*100) , ADD_MONTHS(SYSDATE,-12*100) FROM DUAL;
+
+SYSDATE             ADD_MONTHS(SYSDATE, ADD_MONTHS(SYSDATE,                                                                                                                                             
+------------------- ------------------- -------------------                                                                                                                                             
+2021-11-14 20:11.13 2121-11-14 20:11.13 1921-11-14 20:11.13                                                                                                                                             
+
+SQL> SELECT SYSDATE , ADD_MONTHS(SYSDATE,12*100*2) , ADD_MONTHS(SYSDATE,-12*100*3) FROM DUAL;
+
+SYSDATE             ADD_MONTHS(SYSDATE, ADD_MONTHS(SYSDATE,                                                                                                                                             
+------------------- ------------------- -------------------                                                                                                                                             
+2021-11-14 20:11.28 2221-11-14 20:11.28 1721-11-14 20:11.28                                                                                                                                             
+
+SQL> REM DATE - DATE = IT WILL RETURN NO. OF DAYS BETWEEN TWO DATES
+SQL> 
+SQL> CONN SCOTT/TIGER
+Connected.
+SQL> 
+SQL> SELECT SYSDATE FROM DUAL;
+
+SYSDATE                                                                                                                                                                                                 
+---------                                                                                                                                                                                               
+14-NOV-21                                                                                                                                                                                               
+
+SQL> SELECT '13-MAR-73' - '15-JAN-71' FROM DUAL;
+SELECT '13-MAR-73' - '15-JAN-71' FROM DUAL
+       *
+ERROR at line 1:
+ORA-01722: invalid number 
+
+
+SQL> SELECT TO_DATE('13-MAR-73') - TO_DATE('15-JAN-71') FROM DUAL;
+
+TO_DATE('13-MAR-73')-TO_DATE('15-JAN-71')                                                                                                                                                               
+-----------------------------------------                                                                                                                                                               
+                                      788                                                                                                                                                               
+
+SQL> SELECT TO_DATE('13-MAR-73') - TO_DATE('15-JAN-71') DAYS FROM DUAL;
+
+      DAYS                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+       788                                                                                                                                                                                              
+
+SQL> SELECT TO_DATE('15-JAN-71') - TO_DATE(13-MAY-73') DAYS FROM DUAL;
+ERROR:
+ORA-01756: quoted string not properly terminated 
+
+
+SQL> SELECT TO_DATE('15-JAN-71') - TO_DATE('13-MAY-73') DAYS FROM DUAL;
+
+      DAYS                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+      -849                                                                                                                                                                                              
+
+SQL> SELECT TO_DATE('15-JAN-71') - TO_DATE('13-MAR-73') DAYS FROM DUAL;
+
+      DAYS                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+      -788                                                                                                                                                                                              
+
+SQL> REM DATE FUNCTIONS : SYSDATE CURRENT_DATE ADD_MONTHS MONTHS_BETWEEN LAST_DAY NEXT_DAY TRUNC ROUND
+SQL> 
+SQL> SELECT (TO_DATE('13-MAR-73') - TO_DATE('15-JAN-71'))/7 WEEKS FROM DUAL;
+
+     WEEKS                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+112.571429                                                                                                                                                                                              
+
+SQL> SELECT TRUNC((TO_DATE('13-MAR-73') - TO_DATE('15-JAN-71'))/7) WEEKS FROM DUAL;
+
+     WEEKS                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+       112                                                                                                                                                                                              
+
+SQL> SELECT MONTHS_BETWEEN(TO_DATE('13-MAR-73'),TO_DATE('15-JAN-71')) DIFFERENCE_IN_MONTHS FROM DUAL;
+
+DIFFERENCE_IN_MONTHS                                                                                                                                                                                    
+--------------------                                                                                                                                                                                    
+          25.9354839                                                                                                                                                                                    
+
+SQL> SELECT TRUNC(MONTHS_BETWEEN(TO_DATE('13-MAR-73'),TO_DATE('15-JAN-71'))) DIFFERENCE_IN_MONTHS FROM DUAL;
+
+DIFFERENCE_IN_MONTHS                                                                                                                                                                                    
+--------------------                                                                                                                                                                                    
+                  25                                                                                                                                                                                    
+
+SQL> SELECT ROUND(MONTHS_BETWEEN(TO_DATE('13-MAR-73'),TO_DATE('15-JAN-71'))) DIFFERENCE_IN_MONTHS FROM DUAL;
+
+DIFFERENCE_IN_MONTHS                                                                                                                                                                                    
+--------------------                                                                                                                                                                                    
+                  26                                                                                                                                                                                    
+
+SQL> SELECT * FROM EMPLOYEES;
+
+EMPLOYEE_ID FIRST_NAME      LAST_NAME       EMAIL      PHONE_NUMBER         HIRE_DATE JOB_ID         SALARY COMMISSION_PCT MANAGER_ID DEPARTMENT_ID                                                     
+----------- --------------- --------------- ---------- -------------------- --------- ---------- ---------- -------------- ---------- -------------                                                     
+        100 Steven          King            SKING      515.123.4567         17-JUL-87 AD_PRES         24000                                      90                                                     
+        101 Neena           Kochhar         NKOCHHAR   515.123.4568         21-SEP-89 AD_VP           17000                       100            90                                                     
+        102 Lex             De Haan         LDEHAAN    515.123.4569         13-JAN-93 AD_VP           17000                       100            90                                                     
+        103 Alexander       Hunold          AHUNOLD    590.423.4567         03-JAN-90 IT_PROG          9000                       102            60                                                     
+        104 Bruce           Ernst           BERNST     590.423.4568         21-MAY-91 IT_PROG          6000                       103            60                                                     
+        107 Diana           Lorentz         DLORENTZ   590.423.5567         07-FEB-99 IT_PROG          4200                       103            60                                                     
+        124 Kevin           Mourgos         KMOURGOS   650.123.5234         16-NOV-99 ST_MAN           5800                       100            50                                                     
+        141 Trenna          Rajs            TRAJS      650.121.8009         17-OCT-95 ST_CLERK         3500                       124            50                                                     
+        142 Curtis          Davies          CDAVIES    650.121.2994         29-JAN-97 ST_CLERK         3100                       124            50                                                     
+        143 Randall         Matos           RMATOS     650.121.2874         15-MAR-98 ST_CLERK         2600                       124            50                                                     
+        144 Peter           Vargas          PVARGAS    650.121.2004         09-JUL-98 ST_CLERK         2500                       124            50                                                     
+        149 Eleni           Zlotkey         EZLOTKEY   011.44.1344.429018   29-JAN-00 SA_MAN          10500             .2        100            80                                                     
+        174 Ellen           Abel            EABEL      011.44.1644.429267   11-MAY-96 SA_REP          11000             .3        149            80                                                     
+        176 Jonathon        Taylor          JTAYLOR    011.44.1644.429265   24-MAR-98 SA_REP           8600             .3        149            80                                                     
+        178 Kimerely        Grant           KGRANT     011.44.1644.429263   24-MAY-99 SA_REP           7000            .15        149                                                                   
+        200 Jennifer        Whalen          JWHALEN    515.123.4444         17-SEP-87 AD_ASST          4400                       101            10                                                     
+        201 Michael         Hartstein       MHARTSTE   515.123.5555         17-FEB-96 MK_MAN          13000                       100            20                                                     
+        202 Pat             Fay             PFAY       603.123.6666         17-AUG-97 MK_REP           6000                       201            20                                                     
+        205 Shelley         Higgins         SHIGGINS   515.123.8080         07-JUN-94 AC_MGR          12000                       101           110                                                     
+        206 William         Gietz           WGIETZ     515.123.8181         07-JUN-94 AC_ACCOUNT       8300                       205           110                                                     
+
+20 rows selected.
+
+SQL> SELECT FIRST_NAME , HIRE_DATE , SYSDATE , HIRE_DATE - SYSDATE DAYS FROM EMPLOYEES;
+
+FIRST_NAME      HIRE_DATE SYSDATE         DAYS                                                                                                                                                          
+--------------- --------- --------- ----------                                                                                                                                                          
+Steven          17-JUL-87 14-NOV-21 -12539.857                                                                                                                                                          
+Neena           21-SEP-89 14-NOV-21 -11742.857                                                                                                                                                          
+Lex             13-JAN-93 14-NOV-21 -10532.857                                                                                                                                                          
+Alexander       03-JAN-90 14-NOV-21 -11638.857                                                                                                                                                          
+Bruce           21-MAY-91 14-NOV-21 -11135.857                                                                                                                                                          
+Diana           07-FEB-99 14-NOV-21 -8316.8569                                                                                                                                                          
+Kevin           16-NOV-99 14-NOV-21 -8034.8569                                                                                                                                                          
+Trenna          17-OCT-95 14-NOV-21 -9525.8569                                                                                                                                                          
+Curtis          29-JAN-97 14-NOV-21 -9055.8569                                                                                                                                                          
+Randall         15-MAR-98 14-NOV-21 -8645.8569                                                                                                                                                          
+Peter           09-JUL-98 14-NOV-21 -8529.8569                                                                                                                                                          
+Eleni           29-JAN-00 14-NOV-21 -7960.8569                                                                                                                                                          
+Ellen           11-MAY-96 14-NOV-21 -9318.8569                                                                                                                                                          
+Jonathon        24-MAR-98 14-NOV-21 -8636.8569                                                                                                                                                          
+Kimerely        24-MAY-99 14-NOV-21 -8210.8569                                                                                                                                                          
+Jennifer        17-SEP-87 14-NOV-21 -12477.857                                                                                                                                                          
+Michael         17-FEB-96 14-NOV-21 -9402.8569                                                                                                                                                          
+Pat             17-AUG-97 14-NOV-21 -8855.8569                                                                                                                                                          
+Shelley         07-JUN-94 14-NOV-21 -10022.857                                                                                                                                                          
+William         07-JUN-94 14-NOV-21 -10022.857                                                                                                                                                          
+
+20 rows selected.
+
+SQL> SELECT FIRST_NAME , SYSDATE , HIRE_DATE , SYSDATE - HIRE_DATE DAYS FROM EMPLOYEES;
+
+FIRST_NAME      SYSDATE   HIRE_DATE       DAYS                                                                                                                                                          
+--------------- --------- --------- ----------                                                                                                                                                          
+Steven          14-NOV-21 17-JUL-87 12539.8571                                                                                                                                                          
+Neena           14-NOV-21 21-SEP-89 11742.8571                                                                                                                                                          
+Lex             14-NOV-21 13-JAN-93 10532.8571                                                                                                                                                          
+Alexander       14-NOV-21 03-JAN-90 11638.8571                                                                                                                                                          
+Bruce           14-NOV-21 21-MAY-91 11135.8571                                                                                                                                                          
+Diana           14-NOV-21 07-FEB-99 8316.85707                                                                                                                                                          
+Kevin           14-NOV-21 16-NOV-99 8034.85707                                                                                                                                                          
+Trenna          14-NOV-21 17-OCT-95 9525.85707                                                                                                                                                          
+Curtis          14-NOV-21 29-JAN-97 9055.85707                                                                                                                                                          
+Randall         14-NOV-21 15-MAR-98 8645.85707                                                                                                                                                          
+Peter           14-NOV-21 09-JUL-98 8529.85707                                                                                                                                                          
+Eleni           14-NOV-21 29-JAN-00 7960.85707                                                                                                                                                          
+Ellen           14-NOV-21 11-MAY-96 9318.85707                                                                                                                                                          
+Jonathon        14-NOV-21 24-MAR-98 8636.85707                                                                                                                                                          
+Kimerely        14-NOV-21 24-MAY-99 8210.85707                                                                                                                                                          
+Jennifer        14-NOV-21 17-SEP-87 12477.8571                                                                                                                                                          
+Michael         14-NOV-21 17-FEB-96 9402.85707                                                                                                                                                          
+Pat             14-NOV-21 17-AUG-97 8855.85707                                                                                                                                                          
+Shelley         14-NOV-21 07-JUN-94 10022.8571                                                                                                                                                          
+William         14-NOV-21 07-JUN-94 10022.8571                                                                                                                                                          
+
+20 rows selected.
+
+SQL> SELECT FIRST_NAME , SYSDATE , HIRE_DATE , TRUNC(SYSDATE - HIRE_DATE) COMPLETED_DAYS FROM EMPLOYEES;
+
+FIRST_NAME      SYSDATE   HIRE_DATE COMPLETED_DAYS                                                                                                                                                      
+--------------- --------- --------- --------------                                                                                                                                                      
+Steven          14-NOV-21 17-JUL-87          12539                                                                                                                                                      
+Neena           14-NOV-21 21-SEP-89          11742                                                                                                                                                      
+Lex             14-NOV-21 13-JAN-93          10532                                                                                                                                                      
+Alexander       14-NOV-21 03-JAN-90          11638                                                                                                                                                      
+Bruce           14-NOV-21 21-MAY-91          11135                                                                                                                                                      
+Diana           14-NOV-21 07-FEB-99           8316                                                                                                                                                      
+Kevin           14-NOV-21 16-NOV-99           8034                                                                                                                                                      
+Trenna          14-NOV-21 17-OCT-95           9525                                                                                                                                                      
+Curtis          14-NOV-21 29-JAN-97           9055                                                                                                                                                      
+Randall         14-NOV-21 15-MAR-98           8645                                                                                                                                                      
+Peter           14-NOV-21 09-JUL-98           8529                                                                                                                                                      
+Eleni           14-NOV-21 29-JAN-00           7960                                                                                                                                                      
+Ellen           14-NOV-21 11-MAY-96           9318                                                                                                                                                      
+Jonathon        14-NOV-21 24-MAR-98           8636                                                                                                                                                      
+Kimerely        14-NOV-21 24-MAY-99           8210                                                                                                                                                      
+Jennifer        14-NOV-21 17-SEP-87          12477                                                                                                                                                      
+Michael         14-NOV-21 17-FEB-96           9402                                                                                                                                                      
+Pat             14-NOV-21 17-AUG-97           8855                                                                                                                                                      
+Shelley         14-NOV-21 07-JUN-94          10022                                                                                                                                                      
+William         14-NOV-21 07-JUN-94          10022                                                                                                                                                      
+
+20 rows selected.
+
+SQL> SELECT FIRST_NAME , SYSDATE , HIRE_DATE , TRUNC(SYSDATE - HIRE_DATE)/7 WEEKS FROM EMPLOYEES;
+
+FIRST_NAME      SYSDATE   HIRE_DATE      WEEKS                                                                                                                                                          
+--------------- --------- --------- ----------                                                                                                                                                          
+Steven          14-NOV-21 17-JUL-87 1791.28571                                                                                                                                                          
+Neena           14-NOV-21 21-SEP-89 1677.42857                                                                                                                                                          
+Lex             14-NOV-21 13-JAN-93 1504.57143                                                                                                                                                          
+Alexander       14-NOV-21 03-JAN-90 1662.57143                                                                                                                                                          
+Bruce           14-NOV-21 21-MAY-91 1590.71429                                                                                                                                                          
+Diana           14-NOV-21 07-FEB-99       1188                                                                                                                                                          
+Kevin           14-NOV-21 16-NOV-99 1147.71429                                                                                                                                                          
+Trenna          14-NOV-21 17-OCT-95 1360.71429                                                                                                                                                          
+Curtis          14-NOV-21 29-JAN-97 1293.57143                                                                                                                                                          
+Randall         14-NOV-21 15-MAR-98       1235                                                                                                                                                          
+Peter           14-NOV-21 09-JUL-98 1218.42857                                                                                                                                                          
+Eleni           14-NOV-21 29-JAN-00 1137.14286                                                                                                                                                          
+Ellen           14-NOV-21 11-MAY-96 1331.14286                                                                                                                                                          
+Jonathon        14-NOV-21 24-MAR-98 1233.71429                                                                                                                                                          
+Kimerely        14-NOV-21 24-MAY-99 1172.85714                                                                                                                                                          
+Jennifer        14-NOV-21 17-SEP-87 1782.42857                                                                                                                                                          
+Michael         14-NOV-21 17-FEB-96 1343.14286                                                                                                                                                          
+Pat             14-NOV-21 17-AUG-97       1265                                                                                                                                                          
+Shelley         14-NOV-21 07-JUN-94 1431.71429                                                                                                                                                          
+William         14-NOV-21 07-JUN-94 1431.71429                                                                                                                                                          
+
+20 rows selected.
+
+SQL> SELECT FIRST_NAME , SYSDATE , HIRE_DATE , TRUNC((SYSDATE - HIRE_DATE)/7) COMPLETED_WEEKS FROM EMPLOYEES;
+
+FIRST_NAME      SYSDATE   HIRE_DATE COMPLETED_WEEKS                                                                                                                                                     
+--------------- --------- --------- ---------------                                                                                                                                                     
+Steven          14-NOV-21 17-JUL-87            1791                                                                                                                                                     
+Neena           14-NOV-21 21-SEP-89            1677                                                                                                                                                     
+Lex             14-NOV-21 13-JAN-93            1504                                                                                                                                                     
+Alexander       14-NOV-21 03-JAN-90            1662                                                                                                                                                     
+Bruce           14-NOV-21 21-MAY-91            1590                                                                                                                                                     
+Diana           14-NOV-21 07-FEB-99            1188                                                                                                                                                     
+Kevin           14-NOV-21 16-NOV-99            1147                                                                                                                                                     
+Trenna          14-NOV-21 17-OCT-95            1360                                                                                                                                                     
+Curtis          14-NOV-21 29-JAN-97            1293                                                                                                                                                     
+Randall         14-NOV-21 15-MAR-98            1235                                                                                                                                                     
+Peter           14-NOV-21 09-JUL-98            1218                                                                                                                                                     
+Eleni           14-NOV-21 29-JAN-00            1137                                                                                                                                                     
+Ellen           14-NOV-21 11-MAY-96            1331                                                                                                                                                     
+Jonathon        14-NOV-21 24-MAR-98            1233                                                                                                                                                     
+Kimerely        14-NOV-21 24-MAY-99            1172                                                                                                                                                     
+Jennifer        14-NOV-21 17-SEP-87            1782                                                                                                                                                     
+Michael         14-NOV-21 17-FEB-96            1343                                                                                                                                                     
+Pat             14-NOV-21 17-AUG-97            1265                                                                                                                                                     
+Shelley         14-NOV-21 07-JUN-94            1431                                                                                                                                                     
+William         14-NOV-21 07-JUN-94            1431                                                                                                                                                     
+
+20 rows selected.
+
+SQL> SELECT FIRST_NAME , SYSDATE , HIRE_DATE , MONTHS_BETWEEN(SYSDATE,HIRE_DATE) MONTHS FROM EMPLOYEES;
+
+FIRST_NAME      SYSDATE   HIRE_DATE     MONTHS                                                                                                                                                          
+--------------- --------- --------- ----------                                                                                                                                                          
+Steven          14-NOV-21 17-JUL-87 411.931066                                                                                                                                                          
+Neena           14-NOV-21 21-SEP-89 385.802034                                                                                                                                                          
+Lex             14-NOV-21 13-JAN-93 346.060098                                                                                                                                                          
+Alexander       14-NOV-21 03-JAN-90 382.382679                                                                                                                                                          
+Bruce           14-NOV-21 21-MAY-91 365.802034                                                                                                                                                          
+Diana           14-NOV-21 07-FEB-99 273.253647                                                                                                                                                          
+Kevin           14-NOV-21 16-NOV-99 263.963324                                                                                                                                                          
+Trenna          14-NOV-21 17-OCT-95 312.931066                                                                                                                                                          
+Curtis          14-NOV-21 29-JAN-97 297.543969                                                                                                                                                          
+Randall         14-NOV-21 15-MAR-98 283.995582                                                                                                                                                          
+Peter           14-NOV-21 09-JUL-98  280.18913                                                                                                                                                          
+Eleni           14-NOV-21 29-JAN-00 261.543969                                                                                                                                                          
+Ellen           14-NOV-21 11-MAY-96 306.124614                                                                                                                                                          
+Jonathon        14-NOV-21 24-MAR-98 283.705259                                                                                                                                                          
+Kimerely        14-NOV-21 24-MAY-99 269.705259                                                                                                                                                          
+Jennifer        14-NOV-21 17-SEP-87 409.931066                                                                                                                                                          
+Michael         14-NOV-21 17-FEB-96 308.931066                                                                                                                                                          
+Pat             14-NOV-21 17-AUG-97 290.931066                                                                                                                                                          
+Shelley         14-NOV-21 07-JUN-94 329.253647                                                                                                                                                          
+William         14-NOV-21 07-JUN-94 329.253647                                                                                                                                                          
+
+20 rows selected.
+
+SQL> SELECT FIRST_NAME , SYSDATE , HIRE_DATE , TRUNC(MONTHS_BETWEEN(SYSDATE,HIRE_DATE)) COMPLETED_MONTHS FROM EMPLOYEES;
+
+FIRST_NAME      SYSDATE   HIRE_DATE COMPLETED_MONTHS                                                                                                                                                    
+--------------- --------- --------- ----------------                                                                                                                                                    
+Steven          14-NOV-21 17-JUL-87              411                                                                                                                                                    
+Neena           14-NOV-21 21-SEP-89              385                                                                                                                                                    
+Lex             14-NOV-21 13-JAN-93              346                                                                                                                                                    
+Alexander       14-NOV-21 03-JAN-90              382                                                                                                                                                    
+Bruce           14-NOV-21 21-MAY-91              365                                                                                                                                                    
+Diana           14-NOV-21 07-FEB-99              273                                                                                                                                                    
+Kevin           14-NOV-21 16-NOV-99              263                                                                                                                                                    
+Trenna          14-NOV-21 17-OCT-95              312                                                                                                                                                    
+Curtis          14-NOV-21 29-JAN-97              297                                                                                                                                                    
+Randall         14-NOV-21 15-MAR-98              283                                                                                                                                                    
+Peter           14-NOV-21 09-JUL-98              280                                                                                                                                                    
+Eleni           14-NOV-21 29-JAN-00              261                                                                                                                                                    
+Ellen           14-NOV-21 11-MAY-96              306                                                                                                                                                    
+Jonathon        14-NOV-21 24-MAR-98              283                                                                                                                                                    
+Kimerely        14-NOV-21 24-MAY-99              269                                                                                                                                                    
+Jennifer        14-NOV-21 17-SEP-87              409                                                                                                                                                    
+Michael         14-NOV-21 17-FEB-96              308                                                                                                                                                    
+Pat             14-NOV-21 17-AUG-97              290                                                                                                                                                    
+Shelley         14-NOV-21 07-JUN-94              329                                                                                                                                                    
+William         14-NOV-21 07-JUN-94              329                                                                                                                                                    
+
+20 rows selected.
+
+SQL> SELECT FIRST_NAME , SYSDATE , HIRE_DATE , MONTHS_BETWEEN(SYSDATE,HIRE_DATE)/12 YEARS FROM EMPLOYEES;
+
+FIRST_NAME      SYSDATE   HIRE_DATE      YEARS                                                                                                                                                          
+--------------- --------- --------- ----------                                                                                                                                                          
+Steven          14-NOV-21 17-JUL-87 34.3275898                                                                                                                                                          
+Neena           14-NOV-21 21-SEP-89 32.1501704                                                                                                                                                          
+Lex             14-NOV-21 13-JAN-93 28.8383425                                                                                                                                                          
+Alexander       14-NOV-21 03-JAN-90 31.8652242                                                                                                                                                          
+Bruce           14-NOV-21 21-MAY-91 30.4835038                                                                                                                                                          
+Diana           14-NOV-21 07-FEB-99 22.7711382                                                                                                                                                          
+Kevin           14-NOV-21 16-NOV-99 21.9969446                                                                                                                                                          
+Trenna          14-NOV-21 17-OCT-95 26.0775898                                                                                                                                                          
+Curtis          14-NOV-21 29-JAN-97 24.7953317                                                                                                                                                          
+Randall         14-NOV-21 15-MAR-98 23.6662995                                                                                                                                                          
+Peter           14-NOV-21 09-JUL-98 23.3490952                                                                                                                                                          
+Eleni           14-NOV-21 29-JAN-00 21.7953317                                                                                                                                                          
+Ellen           14-NOV-21 11-MAY-96 25.5103855                                                                                                                                                          
+Jonathon        14-NOV-21 24-MAR-98 23.6421059                                                                                                                                                          
+Kimerely        14-NOV-21 24-MAY-99 22.4754393                                                                                                                                                          
+Jennifer        14-NOV-21 17-SEP-87 34.1609231                                                                                                                                                          
+Michael         14-NOV-21 17-FEB-96 25.7442565                                                                                                                                                          
+Pat             14-NOV-21 17-AUG-97 24.2442565                                                                                                                                                          
+Shelley         14-NOV-21 07-JUN-94 27.4378048                                                                                                                                                          
+William         14-NOV-21 07-JUN-94 27.4378048                                                                                                                                                          
+
+20 rows selected.
+
+SQL> SELECT FIRST_NAME , SYSDATE , HIRE_DATE , TRUNC(MONTHS_BETWEEN(SYSDATE,HIRE_DATE)/12) COMPLETED_YEARS FROM EMPLOYEES;
+
+FIRST_NAME      SYSDATE   HIRE_DATE COMPLETED_YEARS                                                                                                                                                     
+--------------- --------- --------- ---------------                                                                                                                                                     
+Steven          14-NOV-21 17-JUL-87              34                                                                                                                                                     
+Neena           14-NOV-21 21-SEP-89              32                                                                                                                                                     
+Lex             14-NOV-21 13-JAN-93              28                                                                                                                                                     
+Alexander       14-NOV-21 03-JAN-90              31                                                                                                                                                     
+Bruce           14-NOV-21 21-MAY-91              30                                                                                                                                                     
+Diana           14-NOV-21 07-FEB-99              22                                                                                                                                                     
+Kevin           14-NOV-21 16-NOV-99              21                                                                                                                                                     
+Trenna          14-NOV-21 17-OCT-95              26                                                                                                                                                     
+Curtis          14-NOV-21 29-JAN-97              24                                                                                                                                                     
+Randall         14-NOV-21 15-MAR-98              23                                                                                                                                                     
+Peter           14-NOV-21 09-JUL-98              23                                                                                                                                                     
+Eleni           14-NOV-21 29-JAN-00              21                                                                                                                                                     
+Ellen           14-NOV-21 11-MAY-96              25                                                                                                                                                     
+Jonathon        14-NOV-21 24-MAR-98              23                                                                                                                                                     
+Kimerely        14-NOV-21 24-MAY-99              22                                                                                                                                                     
+Jennifer        14-NOV-21 17-SEP-87              34                                                                                                                                                     
+Michael         14-NOV-21 17-FEB-96              25                                                                                                                                                     
+Pat             14-NOV-21 17-AUG-97              24                                                                                                                                                     
+Shelley         14-NOV-21 07-JUN-94              27                                                                                                                                                     
+William         14-NOV-21 07-JUN-94              27                                                                                                                                                     
+
+20 rows selected.
+
+SQL> SELECT FIRST_NAME , HIRE_DATE FROM EMPLOYEES;
+
+FIRST_NAME      HIRE_DATE                                                                                                                                                                               
+--------------- ---------                                                                                                                                                                               
+Steven          17-JUL-87                                                                                                                                                                               
+Neena           21-SEP-89                                                                                                                                                                               
+Lex             13-JAN-93                                                                                                                                                                               
+Alexander       03-JAN-90                                                                                                                                                                               
+Bruce           21-MAY-91                                                                                                                                                                               
+Diana           07-FEB-99                                                                                                                                                                               
+Kevin           16-NOV-99                                                                                                                                                                               
+Trenna          17-OCT-95                                                                                                                                                                               
+Curtis          29-JAN-97                                                                                                                                                                               
+Randall         15-MAR-98                                                                                                                                                                               
+Peter           09-JUL-98                                                                                                                                                                               
+Eleni           29-JAN-00                                                                                                                                                                               
+Ellen           11-MAY-96                                                                                                                                                                               
+Jonathon        24-MAR-98                                                                                                                                                                               
+Kimerely        24-MAY-99                                                                                                                                                                               
+Jennifer        17-SEP-87                                                                                                                                                                               
+Michael         17-FEB-96                                                                                                                                                                               
+Pat             17-AUG-97                                                                                                                                                                               
+Shelley         07-JUN-94                                                                                                                                                                               
+William         07-JUN-94                                                                                                                                                                               
+
+20 rows selected.
+
+SQL> REM DATE FUNCTIONS : SYSDATE CURRENT_DATE ADD_MONTHS MONTHS_BETWEEN LAST_DAY NEXT_DAY TRUNC ROUND
+SQL> 
+SQL> REM MONTHLY PAYMENT :
+SQL> 
+SQL> REM FIRST SALARY DATE : IF COMPANY PAYS ON LAST DATE OF EACH MONTH
+SQL> 
+SQL> SELECT FIRST_NAME , HIRE_DATE , LAST_DAY(HIRE_DATE) FIRST_SALARY_DATE FROM EMPLOYEES;
+
+FIRST_NAME      HIRE_DATE FIRST_SAL                                                                                                                                                                     
+--------------- --------- ---------                                                                                                                                                                     
+Steven          17-JUL-87 31-JUL-87                                                                                                                                                                     
+Neena           21-SEP-89 30-SEP-89                                                                                                                                                                     
+Lex             13-JAN-93 31-JAN-93                                                                                                                                                                     
+Alexander       03-JAN-90 31-JAN-90                                                                                                                                                                     
+Bruce           21-MAY-91 31-MAY-91                                                                                                                                                                     
+Diana           07-FEB-99 28-FEB-99                                                                                                                                                                     
+Kevin           16-NOV-99 30-NOV-99                                                                                                                                                                     
+Trenna          17-OCT-95 31-OCT-95                                                                                                                                                                     
+Curtis          29-JAN-97 31-JAN-97                                                                                                                                                                     
+Randall         15-MAR-98 31-MAR-98                                                                                                                                                                     
+Peter           09-JUL-98 31-JUL-98                                                                                                                                                                     
+Eleni           29-JAN-00 31-JAN-00                                                                                                                                                                     
+Ellen           11-MAY-96 31-MAY-96                                                                                                                                                                     
+Jonathon        24-MAR-98 31-MAR-98                                                                                                                                                                     
+Kimerely        24-MAY-99 31-MAY-99                                                                                                                                                                     
+Jennifer        17-SEP-87 30-SEP-87                                                                                                                                                                     
+Michael         17-FEB-96 29-FEB-96                                                                                                                                                                     
+Pat             17-AUG-97 31-AUG-97                                                                                                                                                                     
+Shelley         07-JUN-94 30-JUN-94                                                                                                                                                                     
+William         07-JUN-94 30-JUN-94                                                                                                                                                                     
+
+20 rows selected.
+
+SQL> REM FIRST SALARY DATE : IF COMPANY PAYS ON 7TH DAY OF NEXT MONTH
+SQL> 
+SQL> SELECT FIRST_NAME , HIRE_DATE , LAST_DAY(HIRE_DATE)+7 FIRST_SALARY_DATE FROM EMPLOYEES;
+
+FIRST_NAME      HIRE_DATE FIRST_SAL                                                                                                                                                                     
+--------------- --------- ---------                                                                                                                                                                     
+Steven          17-JUL-87 07-AUG-87                                                                                                                                                                     
+Neena           21-SEP-89 07-OCT-89                                                                                                                                                                     
+Lex             13-JAN-93 07-FEB-93                                                                                                                                                                     
+Alexander       03-JAN-90 07-FEB-90                                                                                                                                                                     
+Bruce           21-MAY-91 07-JUN-91                                                                                                                                                                     
+Diana           07-FEB-99 07-MAR-99                                                                                                                                                                     
+Kevin           16-NOV-99 07-DEC-99                                                                                                                                                                     
+Trenna          17-OCT-95 07-NOV-95                                                                                                                                                                     
+Curtis          29-JAN-97 07-FEB-97                                                                                                                                                                     
+Randall         15-MAR-98 07-APR-98                                                                                                                                                                     
+Peter           09-JUL-98 07-AUG-98                                                                                                                                                                     
+Eleni           29-JAN-00 07-FEB-00                                                                                                                                                                     
+Ellen           11-MAY-96 07-JUN-96                                                                                                                                                                     
+Jonathon        24-MAR-98 07-APR-98                                                                                                                                                                     
+Kimerely        24-MAY-99 07-JUN-99                                                                                                                                                                     
+Jennifer        17-SEP-87 07-OCT-87                                                                                                                                                                     
+Michael         17-FEB-96 07-MAR-96                                                                                                                                                                     
+Pat             17-AUG-97 07-SEP-97                                                                                                                                                                     
+Shelley         07-JUN-94 07-JUL-94                                                                                                                                                                     
+William         07-JUN-94 07-JUL-94                                                                                                                                                                     
+
+20 rows selected.
+
+SQL> REM FIRST SALARY DATE : IF COMPANY PAYS ON 1ST DAY OF NEXT MONTH
+SQL> 
+SQL> SELECT FIRST_NAME , HIRE_DATE , LAST_DAY(HIRE_DATE)+1 FIRST_SALARY_DATE FROM EMPLOYEES;
+
+FIRST_NAME      HIRE_DATE FIRST_SAL                                                                                                                                                                     
+--------------- --------- ---------                                                                                                                                                                     
+Steven          17-JUL-87 01-AUG-87                                                                                                                                                                     
+Neena           21-SEP-89 01-OCT-89                                                                                                                                                                     
+Lex             13-JAN-93 01-FEB-93                                                                                                                                                                     
+Alexander       03-JAN-90 01-FEB-90                                                                                                                                                                     
+Bruce           21-MAY-91 01-JUN-91                                                                                                                                                                     
+Diana           07-FEB-99 01-MAR-99                                                                                                                                                                     
+Kevin           16-NOV-99 01-DEC-99                                                                                                                                                                     
+Trenna          17-OCT-95 01-NOV-95                                                                                                                                                                     
+Curtis          29-JAN-97 01-FEB-97                                                                                                                                                                     
+Randall         15-MAR-98 01-APR-98                                                                                                                                                                     
+Peter           09-JUL-98 01-AUG-98                                                                                                                                                                     
+Eleni           29-JAN-00 01-FEB-00                                                                                                                                                                     
+Ellen           11-MAY-96 01-JUN-96                                                                                                                                                                     
+Jonathon        24-MAR-98 01-APR-98                                                                                                                                                                     
+Kimerely        24-MAY-99 01-JUN-99                                                                                                                                                                     
+Jennifer        17-SEP-87 01-OCT-87                                                                                                                                                                     
+Michael         17-FEB-96 01-MAR-96                                                                                                                                                                     
+Pat             17-AUG-97 01-SEP-97                                                                                                                                                                     
+Shelley         07-JUN-94 01-JUL-94                                                                                                                                                                     
+William         07-JUN-94 01-JUL-94                                                                                                                                                                     
+
+20 rows selected.
+
+SQL> REM FIND NO. OF DAYS WORKED IN JOINING MONTH FOR EACH EMPLOYEE
+SQL> 
+SQL> SELECT FIRST_NAME , HIRE_DATE , LAST_DAY(HIRE_DATE) - HIRE_DATE DAYS_WORKED FROM EMPLOYEES;
+
+FIRST_NAME      HIRE_DATE DAYS_WORKED                                                                                                                                                                   
+--------------- --------- -----------                                                                                                                                                                   
+Steven          17-JUL-87          14                                                                                                                                                                   
+Neena           21-SEP-89           9                                                                                                                                                                   
+Lex             13-JAN-93          18                                                                                                                                                                   
+Alexander       03-JAN-90          28                                                                                                                                                                   
+Bruce           21-MAY-91          10                                                                                                                                                                   
+Diana           07-FEB-99          21                                                                                                                                                                   
+Kevin           16-NOV-99          14                                                                                                                                                                   
+Trenna          17-OCT-95          14                                                                                                                                                                   
+Curtis          29-JAN-97           2                                                                                                                                                                   
+Randall         15-MAR-98          16                                                                                                                                                                   
+Peter           09-JUL-98          22                                                                                                                                                                   
+Eleni           29-JAN-00           2                                                                                                                                                                   
+Ellen           11-MAY-96          20                                                                                                                                                                   
+Jonathon        24-MAR-98           7                                                                                                                                                                   
+Kimerely        24-MAY-99           7                                                                                                                                                                   
+Jennifer        17-SEP-87          13                                                                                                                                                                   
+Michael         17-FEB-96          12                                                                                                                                                                   
+Pat             17-AUG-97          14                                                                                                                                                                   
+Shelley         07-JUN-94          23                                                                                                                                                                   
+William         07-JUN-94          23                                                                                                                                                                   
+
+20 rows selected.
+
+SQL> SELECT FIRST_NAME , HIRE_DATE , LAST_DAY(HIRE_DATE) - HIRE_DATE + 1 DAYS_WORKED FROM EMPLOYEES;
+
+FIRST_NAME      HIRE_DATE DAYS_WORKED                                                                                                                                                                   
+--------------- --------- -----------                                                                                                                                                                   
+Steven          17-JUL-87          15                                                                                                                                                                   
+Neena           21-SEP-89          10                                                                                                                                                                   
+Lex             13-JAN-93          19                                                                                                                                                                   
+Alexander       03-JAN-90          29                                                                                                                                                                   
+Bruce           21-MAY-91          11                                                                                                                                                                   
+Diana           07-FEB-99          22                                                                                                                                                                   
+Kevin           16-NOV-99          15                                                                                                                                                                   
+Trenna          17-OCT-95          15                                                                                                                                                                   
+Curtis          29-JAN-97           3                                                                                                                                                                   
+Randall         15-MAR-98          17                                                                                                                                                                   
+Peter           09-JUL-98          23                                                                                                                                                                   
+Eleni           29-JAN-00           3                                                                                                                                                                   
+Ellen           11-MAY-96          21                                                                                                                                                                   
+Jonathon        24-MAR-98           8                                                                                                                                                                   
+Kimerely        24-MAY-99           8                                                                                                                                                                   
+Jennifer        17-SEP-87          14                                                                                                                                                                   
+Michael         17-FEB-96          13                                                                                                                                                                   
+Pat             17-AUG-97          15                                                                                                                                                                   
+Shelley         07-JUN-94          24                                                                                                                                                                   
+William         07-JUN-94          24                                                                                                                                                                   
+
+20 rows selected.
+
+SQL> REM EACH FRIDAY PAYMENT
+SQL> 
+SQL> REM FIRST PAYMENT DATE
+SQL> 
+SQL> SELECT FIRST_NAME , HIRE_DATE , NEXT_DAY(HIRE_DATE,'FRI') FROM EMPLOYEES;
+
+FIRST_NAME      HIRE_DATE NEXT_DAY(                                                                                                                                                                     
+--------------- --------- ---------                                                                                                                                                                     
+Steven          17-JUL-87 24-JUL-87                                                                                                                                                                     
+Neena           21-SEP-89 22-SEP-89                                                                                                                                                                     
+Lex             13-JAN-93 15-JAN-93                                                                                                                                                                     
+Alexander       03-JAN-90 05-JAN-90                                                                                                                                                                     
+Bruce           21-MAY-91 24-MAY-91                                                                                                                                                                     
+Diana           07-FEB-99 12-FEB-99                                                                                                                                                                     
+Kevin           16-NOV-99 19-NOV-99                                                                                                                                                                     
+Trenna          17-OCT-95 20-OCT-95                                                                                                                                                                     
+Curtis          29-JAN-97 31-JAN-97                                                                                                                                                                     
+Randall         15-MAR-98 20-MAR-98                                                                                                                                                                     
+Peter           09-JUL-98 10-JUL-98                                                                                                                                                                     
+Eleni           29-JAN-00 04-FEB-00                                                                                                                                                                     
+Ellen           11-MAY-96 17-MAY-96                                                                                                                                                                     
+Jonathon        24-MAR-98 27-MAR-98                                                                                                                                                                     
+Kimerely        24-MAY-99 28-MAY-99                                                                                                                                                                     
+Jennifer        17-SEP-87 18-SEP-87                                                                                                                                                                     
+Michael         17-FEB-96 23-FEB-96                                                                                                                                                                     
+Pat             17-AUG-97 22-AUG-97                                                                                                                                                                     
+Shelley         07-JUN-94 10-JUN-94                                                                                                                                                                     
+William         07-JUN-94 10-JUN-94                                                                                                                                                                     
+
+20 rows selected.
+
+SQL> ALTER SESSION SET NLS_dATE_FORMAT = 'DD-MON-RR DAY';
+
+Session altered.
+
+SQL> 
+SQL> SELECT FIRST_NAME , HIRE_DATE , NEXT_DAY(HIRE_DATE,'FRI') FROM EMPLOYEES;
+
+FIRST_NAME      HIRE_DATE           NEXT_DAY(HIRE_DATE,                                                                                                                                                 
+--------------- ------------------- -------------------                                                                                                                                                 
+Steven          17-JUL-87 FRIDAY    24-JUL-87 FRIDAY                                                                                                                                                    
+Neena           21-SEP-89 THURSDAY  22-SEP-89 FRIDAY                                                                                                                                                    
+Lex             13-JAN-93 WEDNESDAY 15-JAN-93 FRIDAY                                                                                                                                                    
+Alexander       03-JAN-90 WEDNESDAY 05-JAN-90 FRIDAY                                                                                                                                                    
+Bruce           21-MAY-91 TUESDAY   24-MAY-91 FRIDAY                                                                                                                                                    
+Diana           07-FEB-99 SUNDAY    12-FEB-99 FRIDAY                                                                                                                                                    
+Kevin           16-NOV-99 TUESDAY   19-NOV-99 FRIDAY                                                                                                                                                    
+Trenna          17-OCT-95 TUESDAY   20-OCT-95 FRIDAY                                                                                                                                                    
+Curtis          29-JAN-97 WEDNESDAY 31-JAN-97 FRIDAY                                                                                                                                                    
+Randall         15-MAR-98 SUNDAY    20-MAR-98 FRIDAY                                                                                                                                                    
+Peter           09-JUL-98 THURSDAY  10-JUL-98 FRIDAY                                                                                                                                                    
+Eleni           29-JAN-00 SATURDAY  04-FEB-00 FRIDAY                                                                                                                                                    
+Ellen           11-MAY-96 SATURDAY  17-MAY-96 FRIDAY                                                                                                                                                    
+Jonathon        24-MAR-98 TUESDAY   27-MAR-98 FRIDAY                                                                                                                                                    
+Kimerely        24-MAY-99 MONDAY    28-MAY-99 FRIDAY                                                                                                                                                    
+Jennifer        17-SEP-87 THURSDAY  18-SEP-87 FRIDAY                                                                                                                                                    
+Michael         17-FEB-96 SATURDAY  23-FEB-96 FRIDAY                                                                                                                                                    
+Pat             17-AUG-97 SUNDAY    22-AUG-97 FRIDAY                                                                                                                                                    
+Shelley         07-JUN-94 TUESDAY   10-JUN-94 FRIDAY                                                                                                                                                    
+William         07-JUN-94 TUESDAY   10-JUN-94 FRIDAY                                                                                                                                                    
+
+20 rows selected.
+
+SQL> SELECT FIRST_NAME , HIRE_DATE , NEXT_DAY(HIRE_DATE,'FRIday') FROM EMPLOYEES;
+
+FIRST_NAME      HIRE_DATE           NEXT_DAY(HIRE_DATE,                                                                                                                                                 
+--------------- ------------------- -------------------                                                                                                                                                 
+Steven          17-JUL-87 FRIDAY    24-JUL-87 FRIDAY                                                                                                                                                    
+Neena           21-SEP-89 THURSDAY  22-SEP-89 FRIDAY                                                                                                                                                    
+Lex             13-JAN-93 WEDNESDAY 15-JAN-93 FRIDAY                                                                                                                                                    
+Alexander       03-JAN-90 WEDNESDAY 05-JAN-90 FRIDAY                                                                                                                                                    
+Bruce           21-MAY-91 TUESDAY   24-MAY-91 FRIDAY                                                                                                                                                    
+Diana           07-FEB-99 SUNDAY    12-FEB-99 FRIDAY                                                                                                                                                    
+Kevin           16-NOV-99 TUESDAY   19-NOV-99 FRIDAY                                                                                                                                                    
+Trenna          17-OCT-95 TUESDAY   20-OCT-95 FRIDAY                                                                                                                                                    
+Curtis          29-JAN-97 WEDNESDAY 31-JAN-97 FRIDAY                                                                                                                                                    
+Randall         15-MAR-98 SUNDAY    20-MAR-98 FRIDAY                                                                                                                                                    
+Peter           09-JUL-98 THURSDAY  10-JUL-98 FRIDAY                                                                                                                                                    
+Eleni           29-JAN-00 SATURDAY  04-FEB-00 FRIDAY                                                                                                                                                    
+Ellen           11-MAY-96 SATURDAY  17-MAY-96 FRIDAY                                                                                                                                                    
+Jonathon        24-MAR-98 TUESDAY   27-MAR-98 FRIDAY                                                                                                                                                    
+Kimerely        24-MAY-99 MONDAY    28-MAY-99 FRIDAY                                                                                                                                                    
+Jennifer        17-SEP-87 THURSDAY  18-SEP-87 FRIDAY                                                                                                                                                    
+Michael         17-FEB-96 SATURDAY  23-FEB-96 FRIDAY                                                                                                                                                    
+Pat             17-AUG-97 SUNDAY    22-AUG-97 FRIDAY                                                                                                                                                    
+Shelley         07-JUN-94 TUESDAY   10-JUN-94 FRIDAY                                                                                                                                                    
+William         07-JUN-94 TUESDAY   10-JUN-94 FRIDAY                                                                                                                                                    
+
+20 rows selected.
+
+SQL> SELECT FIRST_NAME , HIRE_DATE , NEXT_DAY(HIRE_DATE,6) FROM EMPLOYEES;
+
+FIRST_NAME      HIRE_DATE           NEXT_DAY(HIRE_DATE,                                                                                                                                                 
+--------------- ------------------- -------------------                                                                                                                                                 
+Steven          17-JUL-87 FRIDAY    24-JUL-87 FRIDAY                                                                                                                                                    
+Neena           21-SEP-89 THURSDAY  22-SEP-89 FRIDAY                                                                                                                                                    
+Lex             13-JAN-93 WEDNESDAY 15-JAN-93 FRIDAY                                                                                                                                                    
+Alexander       03-JAN-90 WEDNESDAY 05-JAN-90 FRIDAY                                                                                                                                                    
+Bruce           21-MAY-91 TUESDAY   24-MAY-91 FRIDAY                                                                                                                                                    
+Diana           07-FEB-99 SUNDAY    12-FEB-99 FRIDAY                                                                                                                                                    
+Kevin           16-NOV-99 TUESDAY   19-NOV-99 FRIDAY                                                                                                                                                    
+Trenna          17-OCT-95 TUESDAY   20-OCT-95 FRIDAY                                                                                                                                                    
+Curtis          29-JAN-97 WEDNESDAY 31-JAN-97 FRIDAY                                                                                                                                                    
+Randall         15-MAR-98 SUNDAY    20-MAR-98 FRIDAY                                                                                                                                                    
+Peter           09-JUL-98 THURSDAY  10-JUL-98 FRIDAY                                                                                                                                                    
+Eleni           29-JAN-00 SATURDAY  04-FEB-00 FRIDAY                                                                                                                                                    
+Ellen           11-MAY-96 SATURDAY  17-MAY-96 FRIDAY                                                                                                                                                    
+Jonathon        24-MAR-98 TUESDAY   27-MAR-98 FRIDAY                                                                                                                                                    
+Kimerely        24-MAY-99 MONDAY    28-MAY-99 FRIDAY                                                                                                                                                    
+Jennifer        17-SEP-87 THURSDAY  18-SEP-87 FRIDAY                                                                                                                                                    
+Michael         17-FEB-96 SATURDAY  23-FEB-96 FRIDAY                                                                                                                                                    
+Pat             17-AUG-97 SUNDAY    22-AUG-97 FRIDAY                                                                                                                                                    
+Shelley         07-JUN-94 TUESDAY   10-JUN-94 FRIDAY                                                                                                                                                    
+William         07-JUN-94 TUESDAY   10-JUN-94 FRIDAY                                                                                                                                                    
+
+20 rows selected.
+
+SQL> SELECT SYSDATE , NEXT_DAY(SYSDATE,'FRI') FROM DUAL;
+
+SYSDATE             NEXT_DAY(SYSDATE,'F                                                                                                                                                                 
+------------------- -------------------                                                                                                                                                                 
+14-NOV-21 SUNDAY    19-NOV-21 FRIDAY                                                                                                                                                                    
+
+SQL> REM COMPANY PAYS ON EACH WEDNESDAY : FIND NEXT SALARY DATE
+SQL> 
+SQL> SELECT SYSDATE , NEXT_DAY(SYSDATE,'WED') FROM DUAL;
+
+SYSDATE             NEXT_DAY(SYSDATE,'W                                                                                                                                                                 
+------------------- -------------------                                                                                                                                                                 
+14-NOV-21 SUNDAY    17-NOV-21 WEDNESDAY                                                                                                                                                                 
+
+SQL> REM COMPANY PAYS ON EACH WEDNESDAY : FIND LAST SALARY DATE
+SQL> 
+SQL> SELECT SYSDATE , NEXT_DAY(SYSDATE,'WED')-7 FROM DUAL;
+
+SYSDATE             NEXT_DAY(SYSDATE,'W                                                                                                                                                                 
+------------------- -------------------                                                                                                                                                                 
+14-NOV-21 SUNDAY    10-NOV-21 WEDNESDAY                                                                                                                                                                 
+
+SQL> REM TRUNC / ROUND : TO BE DONE
+SQL> 
+SQL> SPOOL OFF

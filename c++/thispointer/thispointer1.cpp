@@ -15,3 +15,4 @@ int main(){
     employee e1;
     e1.empdata(2000);
 }
+

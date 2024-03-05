@@ -9,3 +9,4 @@ document.getElementById("btn").addEventListener("dblclick",()=>{
     document.getElementById("btn").innerHTML = "Double clicked";
 })
 
+    
