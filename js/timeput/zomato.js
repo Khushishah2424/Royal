@@ -20,3 +20,8 @@
 // }
 
 
+function placeorder(){
+    var status = document.getElementById("Status");
+    status.innerText = "placed order";
+}
+
