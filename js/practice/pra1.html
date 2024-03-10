@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+    body{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
+</head>
+<body>
+    <h1>Enter your item</h1>
+    <input type="text" id="itemName"><br><br>
+    <button onclick="placeOrder()">Place Order</button>
+    <button id="cancelButton" onclick="cancelOrder()" style="display:none;">Cancel Order</button>
+    <p id="status">Status: </p>
+    <p id="limit"></p>
+    <p id="orderPrep"></p>
+    <p id="delivery"></p>
+
+<script>
+    let orderCanceled = false;
+    
+    function placeOrder(){
+        orderCanceled = false; // Reset cancellation flag
+        document.getElementById("status").innerText = "Order placed!";
+        document.getElementById("limit").innerText = "You have 3 seconds to cancel the order...";
+        document.getElementById("cancelButton").style.display = "block"; // Show cancel button
+        setTimeout(() => {
+            document.getElementById("cancelButton").style.display = "none"; // Hide cancel button after 3 seconds
+            if (!orderCanceled) {
+                orderPreparation();
+                setTimeout(delivered, 5000); // Adjusted for a total of 9 seconds from order placement
+            } else {
+                document.getElementById("limit").innerText = "";
+            }
+        }, 3000);
+    }
+    
+    function cancelOrder() {
+        orderCanceled = true;
+        document.getElementById("status").innerText = "Order canceled";
+        document.getElementById("orderPrep").innerText = "";
+        document.getElementById("delivery").innerText = "";
+        document.getElementById("limit").innerText = "";
+        document.getElementById("cancelButton").style.display = "none"; // Hide cancel button
+    }
+
+    function orderPreparation(){
+        if (orderCanceled === false) {
+            document.getElementById("orderPrep").innerText = "Order is in preparation period";
+        }
+    }
+    
+    function delivered(){
+        if (orderCanceled === false) {
+            document.getElementById("delivery").innerText = "Order is on the way";
+            document.getElementById("limit").innerText = ""; // Clear the time limit message
+        }
+    }
+</script>
+</body>
+</html>

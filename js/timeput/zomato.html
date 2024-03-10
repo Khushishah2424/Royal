@@ -3,19 +3,55 @@
 <head>
    <script src="zomato.js"></script>
 </head>
+<style>
+        body{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                font-family: Arial, sans-serif;
+                margin-top: 50px;
+        }
+        input,button{
+                margin: 10px;
+                padding: 10px;
+                font-size: 16px;
+                border-radius: 5px;
+                border: 1px solid #ccc;
+        }
+        button{
+                background-color: #4CAF50;
+                color: white;
+                cursor: pointer;
+        }
+        #cancelButton{
+                background-color: #f44336;
+        }
+        button:hover{
+                opacity: 0.8;
+        }
+        p{
+                font-size: 18px;
+                color: black;
+        }
+        #limit{
+                color: black;
+        }
+        #status{
+                color: black;
+        }
+</style>
 <body>
    
-        <div>
-                <label for="ID :"> Enter your Item : </label>
-                <input type="text" id="name" placeholder="Name">
+        <h1>Enter your item</h1>
+        <input type="text" id="itemName"><br><br>
+        <button onclick="placeOrder()">Place Order</button><br>
+        <button onclick="ordercancle()" id="cancelButton">Cancle order</button>
+        <p id="status">Status: </p>
+        <p id="limit">Time limit</p>
+        <p id="orderPrep"></p>
+        <p id="delivery"></p>
 
-        </div>
-        <br>
-        <div>
-            <button onclick="placeorder()">Order</button>
-
-            <p id="Status">Status :</p>
-        </div>
 
 </body>
 </html>
