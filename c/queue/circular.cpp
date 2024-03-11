@@ -24,7 +24,7 @@ void insert(int num){
             if(f == -1){
                 f = 0;
          }
-        }
+       }
     }
     
 }
