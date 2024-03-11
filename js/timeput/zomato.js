@@ -29,15 +29,15 @@ let orderedCancle = false;
     document.getElementById("cancelButton").style.display = "block";
 
     setTimeout(() => {
-        if (!orderedCancle){ 
+        if (orderedCancle === false){ 
             orderPreparation();
         }
-    }, 4000);
+    }, 5000);
     setTimeout(() => {
-        if (!orderedCancle){ 
+        if (orderedCancle === false){ 
             delivered();
         }
-    }, 9000);
+    },11000);
 }
     
 function ordercancle(){

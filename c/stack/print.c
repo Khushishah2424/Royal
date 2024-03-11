@@ -30,6 +30,13 @@ int peek(){
     return stack[top];
 }
 
+void peep(int location){
+    int index = top - location + 1;
+    if(index >=0 && index <= top){
+        printf("%d",stack[index]);
+    }
+}
+
 void display()
 {
     if(top == -1){
@@ -43,9 +50,9 @@ void display()
 
 
 int main(){
-    int num , choice;
+    int num , choice , a;
     while(1){
-        printf("\n1 For push\n2 For pop\n3 For Peek\n4 For display\n5 For exit");
+        printf("\n1 For push\n2 For pop\n3 For Peek\n4 For peep\n5 For display\n5 For exit");
         printf("\nEnter your Choice :\n");
         scanf("%d",&choice);
 
@@ -65,10 +72,16 @@ int main(){
             break;
 
         case 4:
-            display();
+            printf("\nEnter the num for peep : ");
+            scanf("%d",&a);
+            peep(a);
             break;
 
         case 5:
+            display();
+            break;
+
+        case 6:
             exit(1);
             break;
 
