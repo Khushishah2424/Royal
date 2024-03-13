@@ -16,30 +16,109 @@
 // 0 2 0 0 2 
 // -2 
 // 0 0 0 0  0
-#include<stdio.h>
+// #include<stdio.h>
 
-int main(){
-    int SIZE ;
-    printf("Enter SIZE :");
-    scanf("%d",&SIZE);
+// int main(){
+//     int SIZE ;
+//     printf("Enter SIZE :");
+//     scanf("%d",&SIZE);
 
-    int a[SIZE];
-    for(int i = 0 ; i < SIZE ; i++){
-        scanf("%d",&a[i]);
-    }
-    for(int i = 0 ; i < SIZE ; i++){
-        printf("%d",a[i]);
-    }
+//     int a[SIZE];
+//     for(int i = 0 ; i < SIZE ; i++){
+//         scanf("%d",&a[i]);
+//     }
+//     for(int i = 0 ; i < SIZE ; i++){
+//         printf("%d",a[i]);
+//     }
 
-    int min = a[0]; //1
-    for(int i = 0 ; i < SIZE ; i++){
-        if(a[i] == 0){
-            continue;
+//     int min = a[0]; //1
+//     for(int i = 0 ; i < SIZE ; i++){
+//         if(a[i] == 0){
+//             continue;
+//         }
+//         if(min == 0 || min>a[i]){
+//             min = a[i];
+//         }
+//     }
+//     printf("\nmin = %d",min);
+// }
+#include <stdio.h>
+
+void subtract(int arr[], int n, int min)
+{
+    for (int i = 0; i < n; i++)
+    {
+        if (arr[i] != 0)
+        {
+            arr[i] -= min;
         }
-        if(min == 0 || min>a[i]){
-            min = a[i];
+    }
+}
+
+int allZero(int arr[], int n)
+{
+    int i, flag = 0;
+    for (i = 0; i < n; i++)
+    {
+        if (arr[i] != 0)
+        {
+            flag = 1;
+            return flag;
+            break;
         }
     }
-    printf("\nmin = %d",min);
+
+    return flag;
+}
+int mini(int arr[] , int n){
+    int min = arr[0];
+    for (int i = 1; i < n; i++)
+    {
+        if (arr[i] != 0 && (min == 0 || min > arr[i]))
+        {
+            min = arr[i];
+        }
+    }
+}
+
+int main()
+{
+    int SIZE,min;
+    printf("Enter the number of values you want to enter:\n");
+    scanf("%d", &SIZE);
+    int arr[SIZE];
+
+    printf("Enter the values:\n");
+    for (int i = 0; i < SIZE; i++)
+    {
+        scanf("%d", &arr[i]);
+    }
+
+    int flag,count=0;
+    while (1)
+    {
+        flag = allZero(arr, SIZE);
+        if (flag == 1)
+        {
+            count++;
+            min = mini(arr,SIZE);
+            printf("The minimum element is %d\n", min);
+
+            subtract(arr, SIZE, min);
+
+            printf("After subtraction:\n");
+            for (int i = 0; i < SIZE; i++)
+            {
+                printf("%d\n", arr[i]);
+            }
+        }
+        else
+        {
+            printf("\ntotal subtraction : %d\n", count);
+            break;
+
+        }
+}
+    return 0;
 }
 

@@ -11,6 +11,7 @@ int main(){
 
     int snum = 123 ,gnum ,bulls = 0 , cows = 0;
     int si,sj,sk ,gi,gj,gk;
+    
         cout<<"\nEnter num :";
         cin>>gnum;
         seperate(snum,si,sj,sk);

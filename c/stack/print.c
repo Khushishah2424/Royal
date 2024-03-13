@@ -18,7 +18,7 @@ void pop(){
     int temp;
     if(top == -1){
         printf("\nStack UnderFlow\n");
-    }
+    } 
     else{
         // temp = stack[top];
         printf("pop = %d",stack[top]);

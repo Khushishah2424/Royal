@@ -25,11 +25,24 @@
 
 **POLYMORPHISM**
 
-1.OVERLOADING:
+<!-- 1.OVERLOADING:
     If we create two or more members having the same name but different in number or type of parameter, it is known as C++ overloading. In C++, we can overload:
 
     Function overloading
-    Operator overloading
+    Operator overloading -->
+
+--> when we use virtual function in class then it is called as an **abtract class**
+--> when class has virtual function , we have to use in their child class
+--> if we wanter to create object of class then,we used as the object as pointer object
+
+
+**polymorphic object**:
+    parent class ref -  child clas object
+
+
+
+
+
 
 
 

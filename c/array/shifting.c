@@ -24,7 +24,7 @@ int main(){
         printf(" %d ",a[i]);
     }
     return 0;
-
+    }
 }
 
 // #include<stdio.h>
