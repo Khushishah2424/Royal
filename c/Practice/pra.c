@@ -19,11 +19,11 @@ void insert(int num){
             queue[r] = num;
         }
         else{
-        r++;
-        queue[r] = num;
-        if(f == -1){
-            f = 0;
-        }
+            r++;
+            queue[r] = num;
+            if(f == -1){
+                f = 0;
+            }
         }
     }
 }

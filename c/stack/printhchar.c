@@ -13,10 +13,9 @@ void push(char data){
         printf("\n OverFlow");;
         return;
     }
-    top ++;
+    top++;
     stack[top] = data;
-     
-
+    
 }//push
 
 void display(){
