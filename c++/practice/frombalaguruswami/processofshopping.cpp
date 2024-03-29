@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-const m = 50;
+const int m = 50;
 class ITEMS{
     int itemcode[m];
     float itemPrice[m];
@@ -10,7 +10,7 @@ class ITEMS{
     public:
     void CNT(void){count = 0;}
     void getitem(void);
-    void diplaySum(void);
+    void displaySum(void);
     void remove(void);
     void displayItems(void);
 
@@ -19,12 +19,12 @@ class ITEMS{
 void ITEMS:: getitem(void){
     cout<<"Enter items code :";
     cin>>itemcode[count];
-    cout<<"Enter items cost :";
+    cout<<"Enter items price :";
     cin>>itemPrice[count];
     count++;
 }
 
-void ITEMS::displayItems(void){
+void ITEMS::displaySum(void){
     float sum = 0;
     for(int i = 0 ; i < count ; i++){
         sum = sum  + itemPrice[i];
@@ -47,13 +47,13 @@ void ITEMS::remove(void){
 void ITEMS :: displayItems(void){
     cout<<"\nCode price\n";
     for(int i = 0 ; i < count ; i++){
-        cout<<"\n"<<itemcode[i];
-        cout<<"\n"<<itemPrice[i];
+        cout<<itemcode[i]<<" "<<itemPrice[i]<<"\n";
     }
     cout<<"\n";
 }
 
-int main(){
+int main()
+{
     ITEMS order;
     order.CNT();
     int x;
@@ -68,16 +68,18 @@ int main(){
         cout<<"\n5Quit";
         cout<<"\nWhat is your options ?";
         cin>>x;
-        
-    }
-    switch(x)
-    {
-        case 1 : order.getitem();break;
-        case 2 : order.diplaysum();break;
-        case 3 : order.remove();break;
-        case 4 : order.diplayItems();break;
-        case 5 : break;
-        default 
 
-    }
+        switch(x){
+        case 1 : order.getitem();break;
+        case 2 : order.displaySum();break;
+        case 3 : order.remove();break;
+        case 4 : order.displayItems();break;
+        case 5 : break;
+        default:
+            cout<<"wrong";
+
+       } 
+    } 
+    while(x!=5); 
+
 }
