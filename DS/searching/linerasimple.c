@@ -4,18 +4,14 @@
 int a[] = {3,40,56,34,67,89,100,300,10,5};
 void linearSearch(int key){
     int flag = 0;
-    for(int i = 0 ; i < SIZE/2;i++){
+    for(int i = 0 ; i < SIZE/2 ;i++){
         if(a[i] == key){
             flag = 1;
             printf("%d Found",key);
         }
     }
-    if(flag == 0){
-        printf("%d Not Found",key);
-    }
-
-    for(int i = SIZE ; i > SIZE/2;i--){
-        if(a[i] == key){
+    for(int j = SIZE-1 ; j > SIZE/2 ;j--){
+        if(a[j] == key){
             flag = 1;
             printf("%d Found",key);
         }
