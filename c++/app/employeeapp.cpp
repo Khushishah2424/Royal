@@ -65,15 +65,9 @@ int main(){
 
         cout<<"SALARY = ";
         cin>>salary;
-
-        do{
-            cout<<"GENDER = ";
-            cin>>gender;
-        }
-        while{
-            if(gender != 'male')
-        }
         
+        cout<<"GENDER = ";
+        cin>>gender;
 
         Employee e(id,name,age,salary,gender);
         emp[i] = e;
