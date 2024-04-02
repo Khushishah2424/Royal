@@ -1,9 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <script src="promise4.js"></script>
+    <title>Stop Car Animation</title>
+    <style>
+        body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Prevents scrolling */
+        }
+        .img {
+            height: 100%;
+            width: 100%;
+            position: relative;
+        }
+        .car1 {
+            margin: 0;
+            position: absolute;
+            height: 200px;
+            bottom: -100px; /* Adjusted to control vertical position */
+            animation-name: c1;
+            animation-timing-function: linear;
+            animation-duration: 5s; /* Adjust duration as needed */
+            animation-iteration-count: 1; /* Run only once */
+        }
+        @keyframes c1 {
+            from {
+                left: 0; /* Start from the left edge */
+            }
+            to {
+                left: calc(100% - 100px); /* Adjust so the car stops on the right. Change 200px to the actual width of your car image */
+            }
+        }
+    </style>
 </head>
 <body>
-    
+    <div>
+        <img src="https://5.imimg.com/data5/DT/QJ/WF/SELLER-53591706/petrol-pump-services-500x500.jpg" class="img" alt="Petrol Station">
+    </div>
+    <div>
+        <img src="https://www.hyundai.com/content/dam/hyundai/in/en/data/find-a-car/i20/Highlights/pc/i20_Modelpc.png" class="car1" alt="Car">
+    </div>
 </body>
 </html>
