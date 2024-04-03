@@ -1,46 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <title>Stop Car Animation</title>
     <style>
         body {
-            height: 100%;
-            width: 100%;
             margin: 0;
             padding: 0;
-            overflow: hidden; /* Prevents scrolling */
+            overflow: hidden; 
         }
         .img {
-            height: 100%;
-            width: 100%;
+            height: 900px;
+            width: 1500px;
             position: relative;
         }
         .car1 {
-            margin: 0;
+            margin: 80px 500px;
             position: absolute;
             height: 200px;
-            bottom: -100px; /* Adjusted to control vertical position */
-            animation-name: c1;
-            animation-timing-function: linear;
-            animation-duration: 5s; /* Adjust duration as needed */
-            animation-iteration-count: 1; /* Run only once */
+            bottom: -100px;  
         }
-        @keyframes c1 {
-            from {
-                left: 0; /* Start from the left edge */
-            }
-            to {
-                left: calc(100% - 100px); /* Adjust so the car stops on the right. Change 200px to the actual width of your car image */
-            }
+        @keyframes driveAway{
+        0%{
+            transform: translateX(0);
+            opacity: 1;
+         }
+        100%{
+            transform: translateX(70vw);
+            opacity: 1;
         }
+        }
+        .drive-away{
+             animation: driveAway 2s forwards;
+        }
+
+
+        
     </style>
 </head>
 <body>
     <div>
-        <img src="https://5.imimg.com/data5/DT/QJ/WF/SELLER-53591706/petrol-pump-services-500x500.jpg" class="img" alt="Petrol Station">
+        <img src="https://images.news18.com/ibnkhabar/uploads/2023/06/New-Petrol-Pump.jpg" class="img" alt="Petrol Station">
     </div>
     <div>
-        <img src="https://www.hyundai.com/content/dam/hyundai/in/en/data/find-a-car/i20/Highlights/pc/i20_Modelpc.png" class="car1" alt="Car">
+        <img src="https://www.hyundai.com/content/dam/hyundai/in/en/data/find-a-car/i20/Highlights/pc/i20_Modelpc.png" class="car1" onclick="car1click()" id="clickcar" alt="Car">
     </div>
 </body>
+<script src="promisepetrolcar.js"></script>
+
 </html>
