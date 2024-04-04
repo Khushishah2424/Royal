@@ -15,24 +15,41 @@
             position: relative;
         }
         .car1 {
-            margin: 80px 500px;
             position: absolute;
             height: 200px;
-            bottom: -100px;  
+            bottom: 0px; 
+            left: -250px;
+            animation: drive1In 3s forwards;
         }
-        @keyframes driveAway{
-        0%{
-            transform: translateX(0);
-            opacity: 1;
-         }
-        100%{
-            transform: translateX(70vw);
-            opacity: 1;
+        @keyframes drive1In{
+            0%{left: -250px;}
+            75%{left: 50%; transform: translateX(-50%);}
+            100%{left: 50%; transform: translateX(-50%);}
         }
+
+        @keyframes driveOut{
+            0%{left: 50%; transform: translateX(-50%);}
+            100%{left: 100%;}
         }
-        .drive-away{
-             animation: driveAway 2s forwards;
+
+        /* .car2{
+            position: absolute;
+            height: 200px;
+            bottom: 0px;
+            left: -50px;
+            animation: drive2In 3s forwards;
         }
+         @keyframes drive2In{
+             0%{left: -50px;}
+            75%{left: 50%; transform: translateX(-50%);}
+            100%{left: 50%; transform: translateX(-50%);}
+        }
+
+        @keyframes driveOut{
+            0%{left: 50%; transform: translateX(-50%);}
+            100%{left: 100%;}
+        }  */
+
 
 
         
@@ -44,6 +61,9 @@
     </div>
     <div>
         <img src="https://www.hyundai.com/content/dam/hyundai/in/en/data/find-a-car/i20/Highlights/pc/i20_Modelpc.png" class="car1" onclick="car1click()" id="clickcar" alt="Car">
+    </div>
+    <div>
+        <img src="https://www.hyundai.com/content/dam/hyundai/in/en/data/find-a-car/i20/Highlights/pc/i20_Modelpc.png" class="car2" onclick="car2click()" id="click2car" alt="Car">
     </div>
 </body>
 <script src="promisepetrolcar.js"></script>

@@ -9,7 +9,5 @@ int main(){
     change(x);
     cout<<"\n after change function call....";
     cout<<"\n value of x = "<<x;
-
-
-
+    
 }
