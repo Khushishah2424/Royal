@@ -3,11 +3,66 @@
 <head>
    <script src="stopwatch.js"></script>
 </head>
+<style>
+    body{
+        font-family: 'lato',sans-serif;
+        background-color: black;
+    }
+    .container{
+        text-align: center;
+        width: 440px;
+        /* border: 2px solid white; */
+        /* margin-top: -1%; */
+        margin-left: 35%;
+        padding: 10px;
+    }
+    .num{
+        display: flex;
+        color: white;
+        margin-left: 10%;
+    }
+    h2{
+        font-size: 60px;
+        margin-inline: 7px;
+    }
+    h1{
+        text-align: center;
+        color: white;
+        font-size: 40px;
+    }
+    button{
+        width: 120px;
+        height: 35px;
+        background-color: rgb(231,6,6);
+        color: white;
+        font-size: 24px;
+        border: none;
+        outline: none;
+        border-radius: 2px;
+        margin-inline: 8px;
+    }
+    button:hover{
+        border: 2px solid white;
+    }
+
+     
+</style>
 <body>
-    <div id="stopwatch">
-        <p id="time">00:00:00</p>
-        <button id="start">Start</button>
-        <button id="stop">Stop</button>
+    <h1>StopWatch</h1>
+    <div class="container">
+        <div class="num">
+            <h2 id="hr">00</h2>
+            <h2>::</h2>
+            <h2 id="min">00</h2>
+            <h2>::</h2>
+            <h2 id="sec">00</h2>
+        </div>
+        <div id="btn">
+            <button onclick="Start()">Start</button>
+            <button onclick="Stop()">Stop</button>
+            <button onclick="Reset()">Reset</button>
+        </div>
     </div>
+
 </body>
 </html>

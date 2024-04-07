@@ -6,31 +6,29 @@ function car1click(){
         car1Payment(car1data).then((data) => {
             alert(`Payment made for Car 1: ${data.price} for ${data.liter}`);
             document.getElementById("clickcar").style.animation = "driveOut 3s forwards";
+            document.getElementById("click2car").addEventListener("click",car2click)
+
         });
-
-        // function car2click(){
-        //     const click2car = document.getElementById("click2car");
-        //     car2().then((car2data)=>{
-        //         console.log("Car 2...", car2data);
-        //         alert("In process of filling petrol for car 2");
-        //         car2Payment((car2data)).then((data)=>{
-        //             alert(`Payment made for Car 2: ${data.price} for ${data.liter}`);
-        //         })
-    
-        //     })
-        // }
-
-
     });
 
- }
- setTimeout(()=>{
-    document.getElementById("clickcar").addEventListener("click",car1click)
-    // document.getElementById("click2car").addEventListener("click",car2click)
- },3000);
+ } 
+
+ function car2click(){
+    const click2car = document.getElementById("click2car");
+    car2().then((car2data)=>{
+        console.log("Car 2...", car2data);
+        alert("In process of filling petrol for car 2");
+        car2Payment((car2data)).then((data)=>{
+            alert(`Payment made for Car 2: ${data.price} for ${data.liter}`);
+            document.getElementById("clickcar").style.animation = "drive2Out 3s forwards";
+
+        })
+
+    })
+}
 
 
-
+document.getElementById("clickcar").addEventListener("click",car1click)
  
 const car1 = ()=>{
     return new Promise((resolve,reject)=>{
