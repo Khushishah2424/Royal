@@ -14,5 +14,4 @@ int main(){
     int ans = fact(num);
     printf("%d",ans);
 
-
 }
