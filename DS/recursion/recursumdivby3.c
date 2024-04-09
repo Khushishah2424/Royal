@@ -8,7 +8,7 @@ int sumdivby3(int num){
             return num + sumdivby3(num-1);
         }
         else{
-            return sumdivby3(num-1);
+            return 0+sumdivby3(num-1);
         }   
     }
     

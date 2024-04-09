@@ -1,4 +1,5 @@
 #include<iostream>
+#include<fstream>
 #include<string.h>
 using namespace std;
 
@@ -6,20 +7,22 @@ class Student{
     private:
     string name;
     int age;
-
     public:
     Student(string n , int a){
         name = n;
         age = a;
-
     }
 
     Student(){}
 
     void display(){
-        cout<<"Name : "<<name<<endl;
-        cout<<"Age : "<<age<<endl;
+        ofstream fout;
+        fout.open("app.txt");
+        fout<<"Name : "<<name<<endl;
+        fout<<"Age : "<<age<<endl;
+        fout.close();
     }
+
 
 };
 
@@ -42,8 +45,7 @@ int main(){
         cout<<"Enter age :";
         cin>>age;
 
-        Student s(name,age);
-        stu[i] = s;
+        stu[i] = Student(name,age);
 
     }
 
@@ -52,5 +54,6 @@ int main(){
         cout<<"\n Student "<<i+1<<endl;
         stu[i].display();
     }
+
     
 }

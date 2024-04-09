@@ -10,7 +10,6 @@ document.getElementById("modebtn").addEventListener("click",()=>{
         document.querySelector("body").classList.add("light");
         document.querySelector("body").classList.remove("dark");
         
-q
     }
     console.log(cmode);
 })
