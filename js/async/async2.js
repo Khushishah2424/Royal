@@ -13,7 +13,6 @@ const generatedSongs = ()=>{
     })
 }
 
-
 const creatplaylist = (songs)=>{
     console.log("Create Playlist");
     return new Promise((accept,reject)=>{
@@ -30,7 +29,7 @@ const playsongs = async ()=>{
     console.log("playsong called");
     const songs = await generatedSongs();
     console.log("songs == ",songs);
-    const playlist = await creatplaylist(songs);
+    const playlist = await creatplaylist(songs);    
     console.log("playlist",playlist);
 }
 playsongs();

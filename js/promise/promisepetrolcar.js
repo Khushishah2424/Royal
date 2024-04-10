@@ -6,8 +6,6 @@ function car1click(){
         car1Payment(car1data).then((data) => {
             alert(`Payment made for Car 1: ${data.price} for ${data.liter}`);
             document.getElementById("clickcar").style.animation = "driveOut 3s forwards";
-            document.getElementById("click2car").addEventListener("click",car2click)
-
         });
     });
 
@@ -27,8 +25,6 @@ function car1click(){
     })
 }
 
-
-document.getElementById("clickcar").addEventListener("click",car1click)
  
 const car1 = ()=>{
     return new Promise((resolve,reject)=>{
@@ -66,7 +62,7 @@ const car2 = ()=>{
                 liter : "2ltr",
                 price :200,
             })
-        },2000)
+        },7000)
     })
 }
 
@@ -80,9 +76,61 @@ const car2Payment = (car2data)=>{
                 price : car2data.price,
                 payment : "DONE",
             })
-        },3000)
+        },9000)
     })
 }
+
+// const Car1 = () => {
+//     console.log("Car 1 is coming...");
+
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             resolve();
+//         }, 5000); 
+//     });
+// };
+
+// const Car2 = () => {
+//     console.log("Car 2 is coming...");
+
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             resolve();
+//         }, 7000); 
+//     });
+// };
+
+// const petrol = () => {
+//     console.log("Filling petrol...");
+
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             console.log("Petrol filled");
+//             resolve();
+//         }, 3000); 
+//     });
+// };
+
+// const move = () => {
+
+//     Car1()
+//     .then(() => {
+//         return petrol();
+//     })
+//     .then(() => {
+//         console.log("Car 1 leaving");
+//         return Car2();
+//     })
+//     .then(() => {
+//         return petrol();
+//     })
+//     .then(() => {
+//         console.log("Car 2 leaving");
+//     })
+// };
+
+// move();
+
 
 
 
