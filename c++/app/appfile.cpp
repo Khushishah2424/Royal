@@ -21,14 +21,15 @@ class Student{
         fout<<"Name : "<<name<<endl;
         fout<<"Age : "<<age<<endl;
         fout.close();
-    }
+    } 
+
 
 
 };
 
 
 int main(){
-    int stucount;
+    int stucount;  
     cout<<"\n Enter the NUMBER of Student : ";
     cin>>stucount;
 
@@ -42,7 +43,7 @@ int main(){
         getline(cin,name);
 
         fflush(NULL);
-        cout<<"Enter age :";
+        cout<<"Enter age :";  
         cin>>age;
 
         stu[i] = Student(name,age);
@@ -54,6 +55,6 @@ int main(){
         cout<<"\n Student "<<i+1<<endl;
         stu[i].display();
     }
-
+   
     
 }

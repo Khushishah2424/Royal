@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="postapi.js"></script>
+</head>
+<body>
+    <form onsubmit="submithandler(event)">
+        <div>
+            <label>NAME</label>
+            <input type="name" id="name" placeholder="Enter Name">
+        </div>
+        <div>
+            <label>AGE</label>
+            <input type="number" id="age" placeholder="Enter Age">
+        </div>
+        <div>
+            <label>EMAIL</label>
+            <input type="email" id="email" placeholder="Enter Email">
+        </div>
+        <div>
+            <label>STATUS</label>
+            Active<input type="radio" id="status" name="status" value="active">
+            Inactive<input type="radio" id="status" name="status" value="inactive">
+        </div>
+        <div>
+            <input type="submit" value="submit">
+        </div>
+
+   </form>
+</body>
+</html>
