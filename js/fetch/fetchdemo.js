@@ -21,6 +21,7 @@ const getAPTdemo2 = async ()=>{
     console.log(res);
     console.log(data);
 
+    
 }
 
 const getAPIdemo3 = async ()=>{
