@@ -10,3 +10,4 @@ function no(){
     nobutton.innerHTML = "Please!!"
     nobutton.className = "NO";   
 }
+

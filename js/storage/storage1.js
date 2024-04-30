@@ -1,8 +1,7 @@
 function storedata(){
     localStorage.setItem("name","ajay");
     localStorage.setItem("token","asdfgd");
-
-
+    
     sessionStorage.setItem("name","raj");
 
 
