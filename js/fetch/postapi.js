@@ -28,4 +28,6 @@ const submithandler = (event)=>{
     }
     console.log(user);
     adduser(user);
+
+    
 }

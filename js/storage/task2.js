@@ -19,7 +19,7 @@ function Loginpage(){
     console.log(email)
     console.log(password)
 
-    var x = user.find((u)=>{
+    var x = user.find((u)=qq>{
         return u.email === email && u.password === password
     })
     console.log(x);

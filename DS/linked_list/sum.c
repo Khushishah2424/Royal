@@ -40,13 +40,26 @@ void display(){
 
 }
 
+void sum(){
+    struct node *p;
+    int sum = 0;
+    p = head;
+    while(p != NULL){
+            sum = sum + p->data;
+            p = p->next;
+    }
+     printf("\nsum = %d",sum);   
+    
+
+
+}
+
 int main(){
     addnote(100);
     addnote(200);
     addnote(300);
     // printf("%d %d %d",head->data,head->next->data,head->next->next->data);
     display();
-    addbeg(50);
-    display();
+    // sum();
     return 0;
 }
