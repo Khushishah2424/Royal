@@ -40,13 +40,43 @@ void display(){
 
 }
 
+void anywhere(int key,int n){
+    struct node *tmp,*p;
+    p = head;
+    while(p != NULL){
+        if(p->data == key){
+            break;
+        }
+        p=p->next;
+    }
+    if(p == NULL){
+        printf("Invalid key PTA");
+    }
+    else{
+        if(p == last){
+            addnote(n);
+        }
+        else{
+            tmp = malloc(sizeof(struct node));
+            tmp->data = n;
+            tmp->next = p->next;
+            p->next = tmp;
+        }
+    }
+
+}
+
 int main(){
     addnote(100);
     addnote(200);
     addnote(300);
+    addnote(400);
     // printf("%d %d %d",head->data,head->next->data,head->next->next->data);
+    // display();
+    // // addbeg(50);
+    // display();
+    anywhere(200,150);
     display();
-    addbeg(50);
-    display();
+
     return 0;
 }
