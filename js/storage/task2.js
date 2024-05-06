@@ -19,16 +19,16 @@ function Loginpage(){
     console.log(email)
     console.log(password)
 
-    var x = user.find((u)=qq>{
+    var x = user.find((u)=>{
         return u.email === email && u.password === password
     })
     console.log(x);
     if(x === undefined){
         alert("Unsuccesfull");
-        // document.cookie = email;
     }
     else{
         alert("log in");
+        document.cookie = email;
     }
 
 }
