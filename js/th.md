@@ -255,3 +255,12 @@ users =[
 
 
 if login success : sgtore user data in cookies
+
+**Ajax**
+-->ASYNCHRONOUS JAVASCRIPT AND XML
+-->It's avoid full page refresh
+-->Avoid unneessary page reload
+-->Object - XMLHTTPREQUEST
+var request = new XMLHTttpRequest();
+request.open("GET","URL");or "Filname","txtfile","jsonfile"
+request.send();
