@@ -1,6 +1,5 @@
 #include<stdio.h>
 #include<stdlib.h>
-
 struct node 
 {
     int data;
@@ -132,7 +131,7 @@ void max(){
 //     struct node *p;
 //     p = head;
 //     while(p!= NULL){
-//         if( p->data =  key){
+//         if( p->data =  key){  
 //             free(p);
 //         }
 
