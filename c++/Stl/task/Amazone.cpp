@@ -216,12 +216,12 @@ int main()
             break;
 
         case 3:
-            cout << "What product do you want to delete" << endl;
+            cout << "Which product do you want to delete" << endl;
             cin >> a.pName;
             a.deleteProduct(a.pName, products);
 
         case 4:
-            cout << "What product do you want to update" << endl;
+            cout << "Which product do you want to update" << endl;
             cin >> a.pName;
             a.updateProduct(a.pName, products);
 

@@ -20,7 +20,5 @@ const submithandler = (event) =>{
     event.preventDefault();
     const cityId = document.getElementById("cityId");
     weather(cityId.value);
-
-
 } 
 

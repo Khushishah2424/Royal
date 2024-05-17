@@ -31,7 +31,7 @@ void display(){
         printf("list is empty");
     }else{
         p = head;
-        printf("\n");
+        // printf("\n");
         while(p != NULL){
             printf("%d ",p->data);
             p = p->next;

@@ -13,6 +13,5 @@ int main(){
     for(int i:v1){
         cout<<i<<endl;
     }
-    
 
 }

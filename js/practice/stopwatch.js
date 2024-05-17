@@ -7,7 +7,6 @@ let timer = false;
 function Start(){
     timer = true;
     myfun();
-    
 }
 
 function Stop(){
