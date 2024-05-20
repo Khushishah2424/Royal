@@ -66,6 +66,7 @@ void anywhere(int key,int n){
 
 }
 
+
 int main(){
     addnote(100);
     addnote(200);
@@ -75,8 +76,9 @@ int main(){
     // display();
     // // addbeg(50);
     // display();
-    anywhere(200,150);
+    // anywhere(200,150);
     display();
+
 
     return 0;
 }
