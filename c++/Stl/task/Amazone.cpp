@@ -163,7 +163,7 @@ public:
         int price, quantity;
         cout << "Enter Product Name: " << endl;
         cin >>name;
-        cout << "Enter Product Price: " << endl;
+        cout << "Enter Product Price: " << endl;Q
         cin >>price;
         cout << "Enter Product Quantity: " << endl;
         cin >>quantity;
