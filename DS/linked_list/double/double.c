@@ -25,6 +25,8 @@ void addnote(int num){
     }
 }
 
+
+
 void display(){
     struct node *p;
     if(head == NULL){

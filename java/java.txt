@@ -1,0 +1,15 @@
+
+Java Installation:
+    1.JDK - Java Development kit
+            For running java program 
+    2.JRE - Java Runtime Enviorment 
+            Help in executing program
+    3.JVM - Java Virtual MAchine
+
+    1.Compilation:
+    Source Code - .java (save) --> Compiler (IN JDK) --> Covert into byte code(JRE) - .class(save)
+    2.Execution:
+    byte code --> JVM --> Native Language(computer lan - 0 and 1)
+
+
+Static -  Without creating an object we can execute our class

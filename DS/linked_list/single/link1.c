@@ -66,6 +66,38 @@ void anywhere(int key,int n){
 
 }
 
+void minmax(){
+    if(head == NULL){
+        printf("List is Empty");
+    }
+    struct node *p = head;
+    int min = p->data;
+
+    while(p != NULL){
+        if(p->data < min){
+            min = p->data;
+        }
+        p = p->next;
+    }
+    printf("Min = %d\n",min);
+
+
+    
+
+
+    int max = p->data;
+
+    while(p != NULL){
+        if(p->data > max){
+            max = p->data;
+        }
+        p = p->next;
+    }
+    printf("Max = %d\n",max);
+
+
+
+}
 
 int main(){
     addnote(100);
@@ -78,7 +110,9 @@ int main(){
     // display();
     // anywhere(200,150);
     display();
+    minmax();
 
 
     return 0;
 }
+
