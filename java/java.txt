@@ -13,3 +13,24 @@ Java Installation:
 
 
 Static -  Without creating an object we can execute our class
+
+
+theory:
+--> Any non-Static Method can be called only with class object if we are calling from static Method , but if we
+    want to call non-static method from non-static no need of object
+--> Any static method can be called with class name or Without class name inside
+ 
+
+
+*Instance Variable:
+    Instance Variable need not to intilized compulsory
+    Can not use non-static Instance Variable in Static Method
+    If Instance Variable is not assigned , then it will give default value
+    both Static and non-static Variable Instance Variable can be use in non-static Method
+    n copy will generate for non-static Instance Variable
+    Only one copy will generate for static Instance Variable
+
+
+*Local Variable:
+    Local Variable need to be intilized compulsory
+    Can not create Static Variable inside the main Method due to Heap and Stack concepts

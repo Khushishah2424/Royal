@@ -81,7 +81,7 @@ void minmax(){
     }
     printf("Min = %d\n",min);
 
-
+  
     
 
 
@@ -100,8 +100,8 @@ void minmax(){
 }
 
 int main(){
-    addnote(100);
-    addnote(200);
+    addnote(500);
+    addnote(20);
     addnote(300);
     addnote(400);
     // printf("%d %d %d",head->data,head->next->data,head->next->next->data);
