@@ -26,7 +26,6 @@ int main(){
 
    cout<<"is empty..."<<s.empty()<<endl;
 
-
   
 
 }
