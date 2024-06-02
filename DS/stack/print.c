@@ -20,7 +20,7 @@ void pop(){
         printf("\nStack UnderFlow\n");
     } 
     else{
-        // temp = stack[top];
+        temp = stack[top];
         printf("pop = %d",stack[top]);
         top--;
     }
@@ -52,7 +52,7 @@ void display()
 int main(){
     int num , choice , a;
     while(1){
-        printf("\n1 For push\n2 For pop\n3 For Peek\n4 For peep\n5 For display\n5 For exit");
+        printf("\n1 For push\n2 For pop\n3 For Peek\n4 For peep\n5 For display\n6 For exit");
         printf("\nEnter your Choice :\n");
         scanf("%d",&choice);
 

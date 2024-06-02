@@ -18,12 +18,12 @@ int main(){
         cout<<i<<endl;
     }
 
-    v1.insert(v1.begin()+2,"java");
-    cout<<"\n After inserting element at specific position"<<endl;
-    for(string i:v1){
-        cout<<i<<endl;
-    }
+    // v1.insert(v1.begin()+2,"java");
+    // cout<<"\n After inserting element at specific position"<<endl;
+    // for(string i:v1){
+    //     cout<<i<<endl;
+    // }
 
-     cout<<"Size of vector is "<<v1.size()<<endl;
+    //  cout<<"Size of vector is "<<v1.size()<<endl;
 
 }

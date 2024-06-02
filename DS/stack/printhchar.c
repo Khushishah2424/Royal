@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#define SIZE 5
+#define SIZE 6
 char stack[SIZE];
 int top = -1;
 
@@ -55,7 +55,7 @@ int main()
 {
     int choice;
     int i ;
-    char str[5];
+    char str[6];
     while(1)
     {
         printf("\n1 . push \n2. display \n3. POP \n4.Peek \nEnter Your Choice\n ");

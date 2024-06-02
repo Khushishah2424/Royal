@@ -73,7 +73,7 @@ int main()
     {
         cout << "\nEnter a name to a vector" << endl;
         cin >> s;
-num = isPalindrome(s);
+        num = isPalindrome(s);
 
         if(num==true)
         {
