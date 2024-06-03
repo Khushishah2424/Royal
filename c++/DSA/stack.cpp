@@ -13,7 +13,7 @@ class Stack{
     int peek();
     bool IsEmpty();
     void display();
-
+    int peep(int location);
 
 };
 bool Stack::push(int num){
@@ -23,7 +23,7 @@ bool Stack::push(int num){
     }
     else{
         a[++top] = num;
-        cout<<num<<"Pushed"<<endl;
+        cout<<num<<" Pushed"<<endl;
         return true;
     }
 }
@@ -56,20 +56,26 @@ void Stack::display(){
         }
     }
 }
-
+int Stack::peep(int location){
+    int index = top - location + 1;
+    if(index >=0 && index <= top){
+        cout<<a[index]<<endl;
+    }
+    return index;
+}
 
 
 int main(){
     int num,choice;
     class Stack s;
     while(1){
-         cout<<"1 For Push"<<endl<<"2 For pop"<<endl<<"3 For Peek"<<endl<<"4 For Display"<<endl<<"5 For Exit"<<endl;
+         cout<<"1 For Push"<<endl<<"2 For pop"<<endl<<"3 For Peek"<<endl<<"4 For Display"<<endl<<"5 For Peep"<<endl<<"6 For Exit"<<endl;
          cout<<"Enter Your choice : ";
          cin>>choice;
          switch (choice)
          {
          case 1:
-            cout<<"Enter the num : "<<endl;
+            cout<<"Enter the num : ";
             cin>>num;
             s.push(num);
             break;
@@ -87,6 +93,11 @@ int main(){
             break;
         case 4:
             s.display();
+            break;
+        case 5:
+            cout<<"Enter the num you want to peep :";
+            cin>>num;
+            s.peep(num);
             break;
         case 6:
             exit(0);

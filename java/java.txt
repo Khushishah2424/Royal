@@ -42,4 +42,4 @@ theory:
     we can use it by Making an object
     for taking an input we use System.in  as an Argument--> Inputstream --> console
     out  = printstream
-    in = inputstream
+    in = inputstreamqq
