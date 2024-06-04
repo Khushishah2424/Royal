@@ -1,10 +1,10 @@
-#include<iostream>
-using namespace std;
+#include<stdio.h>
+#include<stdlib.h>
 #define SIZE 5
 
 int queue[SIZE];
-int f = -1;
-int r = -1;
+int f = -1;//Front
+int r = -1;//Rare
 
 void insert(int num){
     if(r == SIZE - 1 && f == 0 ){
@@ -25,8 +25,7 @@ void insert(int num){
                 f = 0;
          }
        }
-    }
-    
+    } 
 }
 
 void display(){
@@ -85,9 +84,8 @@ int main(){
     case 3:
         removeq();
         break;
-    case 0:
-        exit(0);
-
+    case 4:
+        exit(1);
     default:
         break;
     }

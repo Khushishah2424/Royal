@@ -36,7 +36,7 @@ int main(){
     struct node *root = NULL;
     root = addnote(root,10);
     addnote(root,23);
-    addnote(root,2);
+    addnote(root,1);
     printf("%d %d %d",root->data,root->left->data,root->right->data);
     return 0;
 }

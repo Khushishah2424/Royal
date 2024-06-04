@@ -54,13 +54,13 @@ double
 
 2.Queue:
     A Queue is a linear data structures that follows the fifo method that is first in first out.
+    
 
     Enqueue(Insert) - add
     Dequeue(Remove) - Delete
     Peek - returns the elements at the front of the queue without removing it
     Empty - checks if the queue is empty or not
     Full - checks if the queue is full or not
-    q
 
     
 
