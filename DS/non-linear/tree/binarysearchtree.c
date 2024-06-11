@@ -31,12 +31,71 @@ struct node* addnote(struct node *root,int data){
     }
     return root;
 }
+void Inorder(struct node *root){
+    if(root != NULL){
+    Inorder(root->left);
+    printf(" %d",root->data);
+    Inorder(root->right);
+    // printf("%d",root->data);
+    }
+}
+
+void Preorder(struct node *root){
+    if(root != NULL){
+        printf(" %d",root->data);
+        Preorder(root->left);
+        Preorder(root->right);
+    }
+}
+
+void Postorder(struct node *root){
+    if(root != NULL){
+       Postorder(root->left);
+       Postorder(root->right);
+       printf(" %d",root->data);
+    }
+}
+
+
+// void Max(struct node *root){
+//     if(root == NULL){
+//         return;
+//     }
+//     else if(root->right == NULL){
+//         printf("%d = Max",root->data);
+//     }
+//     else{
+
+//     }
+// }
+
+void search(struct node *root,int key){
+    if(root == NULL){
+        printf("\n%d Not Found",key);
+    }
+    else if(root->data == key){
+        printf("\n%d Found",key);
+    }
+    else if(key > root->data){
+        search(root->right,key);
+    }
+    else{
+        search(root->left,key);
+    }
+}
 
 int main(){
     struct node *root = NULL;
     root = addnote(root,10);
     addnote(root,23);
     addnote(root,1);
-    printf("%d %d %d",root->data,root->left->data,root->right->data);
+    // printf("%d %d %d",root->data,root->left->data,root->right->data);
+    // Inorder(root);
+    // Preorder(root);
+    // Postorder(root);
+    search(root,10);
+    search(root,120);
+    search(root,23);  
+    // Max(root);
     return 0;
 }

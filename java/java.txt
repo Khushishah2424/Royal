@@ -26,7 +26,7 @@ theory:
     Instance Variable need not to intilized compulsory
     If Instance Variable is not assigned , then it will give default value
     Can not use non-static Instance Variable in Static Method
-    both Static and non-static Variable Instance Variable can be use in non-static Method
+    both Static and non-static Instance Variable can be use in non-static Method
     n copy will generate for non-static Instance Variable
     Only one copy will generate for static Instance Variable
     
@@ -42,4 +42,58 @@ theory:
     we can use it by Making an object
     for taking an input we use System.in  as an Argument--> Inputstream --> console
     out  = printstream
-    in = inputstreamqq
+    in = inputstream
+
+
+
+*OOPS
+1. Encapsulation:
+    1.Counstrutor:-
+        Same name As class name
+        Types:
+        1.default
+        2.parameter
+    To Intialize Instance Variable
+
+    2.Data Hiding:
+        1.Accsess 
+            Private
+            Default
+            Protected
+            Public
+        2.Non-Accsess Modifier
+            Static
+            Final:
+                Final = constant
+                If we assigned the value using final class then it can not be reassinged
+                Final CLass can not be inherited
+
+2. Inheritance:
+    A child class Can Accsess the Property of Parent class
+    We can connect class with Extends Keyword.
+
+*Construtor With Inheritanc:
+1.
+        parent has Default Construtor
+        Child has Default Construtor 
+
+    Then First parent class then child class Property will execute
+
+2.
+        parent has parameterized Construtor
+        child has parameterized Construtor
+    
+    Then if We want Accsess the the Property of parent Then in child class we have to use super(pass parameter)keyword.
+
+3.       
+        parent has parameterized Construtor
+         parent has also Default Construtor
+
+          child has parameterized Construtor
+             Child has Default Construtor 
+
+    then super keypword is not compulsory to execute parent Protected.
+
+
+
+
