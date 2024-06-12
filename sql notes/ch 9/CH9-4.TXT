@@ -1,0 +1,143 @@
+SQL> 
+SQL> REM COMMIT ROLLBACK SAVEPOINT
+SQL> 
+SQL> REM INSERT UPDATE DELETE
+SQL> 
+SQL> REM DROP TRUNCATE PURGE FLASHBACK
+SQL> 
+SQL> REM SHOW RECYCLEBIN
+SQL> 
+SQL> REM VERSIONS QUERY : 1 AS OF TIMESTAMP 2 TIMESTAMP BETWEEN MINVALUE AND MAXVALUE
+SQL> 
+SQL> 
+SQL> REM ALTER TABLE TN ENABLE/DISABLE ROW MOVEMENT
+SQL> 
+SQL> REM FLASHBACK ... TO TIMESTAMP : TO UNCOMMIT THE COMMITTED TRANSACTION
+SQL> 
+SQL> REM FLASHBACK ... TO BEFORE DROP : TO UNDROP THE DROPPED TABLE FROM RECYCLEBIN
+SQL> 
+SQL> 
+SQL> 
+SQL> REM CONCEPTS : 1 READ CONSISTENCY 2 CONCURRENCY 3 LOCKING 4 DEAD LOCK SITUATION
+SQL> 
+SQL> 
+SQL> 
+SQL> REM SESSION : THE TIME PERIOD BETWEEN LOG-IN AND LOG-OUT IS CALLED SESSION
+SQL> 
+SQL> 
+SQL> REM READ CONSISTENCY : ANY DML CHANGES DONE IN A SESSION IS NOT VISIBLE TO OTHER SESSIONS, UNTIL IT IS COMMITTED.
+SQL> 
+SQL> REM CONCURRENCY : MULTIPLE SESSIONS CAN PERFORM DML OPERATIONS ON SAME TABLE , AT THE SAME TIME BUT ON DIFFERENT SET OF ROWS.
+SQL> 
+SQL> REM LOCKING : WHEN WE PEFORM DML OPERATION ON TABLE, THE AFFECTED ROWS ARE LOCKED FOR OTHER SESSIONS. OTHER SESIONS CAN'T PERFORM DML UNTIL LOCKS ARE RELEASED.
+SQL> 
+SQL> REM IF OTHER SESSIONS TRY TO PERFORM DML OPERATIONS ON LOCKED ROWS, THE SESSION WILL GO IN WAIT STATE. I.E. SESSION WILL NOT GET SQL> PROMPT.
+SQL> 
+SQL> REM LOCKS ON ROWS ARE RELEASED WHEN TRANSACTION IS PARTIALLY OR FULLY COMPLETED.
+SQL> 
+SQL> REM DEAD LOCK SITUATION : WHEN TWO SESSIONS WAIT FOR EACH OTHER.
+SQL> 
+SQL> SELECT * FROM R1;
+
+       RID RNM                                                                                                                                                                                          
+---------- --------------------                                                                                                                                                                         
+         1 ACC                                                                                                                                                                                          
+
+SQL> DROP TABLE R1;
+DROP TABLE R1
+           *
+ERROR at line 1:
+ORA-02449: unique/primary keys in table referenced by foreign keys 
+
+
+SQL> DROP TABLE R1 CASCADE CONSTRAINTS;
+
+Table dropped.
+
+SQL> CREATE TABLE R1 AS SELECT * FROM REGIONS;
+
+Table created.
+
+SQL> SELECT * FROM R1;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 Europe                                                                                                                                                                                       
+         2 Americas                                                                                                                                                                                     
+         3 Asia                                                                                                                                                                                         
+         4 Middle East and Africa                                                                                                                                                                       
+
+SQL> REM READ CONSISTENCY : ANY DML CHANGES DONE IN A SESSION IS NOT VISIBLE TO OTHER SESSIONS, UNTIL IT IS COMMITTED.
+SQL> 
+SQL> UPDATE R1 SET REGION_NAME = UPPER(REGION_NAME) WHERE REGION_ID = 1;
+
+1 row updated.
+
+SQL> SELECT * FROM R1;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 EUROPE                                                                                                                                                                                       
+         2 Americas                                                                                                                                                                                     
+         3 Asia                                                                                                                                                                                         
+         4 Middle East and Africa                                                                                                                                                                       
+
+SQL> SELECT * FROM R1;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 EUROPE                                                                                                                                                                                       
+         2 Americas                                                                                                                                                                                     
+         3 Asia                                                                                                                                                                                         
+         4 Middle East and Africa                                                                                                                                                                       
+
+SQL> UPDATE R1 SET REGION_NAME = UPPER(REGION_NAME) WHERE REGION_ID = 2;
+
+1 row updated.
+
+SQL> ROLLBACK;
+
+Rollback complete.
+
+SQL> UPDATE R1 SET REGION_NAME = UPPER(REGION_NAME) WHERE REGION_ID = 1;
+
+1 row updated.
+
+SQL> UPDATE R1 SET REGION_NAME = UPPER(REGION_NAME) WHERE REGION_ID = 2;
+UPDATE R1 SET REGION_NAME = UPPER(REGION_NAME) WHERE REGION_ID = 2
+                                  *
+ERROR at line 1:
+ORA-00060: deadlock detected while waiting for resource 
+
+
+SQL> SELECT * FROM R1;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 EUROPE                                                                                                                                                                                       
+         2 Americas                                                                                                                                                                                     
+         3 Asia                                                                                                                                                                                         
+         4 Middle East and Africa                                                                                                                                                                       
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> UPDATE R1 SET REGION_NAME = UPPER(REGION_NAME) WHERE REGION_ID = 2;
+
+1 row updated.
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> SELECT * FROM R1;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 EUROPE                                                                                                                                                                                       
+         2 AMERICAS                                                                                                                                                                                     
+         3 Asia                                                                                                                                                                                         
+         4 Middle East and Africa                                                                                                                                                                       
+
+SQL> SPOOL OFF

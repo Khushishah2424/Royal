@@ -1,0 +1,179 @@
+SQL> 
+SQL> REM CREATE TABLE :
+SQL> 
+SQL> REM CREATE TABLE : WE CAN CREATE TABLE IN TWO STYLES :
+SQL> 
+SQL> REM CREATE TABLE : WE CAN CREATE TABLE IN TWO STYLES : 1 FROM SCRATCH 2 USING sub query
+SQL> 
+SQL> REM SYNTAX FOR CREATING TABLE FROM SCRATCH : CREATE TABLE tablename (colunmname datatype(size) DEFAULT defaultvalue column_level_constraints, ... , table_level_constraints , ... );
+SQL> 
+SQL> REM ORACLE SUPPORTS NAMING IN TWO STYLES : 1 CASE INSENSITIVE (DEFAULT, WIDELY USED) 2 CASE SENSITIVE (RARELY USED)
+SQL> 
+SQL> 
+SQL> 
+SQL> REM RULES FOR CASE SENSITIVE NAMING :
+SQL> 
+SQL> REM 1 MIN 1 CHARACTER , MAXIMUM 30 CHARACTERS (11G VERSION) , MAX 128 CHARACTER (12C VERSION ONWARDS)
+SQL> 
+SQL> REM 2 FIRST CHARACTER MUST BE ALPHABET
+SQL> 
+SQL> REM 3 REMAINING CHARACTERS MAY BE ALPHABETS , DIGITS OR ANY OF THE 3 SPECIAL CHARACTERS _ # $
+SQL> 
+SQL> REM 4 WE CAN'T USE SAME TABLE NAME UNDER SAME USER/SCHEMA.
+SQL> 
+SQL> REM 5 WE CAN'T USE ORACLE/SQL KEY/RESERVE WORD AS TABLE NAME, BUT IT MAY BE PART OR COMBINATIONS.
+SQL> 
+SQL> 
+SQL> 
+SQL> REM 1 ABC    2 123    3 _#$     4 ABC123    5 ABC123_#$    6 REGIONS   7 PURGE     8 MODIFY     9 EMPLOYEE    10 DAUL
+SQL> 
+SQL> REM 1 TRUE   2 FALSE  3 FALSE   4 TRUE      5 TRUE         6 FALSE     7 FALSE     8 FALSE      9 TRUE        10 TRUE
+SQL> 
+SQL> 
+SQL> 
+SQL> REM RULES FOR CASE SENSITIVE NAMING :
+SQL> 
+SQL> REM 1 MINIMUM 1 CHARACTER AND MAXIMUM 30 CHARACTERS (UPTO ORACLE 11G) , MAXIMUM 128 CHARACTERS FROM ORACLE 12C VERSION
+SQL> 
+SQL> REM 2 WE CAN START NAME WITH ANY CHARACTER
+SQL> 
+SQL> REM 3 REMAINING CHARACTERS MAY BE ALPHABETS , DIGITS OR ANY SPECIAL CHARACTERS ( EXCEPT : " , &)
+SQL> 
+SQL> REM 4 WE CAN USE IDENTICAL NAME UNDER SAME USER/SCHEMA WITH DIFFERENT CASE. : "Regions"   "REgions"   "REGions" ...
+SQL> 
+SQL> REM 5 WE CAN USE ORACLE/SQL KEY/RESERVE WORD AS TABLE NAME.
+SQL> 
+SQL> REM 6 WE MUST DELIMIT/QUOTE THE NAME WITH DOUBLE QUOTES.
+SQL> 
+SQL> REM 7 WHILE REFERRING THE NAME, WE MUST USE 1 DOUBLE QUOTE 2 SAME SPELLING 3 SAME CASE 4 SAME SPACING
+SQL> 
+SQL> 
+SQL> REM 1 "123ABC"    2 "ABC_#$'   3 '123!@#"    4 "Select"     5 "Regions"
+SQL> 
+SQL> REM 1 TRUE        2 FALSE      3 FALSE       4 TRUE         5 TRUE
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> REM EXAMPLE OF CASE INSENSITIVE NAMING
+SQL> 
+SQL> CREATE TABLE TUO(NO NUMBER);
+
+Table created.
+
+SQL> INSERT INTO tUO VALUES (10);
+
+1 row created.
+
+SQL> INSERT INTO tUo VALUES (20);
+
+1 row created.
+
+SQL> SELECT * FROM tuO;
+
+        NO                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+        10                                                                                                                                                                                              
+        20                                                                                                                                                                                              
+
+SQL> REM EXAMPLE OF CASE SENSITIVE NAMING
+SQL> 
+SQL> CREATE TABLE "Qru" (d date);
+
+Table created.
+
+SQL> INSERT INTO Qru VALUES (SYSDATE);
+INSERT INTO Qru VALUES (SYSDATE)
+            *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> INSERT INTO 'Qru' VALUES (SYSDATE);
+INSERT INTO 'Qru' VALUES (SYSDATE)
+            *
+ERROR at line 1:
+ORA-00903: invalid table name 
+
+
+SQL> INSERT INTO "Qru" VALUES (SYSDATE);
+
+1 row created.
+
+SQL> INSERT INTO "QRu" VALUES (SYSDATE-1);
+INSERT INTO "QRu" VALUES (SYSDATE-1)
+            *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> SELECT * FROM "Qru";
+
+D                                                                                                                                                                                                       
+---------                                                                                                                                                                                               
+11-JUN-24                                                                                                                                                                                               
+
+SQL> SELECT LOCALTIMESTAMP FROM DUAL;
+
+LOCALTIMESTAMP                                                                                                                                                                                          
+---------------------------------------------------------------------------                                                                                                                             
+11-JUN-24 05.37.43.444000 PM                                                                                                                                                                            
+
+SQL> /
+
+LOCALTIMESTAMP                                                                                                                                                                                          
+---------------------------------------------------------------------------                                                                                                                             
+11-JUN-24 05.37.51.323000 PM                                                                                                                                                                            
+
+SQL> /
+
+LOCALTIMESTAMP                                                                                                                                                                                          
+---------------------------------------------------------------------------                                                                                                                             
+11-JUN-24 05.37.51.522000 PM                                                                                                                                                                            
+
+SQL> /
+
+LOCALTIMESTAMP                                                                                                                                                                                          
+---------------------------------------------------------------------------                                                                                                                             
+11-JUN-24 05.37.51.722000 PM                                                                                                                                                                            
+
+SQL> /
+
+LOCALTIMESTAMP                                                                                                                                                                                          
+---------------------------------------------------------------------------                                                                                                                             
+11-JUN-24 05.37.51.899000 PM                                                                                                                                                                            
+
+SQL> /
+
+LOCALTIMESTAMP                                                                                                                                                                                          
+---------------------------------------------------------------------------                                                                                                                             
+11-JUN-24 05.37.52.074000 PM                                                                                                                                                                            
+
+SQL> /
+
+LOCALTIMESTAMP                                                                                                                                                                                          
+---------------------------------------------------------------------------                                                                                                                             
+11-JUN-24 05.37.52.258000 PM                                                                                                                                                                            
+
+SQL> /
+
+LOCALTIMESTAMP                                                                                                                                                                                          
+---------------------------------------------------------------------------                                                                                                                             
+11-JUN-24 05.37.52.442000 PM                                                                                                                                                                            
+
+SQL> /
+
+LOCALTIMESTAMP                                                                                                                                                                                          
+---------------------------------------------------------------------------                                                                                                                             
+11-JUN-24 05.37.52.626000 PM                                                                                                                                                                            
+
+SQL> /
+
+LOCALTIMESTAMP                                                                                                                                                                                          
+---------------------------------------------------------------------------                                                                                                                             
+11-JUN-24 05.37.52.794000 PM                                                                                                                                                                            
+
+SQL> REM V$TIMEZONE_NAMES
+SQL> 
+SQL> SPOOL OFF

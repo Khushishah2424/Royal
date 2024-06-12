@@ -1,0 +1,1042 @@
+SQL> 
+SQL> REM TCL : COMMIT ROLLBACK SAVEPOINT
+SQL> 
+SQL> REM DML : INSERT UPDATE DELETE
+SQL> 
+SQL> REM DML : BEFORE COMMIT WE CAN ROLLBACK/UNDO IT.
+SQL> 
+SQL> REM DML : AFTER COMMIT WE CAN UNCOMMIT USING FLASHBACK TABLE COMMAND.
+SQL> 
+SQL> SELECT * FROM R1;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 EUROPE                                                                                                                                                                                       
+         2 AMERICAS                                                                                                                                                                                     
+         3 ASIA                                                                                                                                                                                         
+         4 MIDDLE EAST AND AFRICA                                                                                                                                                                       
+
+SQL> DELETE R1 WHERE REGION_ID = 4;
+
+1 row deleted.
+
+SQL> SELECT * FROM R1;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 EUROPE                                                                                                                                                                                       
+         2 AMERICAS                                                                                                                                                                                     
+         3 ASIA                                                                                                                                                                                         
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> SELECT * FROM R1;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 EUROPE                                                                                                                                                                                       
+         2 AMERICAS                                                                                                                                                                                     
+         3 ASIA                                                                                                                                                                                         
+
+SQL> ROLLBACK;
+
+Rollback complete.
+
+SQL> SELECT * FROM R1;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 EUROPE                                                                                                                                                                                       
+         2 AMERICAS                                                                                                                                                                                     
+         3 ASIA                                                                                                                                                                                         
+
+SQL> REM VERSIONS QUERY : TO GET OLDER VERSIONS/BEFORE COMMIT IMAGE OF TABLE.
+SQL> 
+SQL> REM TYPES OF VERSION QUERY : 1 TIMESTAMP BETWEEN MINVALUE AND MAXVALUE 2 AS OF TIMESTAMP
+SQL> 
+SQL> REM 1 TIMESTAMP BETWEEN MINVALUE AND MAXVALUE : TO SEE MULTIPLE OLDER VERSIONS OF THE TABLE
+SQL> 
+SQL> REM 2 AS OF TIMESTAMP : TO SEE SINGLE OLDER VERSION OF THE TABLE AT SPECIFIC TIME
+SQL> 
+SQL> SELECT * FROM R1;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 EUROPE                                                                                                                                                                                       
+         2 AMERICAS                                                                                                                                                                                     
+         3 ASIA                                                                                                                                                                                         
+
+SQL> SELECT * FROM R1 VERSIONS BETWEEN TIMESTAMP MINVALUE AND VALUE;
+SELECT * FROM R1 VERSIONS BETWEEN TIMESTAMP MINVALUE AND VALUE
+                                                         *
+ERROR at line 1:
+ORA-00904: "VALUE": invalid identifier 
+
+
+SQL> SELECT * FROM R1 VERSIONS BETWEEN TIMESTAMP MINVALUE AND MAXVALUE;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         4 MIDDLE EAST AND AFRICA                                                                                                                                                                       
+         1 EUROPE                                                                                                                                                                                       
+         2 AMERICAS                                                                                                                                                                                     
+         3 ASIA                                                                                                                                                                                         
+         4 MIDDLE EAST AND AFRICA                                                                                                                                                                       
+
+SQL> SELECT * FROM R1 AS OF TIMESTAMP SYSTIMESTAMP - INTERVAL '1' MINUTE;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 EUROPE                                                                                                                                                                                       
+         2 AMERICAS                                                                                                                                                                                     
+         3 ASIA                                                                                                                                                                                         
+
+SQL> SELECT * FROM R1 AS OF TIMESTAMP SYSTIMESTAMP - INTERVAL '2' MINUTE;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 EUROPE                                                                                                                                                                                       
+         2 AMERICAS                                                                                                                                                                                     
+         3 ASIA                                                                                                                                                                                         
+
+SQL> SELECT * FROM R1 AS OF TIMESTAMP SYSTIMESTAMP - INTERVAL '3' MINUTE;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 EUROPE                                                                                                                                                                                       
+         2 AMERICAS                                                                                                                                                                                     
+         3 ASIA                                                                                                                                                                                         
+
+SQL> SELECT * FROM R1 AS OF TIMESTAMP SYSTIMESTAMP - INTERVAL '4' MINUTE;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 EUROPE                                                                                                                                                                                       
+         2 AMERICAS                                                                                                                                                                                     
+         3 ASIA                                                                                                                                                                                         
+
+SQL> SELECT * FROM R1 AS OF TIMESTAMP SYSTIMESTAMP - INTERVAL '5' MINUTE;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 EUROPE                                                                                                                                                                                       
+         2 AMERICAS                                                                                                                                                                                     
+         3 ASIA                                                                                                                                                                                         
+
+SQL> SELECT * FROM R1 AS OF TIMESTAMP SYSTIMESTAMP - INTERVAL '6' MINUTE;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 EUROPE                                                                                                                                                                                       
+         2 AMERICAS                                                                                                                                                                                     
+         3 ASIA                                                                                                                                                                                         
+         4 MIDDLE EAST AND AFRICA                                                                                                                                                                       
+
+SQL> SELECT SYSDATE , SYSTIMESTAMP FROM DUAL;
+
+SYSDATE                 SYSTIMESTAMP                                                                                                                                                                    
+----------------------- ---------------------------------------------------------------------------                                                                                                     
+04-JUN-2024 04:40.40 PM 04-JUN-24 04.40.40.177000 PM +05:30                                                                                                                                             
+
+SQL> CONN / AS SYSDBA
+ERROR:
+ORA-01017: invalid username/password; logon denied 
+
+
+Warning: You are no longer connected to ORACLE.
+SQL> CONN sys as sysdba
+Connected.
+SQL> SELECT TABLESPACE_NAME FROM DBA_TABLESPACES;
+
+TABLESPACE_NAME                                                                                                                                                                                         
+------------------------------                                                                                                                                                                          
+SYSTEM                                                                                                                                                                                                  
+SYSAUX                                                                                                                                                                                                  
+UNDOTBS1                                                                                                                                                                                                
+TEMP                                                                                                                                                                                                    
+USERS                                                                                                                                                                                                   
+
+SQL> DESC DBA_DATA_FILES
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ FILE_NAME                                                                                                                  VARCHAR2(513)
+ FILE_ID                                                                                                                    NUMBER
+ TABLESPACE_NAME                                                                                                            VARCHAR2(30)
+ BYTES                                                                                                                      NUMBER
+ BLOCKS                                                                                                                     NUMBER
+ STATUS                                                                                                                     VARCHAR2(9)
+ RELATIVE_FNO                                                                                                               NUMBER
+ AUTOEXTENSIBLE                                                                                                             VARCHAR2(3)
+ MAXBYTES                                                                                                                   NUMBER
+ MAXBLOCKS                                                                                                                  NUMBER
+ INCREMENT_BY                                                                                                               NUMBER
+ USER_BYTES                                                                                                                 NUMBER
+ USER_BLOCKS                                                                                                                NUMBER
+ ONLINE_STATUS                                                                                                              VARCHAR2(7)
+ LOST_WRITE_PROTECT                                                                                                         VARCHAR2(7)
+
+SQL> SELECT FILE_NAME FROM DBA_DATA_FILES WHERE TABLESPACE_NAME = 'UNDOTBS1';
+
+FILE_NAME                                                                                                                                                                                               
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+D:\APP\ROYAL\ORADATA\ORCL\UNDOTBS01.DBF                                                                                                                                                                 
+
+SQL> RUN DIR D:\APP\ROYAL\ORADATA\ORCL\UNDOTBS01.DBF
+  1* SELECT FILE_NAME FROM DBA_DATA_FILES WHERE TABLESPACE_NAME = 'UNDOTBS1'
+
+FILE_NAME                                                                                                                                                                                               
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+D:\APP\ROYAL\ORADATA\ORCL\UNDOTBS01.DBF                                                                                                                                                                 
+
+SQL> RUN DIR D:\APP\ROYAL\ORADATA\ORCL\UNDOTBS01.DBF /S
+  1* SELECT FILE_NAME FROM DBA_DATA_FILES WHERE TABLESPACE_NAME = 'UNDOTBS1'
+
+FILE_NAME                                                                                                                                                                                               
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+D:\APP\ROYAL\ORADATA\ORCL\UNDOTBS01.DBF                                                                                                                                                                 
+
+SQL> RUN DIR/?
+  1* SELECT FILE_NAME FROM DBA_DATA_FILES WHERE TABLESPACE_NAME = 'UNDOTBS1'
+
+FILE_NAME                                                                                                                                                                                               
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+D:\APP\ROYAL\ORADATA\ORCL\UNDOTBS01.DBF                                                                                                                                                                 
+
+SQL> !DIR /?
+SP2-0042: unknown command "!DIR /?" - rest of line ignored.
+SQL> 
+SQL> CONN SCOTT/TIGER
+Connected.
+SQL> SELECT * FROM R1;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 EUROPE                                                                                                                                                                                       
+         2 AMERICAS                                                                                                                                                                                     
+         3 ASIA                                                                                                                                                                                         
+
+SQL> DELETE R1 WHERE REGION_ID = 3;
+
+1 row deleted.
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> SELECT * FROM R1;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 EUROPE                                                                                                                                                                                       
+         2 AMERICAS                                                                                                                                                                                     
+
+SQL> ROLLBACK;
+
+Rollback complete.
+
+SQL> 
+SQL> SELECT * FROM R1;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 EUROPE                                                                                                                                                                                       
+         2 AMERICAS                                                                                                                                                                                     
+
+SQL> SELECT * FROM R1 AS OF TIMESTAMP SYSTIMESTAMP - INTERVAL '1' MINUTE;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 EUROPE                                                                                                                                                                                       
+         2 AMERICAS                                                                                                                                                                                     
+         3 ASIA                                                                                                                                                                                         
+
+SQL> SELECT * FROM R1 AS OF TIMESTAMP SYSTIMESTAMP - INTERVAL '10' MINUTE;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 EUROPE                                                                                                                                                                                       
+         2 AMERICAS                                                                                                                                                                                     
+         3 ASIA                                                                                                                                                                                         
+
+SQL> SELECT * FROM R1 AS OF TIMESTAMP SYSTIMESTAMP - INTERVAL '15' MINUTE;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 EUROPE                                                                                                                                                                                       
+         2 AMERICAS                                                                                                                                                                                     
+         3 ASIA                                                                                                                                                                                         
+
+SQL> SELECT * FROM R1 AS OF TIMESTAMP SYSTIMESTAMP - INTERVAL '20' MINUTE;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 EUROPE                                                                                                                                                                                       
+         2 AMERICAS                                                                                                                                                                                     
+         3 ASIA                                                                                                                                                                                         
+         4 MIDDLE EAST AND AFRICA                                                                                                                                                                       
+
+SQL> FALSHBACK TABLE R1 TO TIMESTAMP SYSTIMESTAMP - INTERVAL '20' MINUTE;
+SP2-0734: unknown command beginning "FALSHBACK ..." - rest of line ignored.
+SQL> 
+SQL> FLASHBACK TABLE R1 TO TIMESTAMP SYSTIMESTAMP - INTERVAL '20' MINUTE;
+FLASHBACK TABLE R1 TO TIMESTAMP SYSTIMESTAMP - INTERVAL '20' MINUTE
+                *
+ERROR at line 1:
+ORA-08189: cannot flashback the table because row movement is not enabled 
+
+
+SQL> ALTER TABLE R1 ENABLE ROW MOVEMENT;
+
+Table altered.
+
+SQL> FALSHBACK TABLE R1 TO TIMESTAMP SYSTIMESTAMP - INTERVAL '20' MINUTE;
+SP2-0734: unknown command beginning "FALSHBACK ..." - rest of line ignored.
+SQL> 
+SQL> SELECT * FROM R1 AS OF TIMESTAMP SYSTIMESTAMP - INTERVAL '20' MINUTE;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 EUROPE                                                                                                                                                                                       
+         2 AMERICAS                                                                                                                                                                                     
+         3 ASIA                                                                                                                                                                                         
+         4 MIDDLE EAST AND AFRICA                                                                                                                                                                       
+
+SQL> FLASHBACK TABLE R1 TO TIMESTAMP SYSTIMESTAMP - INTERVAL '20' MINUTE;
+
+Flashback complete.
+
+SQL> SELECT * FROM R1;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 EUROPE                                                                                                                                                                                       
+         2 AMERICAS                                                                                                                                                                                     
+         3 ASIA                                                                                                                                                                                         
+         4 MIDDLE EAST AND AFRICA                                                                                                                                                                       
+
+SQL> ALTER TABLE R1 DISABLE ROW MOVEMENT;
+
+Table altered.
+
+SQL> SELECT * FROM R1;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 EUROPE                                                                                                                                                                                       
+         2 AMERICAS                                                                                                                                                                                     
+         3 ASIA                                                                                                                                                                                         
+         4 MIDDLE EAST AND AFRICA                                                                                                                                                                       
+
+SQL> SELECT * FROM R1 AS OF TIMESTAMP SYSTIMESTAMP - INTERVAL '1' MINUTE;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 EUROPE                                                                                                                                                                                       
+         2 AMERICAS                                                                                                                                                                                     
+         3 ASIA                                                                                                                                                                                         
+         4 MIDDLE EAST AND AFRICA                                                                                                                                                                       
+
+SQL> SELECT * FROM R1 AS OF TIMESTAMP SYSTIMESTAMP - INTERVAL '2' MINUTE;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 EUROPE                                                                                                                                                                                       
+         2 AMERICAS                                                                                                                                                                                     
+
+SQL> SELECT * FROM R1 AS OF TIMESTAMP SYSTIMESTAMP - INTERVAL '3' MINUTE;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 EUROPE                                                                                                                                                                                       
+         2 AMERICAS                                                                                                                                                                                     
+
+SQL> SELECT * FROM R1 AS OF TIMESTAMP SYSTIMESTAMP - INTERVAL '13' MINUTE;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 EUROPE                                                                                                                                                                                       
+         2 AMERICAS                                                                                                                                                                                     
+         3 ASIA                                                                                                                                                                                         
+
+SQL> SELECT * FROM R1 AS OF TIMESTAMP SYSTIMESTAMP - INTERVAL '15' MINUTE;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 EUROPE                                                                                                                                                                                       
+         2 AMERICAS                                                                                                                                                                                     
+         3 ASIA                                                                                                                                                                                         
+
+SQL> SELECT * FROM R1 AS OF TIMESTAMP SYSTIMESTAMP - INTERVAL '25' MINUTE;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 EUROPE                                                                                                                                                                                       
+         2 AMERICAS                                                                                                                                                                                     
+         3 ASIA                                                                                                                                                                                         
+         4 MIDDLE EAST AND AFRICA                                                                                                                                                                       
+
+SQL> ALTER TABLE R1 ENABLE ROW MOVEMENT;
+
+Table altered.
+
+SQL> FLASHBACK TABLE R1 TO TIMESTAMP SYSTIMESTAMP - INTERVAL '13' MINUTE;
+
+Flashback complete.
+
+SQL> SELECT * FROM R1;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 EUROPE                                                                                                                                                                                       
+         2 AMERICAS                                                                                                                                                                                     
+         3 ASIA                                                                                                                                                                                         
+
+SQL> FLASHBACK TABLE R1 TO TIMESTAMP SYSTIMESTAMP - INTERVAL '20' MINUTE;
+
+Flashback complete.
+
+SQL> SELECT * FROM R1;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 EUROPE                                                                                                                                                                                       
+         2 AMERICAS                                                                                                                                                                                     
+         3 ASIA                                                                                                                                                                                         
+
+SQL> FLASHBACK TABLE R1 TO TIMESTAMP SYSTIMESTAMP - INTERVAL '25' MINUTE;
+
+Flashback complete.
+
+SQL> SELECT * FROM R1;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 EUROPE                                                                                                                                                                                       
+         2 AMERICAS                                                                                                                                                                                     
+         3 ASIA                                                                                                                                                                                         
+         4 MIDDLE EAST AND AFRICA                                                                                                                                                                       
+
+SQL> FLASHBACK TABLE R1 TO TIMESTAMP SYSTIMESTAMP - INTERVAL '4' MINUTE;
+
+Flashback complete.
+
+SQL> SELECT * FROM R1;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 EUROPE                                                                                                                                                                                       
+         2 AMERICAS                                                                                                                                                                                     
+
+SQL> ALTER TABLE R1 DISABLE ROW MOVEMENT;
+
+Table altered.
+
+SQL> 
+SQL> REM DELETE - TRUNCATE - DROP - FLASHBACK - PURGE
+SQL> 
+SQL> REM DELETE : TO DELETE SELECTED/ALL ROWS. WE CAN UNDO IT WITH ROLLBACK COMMAND, IF NOT COMMITTED. WE CAN FLASHBACK/UNCOMMIT IT EVEN AFTER COMMIT. TABLE DEFINITION WILL BE KEPT INTACT.
+SQL> 
+SQL> REM TRUNCATE : TO DELETE ALL ROWS PERMANENTLY. WE CAN'T ROLLBACK OR FLASHBACK IT. TABLE DEFINITION WILL BE KEPT INTACT.
+SQL> 
+SQL> REM DROP : IT WILL ACTUALLY NOT DROP, BUT WILL RENAME AND MOVE IT TO ORACLE'S RECYCLEBIN. WE CAN STILL USE IT USING NEW NAME FOR SELECT PURPOSE.
+SQL> 
+SQL> REM FLASHBACK ... TO BEFORE DROP : TO UNDROP THE TABLE FROM ORACLE'S RECYCLEBIN WITH DATA AND DEFINITION.
+SQL> 
+SQL> REM PURGE : TO REMOVE TABLE PERMANENTLY FROM ORACLE'S RECYCLEBIN. WE CAN'T GET IT BACK ANY WAY.
+SQL> 
+SQL> 
+SQL> 
+SQL> ALTER TABLE R1 ENABLE ROW MOVEMENT;
+
+Table altered.
+
+SQL> 
+SQL> SELECT * FROM R1 AS OF TIMESTAMP SYSTIMESTAMP - INTERVAL '35' MINUTE;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 EUROPE                                                                                                                                                                                       
+         2 AMERICAS                                                                                                                                                                                     
+         3 ASIA                                                                                                                                                                                         
+         4 MIDDLE EAST AND AFRICA                                                                                                                                                                       
+
+SQL> FLASHBACK TABLE R1 TO TIMESTAMP SYSTIMESTAMP - INTERVAL '35' MINUTE;
+
+Flashback complete.
+
+SQL> SELECT * FROM R1;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 EUROPE                                                                                                                                                                                       
+         2 AMERICAS                                                                                                                                                                                     
+         3 ASIA                                                                                                                                                                                         
+         4 MIDDLE EAST AND AFRICA                                                                                                                                                                       
+
+SQL> DELETE R1 WHERE REGION_ID > 2;
+
+2 rows deleted.
+
+SQL> SELECT * FROM R1;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 EUROPE                                                                                                                                                                                       
+         2 AMERICAS                                                                                                                                                                                     
+
+SQL> ROLLBACK;
+
+Rollback complete.
+
+SQL> SELECT * FROM R1;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 EUROPE                                                                                                                                                                                       
+         2 AMERICAS                                                                                                                                                                                     
+         3 ASIA                                                                                                                                                                                         
+         4 MIDDLE EAST AND AFRICA                                                                                                                                                                       
+
+SQL> DESC R1
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ REGION_ID                                                                                                         NOT NULL NUMBER
+ REGION_NAME                                                                                                                VARCHAR2(25)
+
+SQL> TRUNCATE TABLE R1;
+
+Table truncated.
+
+SQL> SELECT * FROM R1;
+
+no rows selected
+
+SQL> DESC R1
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ REGION_ID                                                                                                         NOT NULL NUMBER
+ REGION_NAME                                                                                                                VARCHAR2(25)
+
+SQL> ROLLBACK;
+
+Rollback complete.
+
+SQL> SELECT * FROM R1;
+
+no rows selected
+
+SQL> FLASHBACK TABLE R1 TO TIMESTAMP SYSTIMESTAMP - INTERVAL '2' MINUTE;
+FLASHBACK TABLE R1 TO TIMESTAMP SYSTIMESTAMP - INTERVAL '2' MINUTE
+                *
+ERROR at line 1:
+ORA-01466: unable to read data - table definition has changed 
+
+
+SQL> 
+SQL> FLASHBACK TABLE R1 TO TIMESTAMP SYSTIMESTAMP - INTERVAL '35' MINUTE;
+FLASHBACK TABLE R1 TO TIMESTAMP SYSTIMESTAMP - INTERVAL '35' MINUTE
+                *
+ERROR at line 1:
+ORA-01466: unable to read data - table definition has changed 
+
+
+SQL> DESC R1
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ REGION_ID                                                                                                         NOT NULL NUMBER
+ REGION_NAME                                                                                                                VARCHAR2(25)
+
+SQL> INSERT INTO R1 SELECT * FROM REGIONS;
+
+4 rows created.
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> SELECT * FROM R1;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 Europe                                                                                                                                                                                       
+         2 Americas                                                                                                                                                                                     
+         3 Asia                                                                                                                                                                                         
+         4 Middle East and Africa                                                                                                                                                                       
+
+SQL> SHOW RECYC
+ORIGINAL NAME    RECYCLEBIN NAME                OBJECT TYPE  DROP TIME                                                                                                                                  
+---------------- ------------------------------ ------------ -------------------                                                                                                                        
+FEES             BIN$jI95iSu/TH2MawGE8wmk4Q==$0 TABLE        2024-06-04:14:38:24                                                                                                                        
+INVOICE          BIN$M21kDOwZQ0KgkyNvYPCVvA==$0 TABLE        2024-06-04:13:27:43                                                                                                                        
+NEWDEPT          BIN$zZlSkuX2QD2qArlXsUhP/A==$0 TABLE        2024-06-02:11:57:51                                                                                                                        
+NEWDEPT          BIN$vT12m0T3ReaIkvyz7Ib0Mg==$0 TABLE        2024-06-02:11:57:25                                                                                                                        
+NEWDEPT          BIN$llrojV5SRp2psA20OOeVig==$0 TABLE        2024-06-02:11:51:13                                                                                                                        
+NEWDEPT          BIN$L7CsJmSvSWWDIHxg++M74g==$0 TABLE        2024-06-01:12:33:44                                                                                                                        
+NEWDEPT          BIN$WwfYpKTeTpCNbaQjUuUtpQ==$0 TABLE        2024-06-01:12:26:41                                                                                                                        
+NEWEMP           BIN$JQJ6+ASCR6OujMsENpTFCw==$0 TABLE        2024-06-02:11:57:52                                                                                                                        
+NEWEMP           BIN$4k/MiVy0Q52lHC3/2clGIw==$0 TABLE        2024-06-02:11:57:25                                                                                                                        
+NEWEMP           BIN$5WbMxI5zTYCULk1NqIow1g==$0 TABLE        2024-06-02:11:51:13                                                                                                                        
+NEWEMP           BIN$vIbNdt8rR8WvXQReWlqRkg==$0 TABLE        2024-06-01:12:33:44                                                                                                                        
+NEWEMP           BIN$5+6HOw+STf2D+DjlGOlSLw==$0 TABLE        2024-06-01:12:26:42                                                                                                                        
+R1               BIN$K1yAddzNSgKRX8cdr0F+bQ==$0 TABLE        2024-06-01:18:20:20                                                                                                                        
+RTY              BIN$R8/XIjW5Tcu6B7NzBjJJgA==$0 TABLE        2024-06-01:19:07:54                                                                                                                        
+SCHOOL           BIN$dTnfKb6uQQ+CEg6A7fXlYQ==$0 TABLE        2024-06-04:14:38:27                                                                                                                        
+STD5A            BIN$jRobTGwXTra0V4pgat4gvQ==$0 TABLE        2024-06-04:13:47:46                                                                                                                        
+STD5A            BIN$GNTQc/RXSJ2RHIEZ7DDVQw==$0 TABLE        2024-06-04:13:45:49                                                                                                                        
+T1               BIN$A3+02EZCRjGSJwPqnWLcNg==$0 TABLE        2024-06-04:14:16:32                                                                                                                        
+T10              BIN$fDwH8zGJT26aKH60zky9Jw==$0 TABLE        2024-06-04:14:16:46                                                                                                                        
+T11              BIN$JpaOPwvLQK+tLw9QEWbexA==$0 TABLE        2024-06-04:14:16:50                                                                                                                        
+T12              BIN$l8BFUH6tTpeRNDMgR7Z00A==$0 TABLE        2024-06-04:14:16:51                                                                                                                        
+T13              BIN$Jnw/nc40SCewOy7/3w1VzA==$0 TABLE        2024-06-04:14:16:52                                                                                                                        
+T14              BIN$1orIyQ2WRYOddzpXpZ6EJg==$0 TABLE        2024-06-04:14:16:54                                                                                                                        
+T15              BIN$G5imE6esTkSIrt48T/hlGg==$0 TABLE        2024-06-04:14:16:56                                                                                                                        
+T16              BIN$9l5XaCDoT0O2gn7k2ZXMXA==$0 TABLE        2024-06-04:14:16:57                                                                                                                        
+T17              BIN$puiclbboSNKi5g+URU5JNg==$0 TABLE        2024-06-04:14:16:58                                                                                                                        
+T18              BIN$xX/WAh4vRhmAaWojIFhK+A==$0 TABLE        2024-06-04:14:17:03                                                                                                                        
+T2               BIN$1NxsQhLZQ/yRhfXUGSHtOg==$0 TABLE        2024-06-04:14:16:33                                                                                                                        
+T3               BIN$z/5UtmG3RWq9hxmGUNfFsA==$0 TABLE        2024-06-04:14:16:34                                                                                                                        
+T4               BIN$tpL2lKIGSK+7CFYD/a3yVw==$0 TABLE        2024-06-04:14:16:35                                                                                                                        
+T5               BIN$Jv47DrC/QaKsUfre1YsaHA==$0 TABLE        2024-06-04:14:16:37                                                                                                                        
+T6               BIN$B+p0NvlwTAm8/qYn05RBOQ==$0 TABLE        2024-06-04:14:16:38                                                                                                                        
+T7               BIN$QHbccP1vT6WN5BfWoNMqWQ==$0 TABLE        2024-06-04:14:16:40                                                                                                                        
+T8               BIN$PQB0/bmBT/yHsrA5i8E0nQ==$0 TABLE        2024-06-04:14:16:40                                                                                                                        
+T9               BIN$N3ENzCI7Qeq5jb4QZbWbXA==$0 TABLE        2024-06-04:14:16:41                                                                                                                        
+SQL> PURGE RECYCLEBIN;
+
+Recyclebin purged.
+
+SQL> SHOW RECYC
+SQL> 
+SQL> 
+SQL> DESC R1
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ REGION_ID                                                                                                         NOT NULL NUMBER
+ REGION_NAME                                                                                                                VARCHAR2(25)
+
+SQL> SELECT * FROM R1;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 Europe                                                                                                                                                                                       
+         2 Americas                                                                                                                                                                                     
+         3 Asia                                                                                                                                                                                         
+         4 Middle East and Africa                                                                                                                                                                       
+
+SQL> DROP TABLE R1;
+
+Table dropped.
+
+SQL> DESC AR1
+ERROR:
+ORA-04043: object AR1 does not exist 
+
+
+SQL> DESC R1
+ERROR:
+ORA-04043: object R1 does not exist 
+
+
+SQL> SELECT * FROM R1;
+SELECT * FROM R1
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> SHOW RECYC
+ORIGINAL NAME    RECYCLEBIN NAME                OBJECT TYPE  DROP TIME                                                                                                                                  
+---------------- ------------------------------ ------------ -------------------                                                                                                                        
+R1               BIN$d/tjPNiJQmGTiNxB7egh5Q==$0 TABLE        2024-06-04:17:16:20                                                                                                                        
+SQL> 
+SQL> 
+SQL> SELECT * FROM BIN$d/tjPNiJQmGTiNxB7egh5Q==$0;
+SELECT * FROM BIN$d/tjPNiJQmGTiNxB7egh5Q==$0
+                   *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> 
+SQL> SELECT * FROM "BIN$d/tjPNiJQmGTiNxB7egh5Q==$0";
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 Europe                                                                                                                                                                                       
+         2 Americas                                                                                                                                                                                     
+         3 Asia                                                                                                                                                                                         
+         4 Middle East and Africa                                                                                                                                                                       
+
+SQL> DESC "BIN$d/tjPNiJQmGTiNxB7egh5Q==$0"
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ REGION_ID                                                                                                         NOT NULL NUMBER
+ REGION_NAME                                                                                                                VARCHAR2(25)
+
+SQL> 
+SQL> FLASHBACK TABLE R1 TO BEFORE DROP;
+
+Flashback complete.
+
+SQL> DESC R`
+SP2-0565: Illegal identifier.
+SQL> 
+SQL> DESC R1
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ REGION_ID                                                                                                         NOT NULL NUMBER
+ REGION_NAME                                                                                                                VARCHAR2(25)
+
+SQL> SELECT * FROM R1;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 Europe                                                                                                                                                                                       
+         2 Americas                                                                                                                                                                                     
+         3 Asia                                                                                                                                                                                         
+         4 Middle East and Africa                                                                                                                                                                       
+
+SQL> SHOW RECYC
+SQL> 
+SQL> DROP TABLE R1;
+
+Table dropped.
+
+SQL> DESC R1
+ERROR:
+ORA-04043: object R1 does not exist 
+
+
+SQL> SELECT * FROM R1;
+SELECT * FROM R1
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> SHOW RECYC
+ORIGINAL NAME    RECYCLEBIN NAME                OBJECT TYPE  DROP TIME                                                                                                                                  
+---------------- ------------------------------ ------------ -------------------                                                                                                                        
+R1               BIN$i9O9Yj5GTBKRomx9CFgcTQ==$0 TABLE        2024-06-04:17:20:08                                                                                                                        
+SQL> 
+SQL> SELECT * FROM "BIN$d/tjPNiJQmGTiNxB7egh5Q==$0";
+SELECT * FROM "BIN$d/tjPNiJQmGTiNxB7egh5Q==$0"
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> SELECT * FROM "BIN$i9O9Yj5GTBKRomx9CFgcTQ==$0";
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 Europe                                                                                                                                                                                       
+         2 Americas                                                                                                                                                                                     
+         3 Asia                                                                                                                                                                                         
+         4 Middle East and Africa                                                                                                                                                                       
+
+SQL> PURGE TABLE R1;
+
+Table purged.
+
+SQL> DESC R1
+ERROR:
+ORA-04043: object R1 does not exist 
+
+
+SQL> SELECT * FROM R1;
+SELECT * FROM R1
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> SHOW RECYC
+SQL> 
+SQL> CREATE TABLE R1 AS SELECT * FROM REGIONS;
+
+Table created.
+
+SQL> DESC R1
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ REGION_ID                                                                                                         NOT NULL NUMBER
+ REGION_NAME                                                                                                                VARCHAR2(25)
+
+SQL> SELECT * FROM R1;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 Europe                                                                                                                                                                                       
+         2 Americas                                                                                                                                                                                     
+         3 Asia                                                                                                                                                                                         
+         4 Middle East and Africa                                                                                                                                                                       
+
+SQL> DROP TABLE R1 PURGE;
+
+Table dropped.
+
+SQL> DESC R1
+ERROR:
+ORA-04043: object R1 does not exist 
+
+
+SQL> SELECT * FROM R1;
+SELECT * FROM R1
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> SHOW RECYC
+SQL> 
+SQL> 
+SQL> REM 1 CREATE TABLE R1 AS SELECT * FROM REGIONS;
+SQL> 
+SQL> REM 2 DELETE FIRST TWO ROWS
+SQL> 
+SQL> REM 3 DISPLAY DATA
+SQL> 
+SQL> REM 4 UNDO THE CHANGES
+SQL> 
+SQL> REM 5 DELETE ALL ROWS OF R1 TABLE
+SQL> 
+SQL> REM 6 DISPLAY DATA
+SQL> 
+SQL> REM 7 UNDO ALL CHANGES
+SQL> 
+SQL> REM 8 REMOVE ALL ROWS PERMANENTLY USING SINGLE COMMAND ONLY.
+SQL> 
+SQL> REM 9 DISPLAY DATA
+SQL> 
+SQL> REM 10 TRY TO UNDO THE CHANGES
+SQL> 
+SQL> REM 11 INSERT INTO R1 SELECT * FROM REGIONS;
+SQL> 
+SQL> REM 12 SAVE THE CHANGES
+SQL> 
+SQL> REM 13 REMOVE TABLE
+SQL> 
+SQL> REM 14 DISPLAY IT'S  NEW NAME
+SQL> 
+SQL> REM 15 UNDROP THE TABLE FROM RECYCLEBIN
+SQL> 
+SQL> REM 16 LIST THE DATA
+SQL> 
+SQL> REM 17 DROP THE TABLE
+SQL> 
+SQL> REM 18 REMOVE IT FROM RECYCLEBIN
+SQL> 
+SQL> REM 19 CREATE TABLE R1 AS SELECT * FROM REGIONS;
+SQL> 
+SQL> REM 20 DROP THE TABLE USING SINGLE COMMAND, IT MUST BE REMOVE PERMANENTLY.
+SQL> 
+SQL> 
+SQL> 
+SQL> REM 1 CREATE TABLE R1 AS SELECT * FROM REGIONS;
+SQL> 
+SQL> DROP TABLE R1;
+DROP TABLE R1
+           *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> CREATE TABLE R1 AS SELECT * FROM REGIONS;
+
+Table created.
+
+SQL> REM 2 DELETE FIRST TWO ROWS
+SQL> 
+SQL> SELECT * FROM R1;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 Europe                                                                                                                                                                                       
+         2 Americas                                                                                                                                                                                     
+         3 Asia                                                                                                                                                                                         
+         4 Middle East and Africa                                                                                                                                                                       
+
+SQL> DELETE R1 WHERE REGION_ID <3;
+
+2 rows deleted.
+
+SQL> REM 3 DISPLAY DATA
+SQL> 
+SQL> SELECT * FROM R1;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         3 Asia                                                                                                                                                                                         
+         4 Middle East and Africa                                                                                                                                                                       
+
+SQL> REM 4 UNDO THE CHANGES
+SQL> 
+SQL> ROLLBACK;
+
+Rollback complete.
+
+SQL> SELECT * FROM R1;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 Europe                                                                                                                                                                                       
+         2 Americas                                                                                                                                                                                     
+         3 Asia                                                                                                                                                                                         
+         4 Middle East and Africa                                                                                                                                                                       
+
+SQL> REM 5 DELETE ALL ROWS OF R1 TABLE
+SQL> 
+SQL> DELETE R1;
+
+4 rows deleted.
+
+SQL> SELECT * FROM R1;
+
+no rows selected
+
+SQL> REM 6 DISPLAY DATA
+SQL> 
+SQL> REM 7 UNDO ALL CHANGES
+SQL> 
+SQL> ROLLBACK;
+
+Rollback complete.
+
+SQL> SELECT * FROM R1;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 Europe                                                                                                                                                                                       
+         2 Americas                                                                                                                                                                                     
+         3 Asia                                                                                                                                                                                         
+         4 Middle East and Africa                                                                                                                                                                       
+
+SQL> REM 8 REMOVE ALL ROWS PERMANENTLY USING SINGLE COMMAND ONLY.
+SQL> 
+SQL> TRUNCATE TABLE R1;
+
+Table truncated.
+
+SQL> REM 9 DISPLAY DATA
+SQL> 
+SQL> SELECT * FROM R1;
+
+no rows selected
+
+SQL> REM 10 TRY TO UNDO THE CHANGES
+SQL> 
+SQL> ROLLBACK;
+
+Rollback complete.
+
+SQL> SELECT * FROM R1;
+
+no rows selected
+
+SQL> REM 11 INSERT INTO R1 SELECT * FROM REGIONS;
+SQL> 
+SQL> INSERT INTO R1 SELECT * FROM REGIONS;
+
+4 rows created.
+
+SQL> REM 12 SAVE THE CHANGES
+SQL> 
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> REM 13 REMOVE TABLE
+SQL> 
+SQL> DESC R1
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ REGION_ID                                                                                                         NOT NULL NUMBER
+ REGION_NAME                                                                                                                VARCHAR2(25)
+
+SQL> SELECT * FROM R1;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 Europe                                                                                                                                                                                       
+         2 Americas                                                                                                                                                                                     
+         3 Asia                                                                                                                                                                                         
+         4 Middle East and Africa                                                                                                                                                                       
+
+SQL> DROP TABLE R1;
+
+Table dropped.
+
+SQL> REM 14 DISPLAY IT'S  NEW NAME
+SQL> 
+SQL> SHOW RECYC
+ORIGINAL NAME    RECYCLEBIN NAME                OBJECT TYPE  DROP TIME                                                                                                                                  
+---------------- ------------------------------ ------------ -------------------                                                                                                                        
+R1               BIN$lliQbL9BTgO6+9/4hWHl/Q==$0 TABLE        2024-06-04:17:52:46                                                                                                                        
+SQL> 
+SQL> REM 15 UNDROP THE TABLE FROM RECYCLEBIN
+SQL> 
+SQL> FLASHBACK TABLE R1 TO BEFORE DROP;
+
+Flashback complete.
+
+SQL> REM 16 LIST THE DATA
+SQL> 
+SQL> SELECT * FROM R1;
+
+ REGION_ID REGION_NAME                                                                                                                                                                                  
+---------- -------------------------                                                                                                                                                                    
+         1 Europe                                                                                                                                                                                       
+         2 Americas                                                                                                                                                                                     
+         3 Asia                                                                                                                                                                                         
+         4 Middle East and Africa                                                                                                                                                                       
+
+SQL> REM 17 DROP THE TABLE
+SQL> 
+SQL> DROP TABLE R1;
+
+Table dropped.
+
+SQL> REM 18 REMOVE IT FROM RECYCLEBIN
+SQL> 
+SQL> SHOW RECYC
+ORIGINAL NAME    RECYCLEBIN NAME                OBJECT TYPE  DROP TIME                                                                                                                                  
+---------------- ------------------------------ ------------ -------------------                                                                                                                        
+R1               BIN$1Lr+0zaZRBidi7oKbTy1Qw==$0 TABLE        2024-06-04:17:53:30                                                                                                                        
+SQL> 
+SQL> PURGE TABLE R1;
+
+Table purged.
+
+SQL> SHOW RECYC
+SQL> 
+SQL> REM 19 CREATE TABLE R1 AS SELECT * FROM REGIONS;
+SQL> 
+SQL> CREATE TABLE R1 AS SELECT * FROM REGIONS;
+
+Table created.
+
+SQL> 
+SQL> REM 20 DROP THE TABLE USING SINGLE COMMAND, IT MUST BE REMOVE PERMANENTLY.
+SQL> 
+SQL> DROP TABLE R1 PURGE;
+
+Table dropped.
+
+SQL> DESC R1
+ERROR:
+ORA-04043: object R1 does not exist 
+
+
+SQL> SELECT * FROM R1;
+SELECT * FROM R1
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> SHOW RECYC
+SQL> 
+SQL> SPOOL OFF

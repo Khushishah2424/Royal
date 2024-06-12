@@ -39,7 +39,6 @@ void Inorder(struct node *root){
     // printf("%d",root->data);
     }
 }
-
 void Preorder(struct node *root){
     if(root != NULL){
         printf(" %d",root->data);
