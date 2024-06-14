@@ -43,6 +43,7 @@ theory:
     for taking an input we use System.in  as an Argument--> Inputstream --> console
     out  = printstream
     in = inputstream
+    Scanner class can not be inherited
 
 
 
@@ -67,6 +68,7 @@ theory:
                 Final = constant
                 If we assigned the value using final class then it can not be reassinged
                 Final CLass can not be inherited
+                All final class should be inherited
 
 2. Inheritance:
     A child class Can Accsess the Property of Parent class
@@ -87,12 +89,25 @@ theory:
 
 3.       
         parent has parameterized Construtor
-         parent has also Default Construtor
+         parent has  Default Construtor
 
           child has parameterized Construtor
              Child has Default Construtor 
 
     then super keypword is not compulsory to execute parent Protected.
+
+
+3.Polymorphism
+    Many Forms of Functions
+    Types:
+    1.Compile time Poly : (Early Binding,Static Binding)
+                1.Method OverLoading:
+                    We will have same name of Method in same class or parent class or child class but with differnt parameter called OverLoading Method
+    2.Run Time Ploy : (Lazy Binding,Dynamic Binding)
+                1.Method OverRiding
+
+
+
 
 
 
