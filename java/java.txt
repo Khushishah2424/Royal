@@ -105,6 +105,20 @@ theory:
                     We will have same name of Method in same class or parent class or child class but with differnt parameter called OverLoading Method
     2.Run Time Ploy : (Lazy Binding,Dynamic Binding)
                 1.Method OverRiding
+                    Child class have same Mehtod of parent class called OverRiding
+                    It should match signature;
+                    1.Accsess Modifier
+                            Accsess Modifier Can be change 
+                            private Modifier can not be OverRide
+                            if parent class have default,then child can make default,Protected,Public method
+                        
+                    2.Return Type
+                    3.Method name
+                    4.parameter
+
+
+                    Final Modifier can not be OverRide
+                    
 
 
 
