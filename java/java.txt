@@ -118,6 +118,26 @@ theory:
 
 
                     Final Modifier can not be OverRide
+
+
+4.Abstarction
+    It is use for Data-Hiding
+    Abstarction method must be OverRide
+    In Abstarction class we can create non-Abstarction method
+    Abstarction method can not be called by object,
+    by child class object we can call non-Abstarction method that in Abstarction class
+
+
+
+    class - class =  Extends
+    class - Interface = Implementation
+    Interface - Interface = Extends
+
+    Interface:
+        It is fully Abstarct class
+        All methods are Public Abstarct
+        All Instance Variable are Public final Static 
+
                     
 
 
