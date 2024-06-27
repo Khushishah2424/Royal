@@ -69,6 +69,11 @@ theory:
                 If we assigned the value using final class then it can not be reassinged
                 Final CLass can not be inherited
                 All final class should be inherited
+                Can not be OverRideded
+                can be OverLoaded
+                To create a constant variable
+                To prevent method overriding
+                To prevent inheritance
 
 2. Inheritance:
     A child class Can Accsess the Property of Parent class
@@ -111,7 +116,7 @@ theory:
                             Accsess Modifier Can be change 
                             private Modifier can not be OverRide
                             if parent class have default,then child can make default,Protected,Public method
-                        
+                
                     2.Return Type
                     3.Method name
                     4.parameter
@@ -119,13 +124,12 @@ theory:
 
                     Final Modifier can not be OverRide
 
-
 4.Abstarction
     It is use for Data-Hiding
     Abstarction method must be OverRide
     In Abstarction class we can create non-Abstarction method
     Abstarction method can not be called by object,
-    by child class object we can call non-Abstarction method that in Abstarction class
+    by child class object we can call non-Abstarction method that in Abstarct class
 
 
 
@@ -133,10 +137,29 @@ theory:
     class - Interface = Implementation
     Interface - Interface = Extends
 
-    Interface:
+    **Interface**:
         It is fully Abstarct class
         All methods are Public Abstarct
-        All Instance Variable are Public final Static 
+        All Instance Variable are Public final Static
+        if we use Interface , it will allow to do multiple (Inheritance) joins in class.
+    -->Types of Interface:
+    1.Funtional Interface
+    = Have only one Method
+    2.Marker Interface
+    = None Method 
+
+
+    **If we wanted to create a body inside a Interface then we can use below Keyword:
+    1.Default:
+        With help of Default Keyword ,it will not be compulsory to override in class
+        We can call it by Referene of parent and object of class
+    2.Static:
+        With this non-Accsess Modifier it will not be compulsory to override in class
+        we can call it by it class name
+
+**Polymorphic**
+    Referene of parent and Object of child class
+
 
                     
 

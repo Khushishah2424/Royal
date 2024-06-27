@@ -264,3 +264,32 @@ if login success : sgtore user data in cookies
 var request = new XMLHTttpRequest();
 request.open("GET","URL");or "Filname","txtfile","jsonfile"
 request.send();
+
+
+
+**W3SCHOOL**
+What is Good?
+let and const have block scope.
+let and const can not be redeclared.
+let and const must be declared before use.
+let and const does not bind to this.
+let and const are not hoisted.
+
+What is Not Good?
+var does not have to be declared.
+var is hoisted.
+var binds to this.
+
+
+javaScript has 8 Datatypes
+String
+Number
+Bigint
+Boolean
+Undefined
+Null
+Symbol
+Object
+
+
+
