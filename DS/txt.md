@@ -64,6 +64,14 @@ double
 
     
 
-    
+graph = collection of vertices(node(data store)) and edges
+    cost graph - weighted graph
+    direction  - diagraph , directed (in degree,out degree)
+    one node refer itself - specialize graph
+    not connected  - isolated graph
+
+    :degree of graph - howmany nodes are connected with one node
+
+
 
 

@@ -280,16 +280,19 @@ var does not have to be declared.
 var is hoisted.
 var binds to this.
 
+JavaScript Datatypes:-
 
-javaScript has 8 Datatypes
-String
-Number
-Bigint
-Boolean
-Undefined
-Null
-Symbol
-Object
+Primitive data types;
+String       
+Number                  
+Bigint                           
+Boolean                             
+Undefined                   
+Null                    
+Symbol              
+
+
+
 
 
 
