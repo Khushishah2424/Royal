@@ -1,0 +1,959 @@
+=SQL> 
+SQL> REM CONSTRAINTS : TO ATTACH/IMPLEMENT DATA VALIDATION RULES
+SQL> 
+SQL> REM TYPES OF CONSTRAINTS : 1 CHECK 2 NOT NULL 3 UNIQUE 4 PRIMARY KEY 5 REFERENCES
+SQL> 
+SQL> REM CHECK : TO ATTACH SOME CONDITION TO THE COLUMN WHICH WILL GE CHECKED WHEN WE PERFORM DML OPERATIONS. IF CONDITION EVALUATES TO TRUE, IT WILL ALLOW THE OPERATION, OTHERWISE WILL SHOW/RAISE ERROR.
+SQL> 
+SQL> DROP TABLE STD5A;
+DROP TABLE STD5A
+           *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> CREATE TABLE STD5A (RNO NUMBER(2) , NM VARCHAR(10));
+
+Table created.
+
+SQL> REM NUMBER(2) : STORAGE RANGE : -99 TO +99
+SQL> 
+SQL> REM WE WANT TO ALLOW ROLL NUMBERS ONLY IN THE RANGE OF 1 TO 30
+SQL> 
+SQL> INSERT INTO STD5A VALUES (1,'ABC');
+
+1 row created.
+
+SQL> INSERT INTO STD5A VALUES (99,'ABC');
+
+1 row created.
+
+SQL> INSERT INTO STD5A VALUES (-99,'ABC');
+
+1 row created.
+
+SQL> INSERT INTO STD5A VALUES (NULL,'ABC');
+
+1 row created.
+
+SQL> INSERT INTO STD5A VALUES (1,'ABC');
+
+1 row created.
+
+SQL> SELECT * FROM STD5A;
+
+       RNO NM                                                                                                                                                                                           
+---------- ----------                                                                                                                                                                                   
+         1 ABC                                                                                                                                                                                          
+        99 ABC                                                                                                                                                                                          
+       -99 ABC                                                                                                                                                                                          
+           ABC                                                                                                                                                                                          
+         1 ABC                                                                                                                                                                                          
+
+SQL> DROP TABLE STD5A;
+
+Table dropped.
+
+SQL> REM CHECK : TO ATTACH SOME CONDITION TO THE COLUMN WHICH WILL GE CHECKED WHEN WE PERFORM DML OPERATIONS. IF CONDITION EVALUATES TO TRUE, IT WILL ALLOW THE OPERATION, OTHERWISE WILL SHOW/RAISE ERROR.
+SQL> 
+SQL> CREATE TABLE STD5A (RNO NUMBER(2) CHECK(RNO BETWEEN 1 AND 30), NM VARCHAR(10));
+
+Table created.
+
+SQL> INSERT INTO STD5A VALUES (1,'ABC');
+
+1 row created.
+
+SQL> INSERT INTO STD5A VALUES (99,'ABC');
+INSERT INTO STD5A VALUES (99,'ABC')
+*
+ERROR at line 1:
+ORA-02290: check constraint (SCOTT.SYS_C0041039) violated 
+
+
+SQL> INSERT INTO STD5A VALUES (-99,'ABC');
+INSERT INTO STD5A VALUES (-99,'ABC')
+*
+ERROR at line 1:
+ORA-02290: check constraint (SCOTT.SYS_C0041039) violated 
+
+
+SQL> INSERT INTO STD5A VALUES (NULL,'ABC');
+
+1 row created.
+
+SQL> INSERT INTO STD5A VALUES (1,'ABC');
+
+1 row created.
+
+SQL> SELECT * FROM STD5A;
+
+       RNO NM                                                                                                                                                                                           
+---------- ----------                                                                                                                                                                                   
+         1 ABC                                                                                                                                                                                          
+           ABC                                                                                                                                                                                          
+         1 ABC                                                                                                                                                                                          
+
+SQL> REM UNIQU : IT WILL NOT ALLOW ANY DUPLICATE VALUES. IT WILL ALLOW ONLY DISTINCT/UNIQUE VALUES TO THE COLUMN.
+SQL> 
+SQL> DROP TABLE STD5A;
+
+Table dropped.
+
+SQL> CREATE TABLE STD5A (RNO NUMBER(2) CHECK(RNO BETWEEN 1 AND 30) UNIQUE, NM VARCHAR(10));
+
+Table created.
+
+SQL> CREATE TABLE STD5A (RNO NUMBER(2) CHECK(RNO BETWEEN 1 AND 30), NM VARCHAR(10));
+CREATE TABLE STD5A (RNO NUMBER(2) CHECK(RNO BETWEEN 1 AND 30), NM VARCHAR(10))
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> INSERT INTO STD5A VALUES (1,'ABC');
+
+1 row created.
+
+SQL> INSERT INTO STD5A VALUES (99,'ABC');
+INSERT INTO STD5A VALUES (99,'ABC')
+*
+ERROR at line 1:
+ORA-02290: check constraint (SCOTT.SYS_C0041040) violated 
+
+
+SQL> INSERT INTO STD5A VALUES (-99,'ABC');
+INSERT INTO STD5A VALUES (-99,'ABC')
+*
+ERROR at line 1:
+ORA-02290: check constraint (SCOTT.SYS_C0041040) violated 
+
+
+SQL> INSERT INTO STD5A VALUES (NULL,'ABC');
+
+1 row created.
+
+SQL> INSERT INTO STD5A VALUES (1,'ABC');
+INSERT INTO STD5A VALUES (1,'ABC')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SCOTT.SYS_C0041041) violated 
+
+
+SQL> REM NOT NULL : IT WILL NOT ALLOW NULL VALUE TO THE COLUMN. I.E. VALUE INSERTION IS MANDATORY FOR THE COLUMN.
+SQL> 
+SQL> DROP TABLE STD5A;
+
+Table dropped.
+
+SQL> CREATE TABLE STD5A (RNO NUMBER(2) CHECK(RNO BETWEEN 1 AND 30) UNIQUE NOT NULL, NM VARCHAR(10));
+
+Table created.
+
+SQL> INSERT INTO STD5A VALUES (1,'ABC');
+
+1 row created.
+
+SQL> INSERT INTO STD5A VALUES (99,'ABC');
+INSERT INTO STD5A VALUES (99,'ABC')
+*
+ERROR at line 1:
+ORA-02290: check constraint (SCOTT.SYS_C0041043) violated 
+
+
+SQL> INSERT INTO STD5A VALUES (-99,'ABC');
+INSERT INTO STD5A VALUES (-99,'ABC')
+*
+ERROR at line 1:
+ORA-02290: check constraint (SCOTT.SYS_C0041043) violated 
+
+
+SQL> INSERT INTO STD5A VALUES (NULL,'ABC');
+INSERT INTO STD5A VALUES (NULL,'ABC')
+                          *
+ERROR at line 1:
+ORA-01400: cannot insert NULL into ("SCOTT"."STD5A"."RNO") 
+
+
+SQL> INSERT INTO STD5A VALUES (1,'ABC');
+INSERT INTO STD5A VALUES (1,'ABC')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SCOTT.SYS_C0041044) violated 
+
+
+SQL> SELECT * FROM STD5A;
+
+       RNO NM                                                                                                                                                                                           
+---------- ----------                                                                                                                                                                                   
+         1 ABC                                                                                                                                                                                          
+
+SQL> INSERT INTO STD5A VALUES (30,'ABC');
+
+1 row created.
+
+SQL> INSERT INTO STD5A VALUES (31,'ABC');
+INSERT INTO STD5A VALUES (31,'ABC')
+*
+ERROR at line 1:
+ORA-02290: check constraint (SCOTT.SYS_C0041043) violated 
+
+
+SQL> REM PRIMARY KEY : IT IS COMBINATION OF NOT NULL + UNIQUE
+SQL> 
+SQL> CREATE TABLE STD5A (RNO NUMBER(2) CHECK(RNO BETWEEN 1 AND 30) PRIMARY KEY, NM VARCHAR(10));
+CREATE TABLE STD5A (RNO NUMBER(2) CHECK(RNO BETWEEN 1 AND 30) PRIMARY KEY, NM VARCHAR(10))
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> 
+SQL> DROP TABLE STD5A;
+
+Table dropped.
+
+SQL> CREATE TABLE STD5A (RNO NUMBER(2) CHECK(RNO BETWEEN 1 AND 30) PRIMARY KEY, NM VARCHAR(10));
+
+Table created.
+
+SQL> INSERT INTO STD5A VALUES (1,'ABC');
+
+1 row created.
+
+SQL> INSERT INTO STD5A VALUES (99,'ABC');
+INSERT INTO STD5A VALUES (99,'ABC')
+*
+ERROR at line 1:
+ORA-02290: check constraint (SCOTT.SYS_C0041045) violated 
+
+
+SQL> INSERT INTO STD5A VALUES (-99,'ABC');
+INSERT INTO STD5A VALUES (-99,'ABC')
+*
+ERROR at line 1:
+ORA-02290: check constraint (SCOTT.SYS_C0041045) violated 
+
+
+SQL> INSERT INTO STD5A VALUES (NULL,'ABC');
+INSERT INTO STD5A VALUES (NULL,'ABC')
+                          *
+ERROR at line 1:
+ORA-01400: cannot insert NULL into ("SCOTT"."STD5A"."RNO") 
+
+
+SQL> INSERT INTO STD5A VALUES (1,'ABC');
+INSERT INTO STD5A VALUES (1,'ABC')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SCOTT.SYS_C0041046) violated 
+
+
+SQL> SELECT * FROM STD5A;
+
+       RNO NM                                                                                                                                                                                           
+---------- ----------                                                                                                                                                                                   
+         1 ABC                                                                                                                                                                                          
+
+SQL> INSERT INTO STD5A VALUES (30,'ABC');
+
+1 row created.
+
+SQL> INSERT INTO STD5A VALUES (31,'ABC');
+INSERT INTO STD5A VALUES (31,'ABC')
+*
+ERROR at line 1:
+ORA-02290: check constraint (SCOTT.SYS_C0041045) violated 
+
+
+SQL> SELECT * FROM STD5A;
+
+       RNO NM                                                                                                                                                                                           
+---------- ----------                                                                                                                                                                                   
+         1 ABC                                                                                                                                                                                          
+        30 ABC                                                                                                                                                                                          
+
+SQL> REM REFERENCES : IT WILL ALLOW ONLY THOSE VALUES TO THE COLUMN WHICH IS AVAILABLE IN REFERRED PRIMARY KEY OR REFERRED UNIQUE COLUMN.
+SQL> 
+SQL> DROP TABLE EMP;
+
+Table dropped.
+
+SQL> DROP TABLE DEPT;
+
+Table dropped.
+
+SQL> CREATE TABLE EMP(EID NUMBER(4) PRIMARY KEY , ENM VARCHAR(10) , MID NUMBER(4) REFERENCES EMP);
+
+Table created.
+
+SQL> INSERT INTO EMP VALUES (1,'GANESH',NULL);
+
+1 row created.
+
+SQL> INSERT INTO EMP VALUES (2,'RAMESH',2);
+
+1 row created.
+
+SQL> INSERT INTO EMP VALUES (3,'SURESH',2);
+
+1 row created.
+
+SQL> INSERT INTO EMP VALUES (4,'MAHESH',2);
+
+1 row created.
+
+SQL> INSERT INTO EMP VALUES (5,'NARESH',3);
+
+1 row created.
+
+SQL> INSERT INTO EMP VALUES (6,'NARESH',1);
+
+1 row created.
+
+SQL> 
+SQL> SELECT * FROM EMP;
+
+       EID ENM               MID                                                                                                                                                                        
+---------- ---------- ----------                                                                                                                                                                        
+         1 GANESH                                                                                                                                                                                       
+         2 RAMESH              2                                                                                                                                                                        
+         3 SURESH              2                                                                                                                                                                        
+         4 MAHESH              2                                                                                                                                                                        
+         5 NARESH              3                                                                                                                                                                        
+         6 NARESH              1                                                                                                                                                                        
+
+6 rows selected.
+
+SQL> INSERT INTO EMP VALUES (5,'NARESH',1);
+INSERT INTO EMP VALUES (5,'NARESH',1)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SCOTT.SYS_C0041047) violated 
+
+
+SQL> INSERT INTO EMP VALUES (7,'NARESH',10);
+INSERT INTO EMP VALUES (7,'NARESH',10)
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (SCOTT.SYS_C0041048) violated - parent key not found 
+
+
+SQL> REM DROP TABLE EMP;
+SQL> 
+SQL> DROP TABLE EMP;
+
+Table dropped.
+
+SQL> CREATE TABLE DEPT(DID NUMBER(2) PRIMARY KEY, DNM VARCHAR(10));
+
+Table created.
+
+SQL> CREATE TABLE EMP(EID NUMBER(4) PRIMARY KEY,ENM VARCHAR(10) , MID NUMBER(4) REFERENCES EMP , DID NUMBER(2) REFERENCES DEPT);
+
+Table created.
+
+SQL> INSERT INTO DEPT VALUES (1,'ACC');
+
+1 row created.
+
+SQL> INSERT INTO DEPT VALUES (2,'RES');
+
+1 row created.
+
+SQL> INSERT INTO DEPT VALUES (3,'SAL');
+
+1 row created.
+
+SQL> INSERT INTO EMP VALUES (11,'GANESH',NULL,1);
+
+1 row created.
+
+SQL> INSERT INTO EMP VALUES (12,'RIDDHI',11,1);
+
+1 row created.
+
+SQL> INSERT INTO EMP VALUES (13,'SIDDHI',12,3);
+
+1 row created.
+
+SQL> INSERT INTO EMP VALUES (14,'SHUBH',15,3);
+INSERT INTO EMP VALUES (14,'SHUBH',15,3)
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (SCOTT.SYS_C0041051) violated - parent key not found 
+
+
+SQL> INSERT INTO EMP VALUES (14,'SHUBH',13,4);
+INSERT INTO EMP VALUES (14,'SHUBH',13,4)
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (SCOTT.SYS_C0041052) violated - parent key not found 
+
+
+SQL> SELECT * FROM DEPT;
+
+       DID DNM                                                                                                                                                                                          
+---------- ----------                                                                                                                                                                                   
+         1 ACC                                                                                                                                                                                          
+         2 RES                                                                                                                                                                                          
+         3 SAL                                                                                                                                                                                          
+
+SQL> SELECT * FROM EMP;
+
+       EID ENM               MID        DID                                                                                                                                                             
+---------- ---------- ---------- ----------                                                                                                                                                             
+        11 GANESH                         1                                                                                                                                                             
+        12 RIDDHI             11          1                                                                                                                                                             
+        13 SIDDHI             12          3                                                                                                                                                             
+
+SQL> REM 1 STD5A : RNO , NM
+SQL> 
+SQL> REM 2 EMP : EID ENM MID
+SQL> 
+SQL> REM 3 DEPT : DEPT DID
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> REM 1 STD5A : RNO , NM
+SQL> 
+SQL> REM 2 DEPT :  DID DNM
+SQL> 
+SQL> REM 3 EMP : EID ENM MID DID
+SQL> 
+SQL> 
+SQL> 
+SQL> REM USER DEFINED CONSTRAINT NAME :
+SQL> 
+SQL> REM USED TO MAKE CONSTRAINT NAMES MEANINGFUL.
+SQL> 
+SQL> REM TO GET INFO. ABOUT CONSTRAINTS : 1 USER_CONSTRAINTS 2 USER_CONS_COLUMNS
+SQL> 
+SQL> DESC USER_CONSTRAINTS
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ OWNER                                                                                                                      VARCHAR2(128)
+ CONSTRAINT_NAME                                                                                                            VARCHAR2(128)
+ CONSTRAINT_TYPE                                                                                                            VARCHAR2(1)
+ TABLE_NAME                                                                                                                 VARCHAR2(128)
+ SEARCH_CONDITION                                                                                                           LONG
+ SEARCH_CONDITION_VC                                                                                                        VARCHAR2(4000)
+ R_OWNER                                                                                                                    VARCHAR2(128)
+ R_CONSTRAINT_NAME                                                                                                          VARCHAR2(128)
+ DELETE_RULE                                                                                                                VARCHAR2(9)
+ STATUS                                                                                                                     VARCHAR2(8)
+ DEFERRABLE                                                                                                                 VARCHAR2(14)
+ DEFERRED                                                                                                                   VARCHAR2(9)
+ VALIDATED                                                                                                                  VARCHAR2(13)
+ GENERATED                                                                                                                  VARCHAR2(14)
+ BAD                                                                                                                        VARCHAR2(3)
+ RELY                                                                                                                       VARCHAR2(4)
+ LAST_CHANGE                                                                                                                DATE
+ INDEX_OWNER                                                                                                                VARCHAR2(128)
+ INDEX_NAME                                                                                                                 VARCHAR2(128)
+ INVALID                                                                                                                    VARCHAR2(7)
+ VIEW_RELATED                                                                                                               VARCHAR2(14)
+ ORIGIN_CON_ID                                                                                                              NUMBER
+
+SQL> DESC USER_CONS_COLUMNS
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ OWNER                                                                                                             NOT NULL VARCHAR2(128)
+ CONSTRAINT_NAME                                                                                                   NOT NULL VARCHAR2(128)
+ TABLE_NAME                                                                                                        NOT NULL VARCHAR2(128)
+ COLUMN_NAME                                                                                                                VARCHAR2(4000)
+ POSITION                                                                                                                   NUMBER
+
+SQL> 
+SQL> COL TABLE_NAME FORMAT A30
+SQL> COL COLUMN_NAME FORMAT A30
+SQL> COL CONSTRAINT_NAME FORMAT A30
+SQL> COL R_CONSTRAINT_NAME FORMAT A30
+SQL> COL SEARCH_CONDITION FORMAT A30
+SQL> COL DELETE_RULE FORMAT A30
+SQL> 
+SQL> 
+SQL> 
+SQL> SELECT TABLE_NAME , COLUMN_NAME , CONSTRAINT_TYPE , CONSTRAINT_NAME , R_CONSTRAINT_NAME , SEARCH_CONDITION , DELETE_RULE FROM USER_CONSTRAINTS NATURAL JOIN USER_CONS_COLUMNS WHERE TABLE_NAME IN ('DEPT','EMP');
+
+TABLE_NAME                     COLUMN_NAME                    C CONSTRAINT_NAME                R_CONSTRAINT_NAME              SEARCH_CONDITION               DELETE_RULE                                
+------------------------------ ------------------------------ - ------------------------------ ------------------------------ ------------------------------ ------------------------------             
+EMP                            EID                            P SYS_C0041050                                                                                                                            
+EMP                            MID                            R SYS_C0041051                   SYS_C0041050                                                  NO ACTION                                  
+DEPT                           DID                            P SYS_C0041049                                                                                                                            
+EMP                            DID                            R SYS_C0041052                   SYS_C0041049                                                  NO ACTION                                  
+
+SQL> REM P = PRIMARY KEY
+SQL> 
+SQL> REM U = UNIQUE
+SQL> 
+SQL> REM R = REFERENCES
+SQL> 
+SQL> REM C = CHECK/NOT NULL
+SQL> 
+SQL> REM C WHEN IT SHOWS SOME CONDITION UNDER SEARCH_CONDITION COLUMN, IT MEANS CHECK.
+SQL> 
+SQL> REM C WHEN IT DO NOT SHOW ANY CONDITION UNDER SEARCH_CONDITION COLUMN, IT MEANS NOT NULL.
+SQL> 
+SQL> 
+SQL> REM IN WHOLE DATA BASE CONSTRAINT NAME CAN NOT BE DUPLICATED.
+SQL> 
+SQL> 
+SQL> 
+SQL> REM USERNAME_TABLENAME_COLUMNNAME_CONSTRAINTTYPE#NUMBER
+SQL> 
+SQL> 
+SQL> REM PRIMARY KEY CONSTRAINT CAN BE USED SINGLE TIME PER TABLE
+SQL> 
+SQL> REM NOT NULL AND UNIQUE CAN BE USE SINGLE TIME PER COLUMN
+SQL> 
+SQL> REM CHECK AND REFERENCES CAN BE USED MULTIPLE TIMES PER COLUMN
+SQL> 
+SQL> 
+SQL> 
+SQL> REM TYPES OF CONSTRAINTS : 1 CHECK 2 UNIQUE 3 NOT NULL 4 PRIMARY KEY 5 REFERENCES
+SQL> 
+SQL> 
+SQL> DROP TABLE STD5A;
+
+Table dropped.
+
+SQL> DROP TABLE EMP;
+
+Table dropped.
+
+SQL> DROP TABLE DEPT;
+
+Table dropped.
+
+SQL> 
+SQL> 
+SQL> CREATE TABLE STD5A (RNO NUMBER(2) CONSTRAINT SCOTT_STD5A_RNO_PK PRIMARY KEY, NM VARCHAR(10) CONSTRAINT SCOTT_STD5A_NM_CH#1 CHECK(NM=UPPER(NM)));
+
+Table created.
+
+SQL> CREATE TABLE DEPT(DID NUMBER(2) CONSTRAINT SCOTT_DEPT_DID_PK PRIMARY KEY
+  2                  , DNM VARCHAR(10) CONSTRAINT SCOTT_DEPT_DNM_CH#1 CHECK(DNM = UPPER(DNM)));
+
+Table created.
+
+SQL> CREATE TABLE EMP(EID NUMBER(2) CONSTRAINT SCOTT_EMP_EID_PK PRIMARY KEY,
+  2                   ENM VARCHAR(10) CONSTRAINT SCOTT_EMP_ENM_CH CHECK(ENM = UPPER(ENM)),
+  3                   MID NUMBER(2) CONSTRAINT SCOTT_EMP_MID_EMP_EID_RK REFERENCES EMP(EID)
+  4                   DID NUMBER(2) CONSTRAINT SCOTT_EMP_DID_DEPT_DID_RK REFERENCES DEPT(DID));
+                 DID NUMBER(2) CONSTRAINT SCOTT_EMP_DID_DEPT_DID_RK REFERENCES DEPT(DID))
+                 *
+ERROR at line 4:
+ORA-00907: missing right parenthesis 
+
+
+SQL> CREATE TABLE EMP(EID NUMBER(2) CONSTRAINT SCOTT_EMP_EID_PK PRIMARY KEY,
+  2                   ENM VARCHAR(10) CONSTRAINT SCOTT_EMP_ENM_CH CHECK(ENM = UPPER(ENM)),
+  3                   MID NUMBER(2) CONSTRAINT SCOTT_EMP_MID_EMP_EID_RK REFERENCES EMP(EID),
+  4                   DID NUMBER(2) CONSTRAINT SCOTT_EMP_DID_DEPT_DID_RK REFERENCES DEPT(DID));
+
+Table created.
+
+SQL> SELECT TABLE_NAME , COLUMN_NAME , CONSTRAINT_TYPE , CONSTRAINT_NAME , R_CONSTRAINT_NAME , SEARCH_CONDITION , DELETE_RULE FROM USER_CONSTRAINTS NATURAL JOIN USER_CONS_COLUMNS WHERE TABLE_NAME IN ('DEPT','EMP') ORDER BY 1;
+
+TABLE_NAME                     COLUMN_NAME                    C CONSTRAINT_NAME                R_CONSTRAINT_NAME              SEARCH_CONDITION               DELETE_RULE                                
+------------------------------ ------------------------------ - ------------------------------ ------------------------------ ------------------------------ ------------------------------             
+DEPT                           DNM                            C SCOTT_DEPT_DNM_CH#1                                           DNM = UPPER(DNM)                                                          
+DEPT                           DID                            P SCOTT_DEPT_DID_PK                                                                                                                       
+EMP                            MID                            R SCOTT_EMP_MID_EMP_EID_RK       SCOTT_EMP_EID_PK                                              NO ACTION                                  
+EMP                            EID                            P SCOTT_EMP_EID_PK                                                                                                                        
+EMP                            DID                            R SCOTT_EMP_DID_DEPT_DID_RK      SCOTT_DEPT_DID_PK                                             NO ACTION                                  
+EMP                            ENM                            C SCOTT_EMP_ENM_CH                                              ENM = UPPER(ENM)                                                          
+
+6 rows selected.
+
+SQL> REM 1 STD5A : RNO , NM
+SQL> 
+SQL> REM 2 DEPT :  DID DNM
+SQL> 
+SQL> REM 3 EMP : EID ENM MID DID
+SQL> 
+SQL> REM USERNAME_TABLENAME_COLUMNNAME_CONSTRAINTTYPE#NUMBER
+SQL> 
+SQL> 
+SQL> 
+SQL> DROP TABLE STD5A;
+
+Table dropped.
+
+SQL> DROP TABLE EMP;
+
+Table dropped.
+
+SQL> DROP TABLE DEPT;
+
+Table dropped.
+
+SQL> 
+SQL> CREATE TABLE STD5A (RNO NUMBER(2) CONSTRAINT SCOTT_STD5A_RNO_PK PRIMARY KEY,NM VARCHAR2(20) CONSTRAINT SCOTT_STD5A_NM_CH#1 CHECK (NM=UPPER(NM)));
+
+Table created.
+
+SQL> CREATE TABLE DEPT (DID NUMBER(4) CONSTRAINT SCOTT_DEPT_DID_PK PRIMARY KEY,DNM VARCHAR2(30) CONSTRAINT SCOTT_DEPT_DNM_CH CHECK (DNM=UPPER(DNM)));
+
+Table created.
+
+SQL> CREATE TABLE EMP (EID NUMBER(2) CONSTRAINT SCOTT_EMP_EID_PK PRIMARY KEY,ENM VARCHAR2(30) CONSTRAINT SCOTT_EMP_ENM_CH CHECK (ENM=UPPER(ENM)),MID NUMBER(2) CONSTRAINT SCOTT_EMP_MID_RK REFERENCES EMP,DID NUMBER(2) CONSTRAINT SCOTT_EMP_DID_RK REFERENCES DEPT (DID));
+
+Table created.
+
+SQL> 
+SQL> 
+SQL> REM RELATIONSHIP TYPES BETWEEN TABLES :
+SQL> 
+SQL> REM ORACLE SUPPORTS 3 TYPES OF RELATIONSHIPS : 1 DEFAULT/NO ACTION 2 CASCADE 3 SET NULL
+SQL> 
+SQL> REM RELATIONSHIP TYPE MATTERS WHEN WE PERFORM DELETE STATEMENT ON PARENT TABLE.
+SQL> 
+SQL> REM PARENT TABLE : THE TABLE WHICH HOLDS REFERRED PRIMARY KEY OR REFERRED UNIQUE KEY.
+SQL> 
+SQL> REM CHILD TABLE : THE TABLE WHICH HAS REFERENCES CONSTRAINT.
+SQL> 
+SQL> 
+SQL> 
+SQL> REM DEFAULT/NO ACTION : IT WILL NOT ALLOW US TO DELETE PARENT ROW IF CORRESPONDING CHILD ROWS EXIST.
+SQL> 
+SQL> REM CASCADE : IT WILL FIRST DELETE ALL CORRESPONDING CHILD ROWS AND THEN WILL DELETE PARENT ROW(S)
+SQL> 
+SQL> REM SET NULL : IT WILL UPDATE REFRENCES COLUMN VALUES FOR CORRESPONDING CHILD ROWS WITH NULL AND THEN WILL DELETE PARENT ROW(S)
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> DROP TABLE C1;
+
+Table dropped.
+
+SQL> DROP TABLE C2;
+
+Table dropped.
+
+SQL> DROP TABLE C3;
+
+Table dropped.
+
+SQL> DROP TABLE P1;
+
+Table dropped.
+
+SQL> DROP TABLE P2;
+
+Table dropped.
+
+SQL> DROP TABLE P3;
+
+Table dropped.
+
+SQL> 
+SQL> 
+SQL> CREATE TABLE P1 (NO NUMBER PRIMARY KEY, NM VARCHAR(10);
+CREATE TABLE P1 (NO NUMBER PRIMARY KEY, NM VARCHAR(10)
+                                                     *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
+
+
+SQL> CREATE TABLE P1 (NO NUMBER PRIMARY KEY, NM VARCHAR(10));
+
+Table created.
+
+SQL> CREATE TABLE P2 (NO NUMBER PRIMARY KEY, NM VARCHAR(10));
+
+Table created.
+
+SQL> CREATE TABLE P3 (NO NUMBER PRIMARY KEY, NM VARCHAR(10));
+
+Table created.
+
+SQL> CREATE TABLE C1 (NO NUMBER REFERENCES P1 , AMT NUMBER);
+
+Table created.
+
+SQL> CREATE TABLE C2 (NO NUMBER REFERENCES P2 ON DELETE CASCADE , AMT NUMBER);
+
+Table created.
+
+SQL> CREATE TABLE C3 (NO NUMBER REFERENCES P3 ON DELETE SET NULL , AMT NUMBER);
+
+Table created.
+
+SQL> INSERT INTO P1 VALUES (10,'ACC');
+
+1 row created.
+
+SQL> INSERT INTO P1 VALUES (20,'RES');
+
+1 row created.
+
+SQL> INSERT INTO P1 VALUES (30,'SAL');
+
+1 row created.
+
+SQL> INSERT INTO P2 SELECT * FROM P1;
+
+3 rows created.
+
+SQL> INSERT INTO P3 SELECT * FROM P1;
+
+3 rows created.
+
+SQL> INSERT INTO C1 VALUES (1,10000);
+INSERT INTO C1 VALUES (1,10000)
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (SCOTT.SYS_C0041072) violated - parent key not found 
+
+
+SQL> ROLL
+Rollback complete.
+SQL> 
+SQL> INSERT INTO P1 VALUES (10,'GANESH');
+
+1 row created.
+
+SQL> ROLL
+Rollback complete.
+SQL> 
+SQL> INSERT INTO P1 VALUES (1,'GANESH');
+
+1 row created.
+
+SQL> INSERT INTO P1 VALUES (2,'RIDDHI');
+
+1 row created.
+
+SQL> INSERT INTO P1 VALUES (3,'SIDDHI');
+
+1 row created.
+
+SQL> INSERT INTO C1 VALUES (1,10000);
+
+1 row created.
+
+SQL> INSERT INTO C1 VALUES (2,20000);
+
+1 row created.
+
+SQL> INSERT INTO C1 VALUES (2,30000);
+
+1 row created.
+
+SQL> INSERT INTO C2 SELECT * FROM C1;
+INSERT INTO C2 SELECT * FROM C1
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (SCOTT.SYS_C0041073) violated - parent key not found 
+
+
+SQL> INSERT INTO P2 SELECT * FROM P1;
+
+3 rows created.
+
+SQL> INSERT INTO P3 SELECT * FROM P1;
+
+3 rows created.
+
+SQL> INSERT INTO C2 SELECT * FROM C1;
+
+3 rows created.
+
+SQL> INSERT INTO P3 SELECT * FROM P1;
+INSERT INTO P3 SELECT * FROM P1
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SCOTT.SYS_C0041071) violated 
+
+
+SQL> INSERT INTO C3 SELECT * FROM C1;
+
+3 rows created.
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> REM DEFAULT/NO ACTION : IT WILL NOT ALLOW US TO DELETE PARENT ROW IF CORRESPONDING CHILD ROWS EXIST.
+SQL> 
+SQL> SELECT TABLE_NAME , COLUMN_NAME , CONSTRAINT_TYPE , CONSTRAINT_NAME , R_CONSTRAINT_NAME , SEARCH_CONDITION , DELETE_RULE FROM USER_CONSTRAINTS NATURAL JOIN USER_CONS_COLUMNS WHERE TABLE_NAME IN ('P1','C1') ORDER BY 1;
+
+TABLE_NAME                     COLUMN_NAME                    C CONSTRAINT_NAME                R_CONSTRAINT_NAME              SEARCH_CONDITION               DELETE_RULE                                
+------------------------------ ------------------------------ - ------------------------------ ------------------------------ ------------------------------ ------------------------------             
+C1                             NO                             R SYS_C0041072                   SYS_C0041069                                                  NO ACTION                                  
+P1                             NO                             P SYS_C0041069                                                                                                                            
+
+SQL> SELECT TABLE_NAME , COLUMN_NAME , CONSTRAINT_TYPE , CONSTRAINT_NAME , R_CONSTRAINT_NAME , DELETE_RULE FROM USER_CONSTRAINTS NATURAL JOIN USER_CONS_COLUMNS WHERE TABLE_NAME IN ('P1','C1') ORDER BY 1;
+
+TABLE_NAME                     COLUMN_NAME                    C CONSTRAINT_NAME                R_CONSTRAINT_NAME              DELETE_RULE                                                               
+------------------------------ ------------------------------ - ------------------------------ ------------------------------ ------------------------------                                            
+C1                             NO                             R SYS_C0041072                   SYS_C0041069                   NO ACTION                                                                 
+P1                             NO                             P SYS_C0041069                                                                                                                            
+
+SQL> SELECT * FROM P1;
+
+        NO NM                                                                                                                                                                                           
+---------- ----------                                                                                                                                                                                   
+         1 GANESH                                                                                                                                                                                       
+         2 RIDDHI                                                                                                                                                                                       
+         3 SIDDHI                                                                                                                                                                                       
+
+SQL> SELECT * FROM C1;
+
+        NO        AMT                                                                                                                                                                                   
+---------- ----------                                                                                                                                                                                   
+         1      10000                                                                                                                                                                                   
+         2      20000                                                                                                                                                                                   
+         2      30000                                                                                                                                                                                   
+
+SQL> DELETE P1 WHERE NO = 3;
+
+1 row deleted.
+
+SQL> DELETE P1 WHERE NO = 2;
+DELETE P1 WHERE NO = 2
+*
+ERROR at line 1:
+ORA-02292: integrity constraint (SCOTT.SYS_C0041072) violated - child record found 
+
+
+SQL> REM CASCADE : IT WILL FIRST DELETE ALL CORRESPONDING CHILD ROWS AND THEN WILL DELETE PARENT ROW(S)
+SQL> 
+SQL> SELECT TABLE_NAME , COLUMN_NAME , CONSTRAINT_TYPE , CONSTRAINT_NAME , R_CONSTRAINT_NAME , DELETE_RULE FROM USER_CONSTRAINTS NATURAL JOIN USER_CONS_COLUMNS WHERE TABLE_NAME IN ('P1','C1') ORDER BY 1;
+
+TABLE_NAME                     COLUMN_NAME                    C CONSTRAINT_NAME                R_CONSTRAINT_NAME              DELETE_RULE                                                               
+------------------------------ ------------------------------ - ------------------------------ ------------------------------ ------------------------------                                            
+C1                             NO                             R SYS_C0041072                   SYS_C0041069                   NO ACTION                                                                 
+P1                             NO                             P SYS_C0041069                                                                                                                            
+
+SQL> SELECT TABLE_NAME , COLUMN_NAME , CONSTRAINT_TYPE , CONSTRAINT_NAME , R_CONSTRAINT_NAME , DELETE_RULE FROM USER_CONSTRAINTS NATURAL JOIN USER_CONS_COLUMNS WHERE TABLE_NAME IN ('P2','C2') ORDER BY 1;
+
+TABLE_NAME                     COLUMN_NAME                    C CONSTRAINT_NAME                R_CONSTRAINT_NAME              DELETE_RULE                                                               
+------------------------------ ------------------------------ - ------------------------------ ------------------------------ ------------------------------                                            
+C2                             NO                             R SYS_C0041073                   SYS_C0041070                   CASCADE                                                                   
+P2                             NO                             P SYS_C0041070                                                                                                                            
+
+SQL> SELECT * FROM P2;
+
+        NO NM                                                                                                                                                                                           
+---------- ----------                                                                                                                                                                                   
+         1 GANESH                                                                                                                                                                                       
+         2 RIDDHI                                                                                                                                                                                       
+         3 SIDDHI                                                                                                                                                                                       
+
+SQL> SELECT * FROM C2;
+
+        NO        AMT                                                                                                                                                                                   
+---------- ----------                                                                                                                                                                                   
+         1      10000                                                                                                                                                                                   
+         2      20000                                                                                                                                                                                   
+         2      30000                                                                                                                                                                                   
+
+SQL> DELETE P2 WHERE NO = 3;
+
+1 row deleted.
+
+SQL> SELECT * FROM P2;
+
+        NO NM                                                                                                                                                                                           
+---------- ----------                                                                                                                                                                                   
+         1 GANESH                                                                                                                                                                                       
+         2 RIDDHI                                                                                                                                                                                       
+
+SQL> SELECT * FROM C2;
+
+        NO        AMT                                                                                                                                                                                   
+---------- ----------                                                                                                                                                                                   
+         1      10000                                                                                                                                                                                   
+         2      20000                                                                                                                                                                                   
+         2      30000                                                                                                                                                                                   
+
+SQL> DELETE P2 WHERE NO = 2;
+
+1 row deleted.
+
+SQL> SELECT * FROM P2;
+
+        NO NM                                                                                                                                                                                           
+---------- ----------                                                                                                                                                                                   
+         1 GANESH                                                                                                                                                                                       
+
+SQL> SELECT * FROM C2;
+
+        NO        AMT                                                                                                                                                                                   
+---------- ----------                                                                                                                                                                                   
+         1      10000                                                                                                                                                                                   
+
+SQL> REM SET NULL : IT WILL UPDATE REFRENCES COLUMN VALUES FOR CORRESPONDING CHILD ROWS WITH NULL AND THEN WILL DELETE PARENT ROW(S)
+SQL> 
+SQL> SELECT TABLE_NAME , COLUMN_NAME , CONSTRAINT_TYPE , CONSTRAINT_NAME , R_CONSTRAINT_NAME , DELETE_RULE FROM USER_CONSTRAINTS NATURAL JOIN USER_CONS_COLUMNS WHERE TABLE_NAME IN ('P3','C3') ORDER BY 1;
+
+TABLE_NAME                     COLUMN_NAME                    C CONSTRAINT_NAME                R_CONSTRAINT_NAME              DELETE_RULE                                                               
+------------------------------ ------------------------------ - ------------------------------ ------------------------------ ------------------------------                                            
+C3                             NO                             R SYS_C0041074                   SYS_C0041071                   SET NULL                                                                  
+P3                             NO                             P SYS_C0041071                                                                                                                            
+
+SQL> SELECT * FROM P3;
+
+        NO NM                                                                                                                                                                                           
+---------- ----------                                                                                                                                                                                   
+         1 GANESH                                                                                                                                                                                       
+         2 RIDDHI                                                                                                                                                                                       
+         3 SIDDHI                                                                                                                                                                                       
+
+SQL> SELECT * FROM C3;
+
+        NO        AMT                                                                                                                                                                                   
+---------- ----------                                                                                                                                                                                   
+         1      10000                                                                                                                                                                                   
+         2      20000                                                                                                                                                                                   
+         2      30000                                                                                                                                                                                   
+
+SQL> DELETE P3 WHERE NO = 3;
+
+1 row deleted.
+
+SQL> SELECT * FROM P3;
+
+        NO NM                                                                                                                                                                                           
+---------- ----------                                                                                                                                                                                   
+         1 GANESH                                                                                                                                                                                       
+         2 RIDDHI                                                                                                                                                                                       
+
+SQL> SELECT * FROM C3;
+
+        NO        AMT                                                                                                                                                                                   
+---------- ----------                                                                                                                                                                                   
+         1      10000                                                                                                                                                                                   
+         2      20000                                                                                                                                                                                   
+         2      30000                                                                                                                                                                                   
+
+SQL> DELETE P3 WHERE NO = 2;
+
+1 row deleted.
+
+SQL> SELECT * FROM P3;
+
+        NO NM                                                                                                                                                                                           
+---------- ----------                                                                                                                                                                                   
+         1 GANESH                                                                                                                                                                                       
+
+SQL> SELECT * FROM C3;
+
+        NO        AMT                                                                                                                                                                                   
+---------- ----------                                                                                                                                                                                   
+         1      10000                                                                                                                                                                                   
+                20000                                                                                                                                                                                   
+                30000                                                                                                                                                                                   
+
+SQL> REM P1 -> C1 : NO ACTION
+SQL> 
+SQL> REM P2 -> C2 : CASCADE
+SQL> 
+SQL> REM P3 -> C3 : SET NULL
+SQL> 
+SQL> SPOOL OFF

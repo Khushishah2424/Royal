@@ -73,5 +73,9 @@ graph = collection of vertices(node(data store)) and edges
     :degree of graph - howmany nodes are connected with one node
 
 
+greedy - minimum cost 
+sorting - sort and minimum
+greedy - from any edge
+
 
 

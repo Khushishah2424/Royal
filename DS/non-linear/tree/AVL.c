@@ -6,8 +6,8 @@ struct node
    struct node *left;
    struct node *right;
    struct node *height;
+    
 };
-
 
 int calculateHeight(struct node *root){
     int lh = 0;

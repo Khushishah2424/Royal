@@ -354,7 +354,7 @@ Germany                                  Europe
 United Kingdom                           Europe                                                                                                                                                         
 Canada                                   Americas                                                                                                                                                       
 United States of America                 Americas                                                                                                                                                       
-
+   
 SQL> SELECT OUTER.COUNTRY_NAME , REGION_NAME
   2  FROM COUNTRIES
   3  FROM COUNTRIES OUTER JOIN REGIONS USING (REGION_ID);

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        text-align: center;
+    }
+    .btn{
+        height: 200px;
+        width: 200px;
+        border: 10px solid black;
+        margin: 2rem;
+        border-radius: 20%;
+       
+    }
+    .btn-container{
+        display: flex;
+        justify-content: center;
+    }
+    .yellow{
+        background-color: #f99b45;
+    }
+    .pink{
+        background-color: #d95980;
+    }
+    .purple{
+        background-color: #818ff9;
+    }
+    .blue{
+        background-color: #63aac0;
+    }
+
+</style>
+<body>
+    <h1>Simon Game</h1>
+    <h2>Press Any key to Start The Game</h2>
+    <div class="btn-container">
+        <div class="line-one">
+            <div class="btn yellow">1</div>
+            <div class="btn pink">2</div>
+        </div>
+        <div class="line-two">
+            <div class="btn purple">3</div>
+            <div class="btn blue">4</div>
+        </div>
+    </div>
+</body>
+<script src="simon.js"></script>
+</html>

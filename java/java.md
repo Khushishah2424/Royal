@@ -1,7 +1,7 @@
 
 Java Installation:
     1.JDK - Java Development kit
-            For running java program 
+            For running java program
     2.JRE - Java Runtime Enviorment 
             Help in executing program
     3.JVM - Java Virtual MAchine
@@ -12,17 +12,15 @@ Java Installation:
     byte code --> JVM --> Native Language(computer lan - 0 and 1)
 
 
-
 Static -  Without creating an object we can execute our class
 
-   
-theory:
+Theory:
 --> Any non-Static Method can be called only with class object if we are calling from static Method , but if we
     want to call non-static method from non-static no need of object
 --> Any static method can be called with class name or Without class name inside
 
 
-*Instance Variable:
+**Instance Variable**
     Instance Variable need not to intilized compulsory
     If Instance Variable is not assigned , then it will give default value
     Can not use non-static Instance Variable in Static Method
@@ -31,13 +29,12 @@ theory:
     Only one copy will generate for static Instance Variable
     
 
-
-*Local Variable:
+**Local Variable**
     Local Variable need to be intilized compulsory
     Can not create Static Variable inside the main Method due to Heap and Stack concepts
 
 
-*Scanner;
+**Scanner**
     Scanner is itself a class
     we can use it by Making an object
     for taking an input we use System.in  as an Argument--> Inputstream --> console
@@ -47,7 +44,8 @@ theory:
 
 
 
-*OOPS
+
+**OOPS**
 1. Encapsulation:
     1.Counstrutor:-
         Same name As class name
@@ -65,7 +63,7 @@ theory:
         2.Non-Accsess Modifier
             Static
             Final:
-                Final = constant
+                Final = constant                    
                 If we assigned the value using final class then it can not be reassinged
                 Final CLass can not be inherited
                 All final class should be inherited
@@ -79,10 +77,10 @@ theory:
     A child class Can Accsess the Property of Parent class
     We can connect class with Extends Keyword.
 
-*Construtor With Inheritanc:
+**Construtor With Inheritance**
 1.
         parent has Default Construtor
-        Child has Default Construtor 
+        Child has Default Construtor
 
     Then First parent class then child class Property will execute
 
@@ -94,10 +92,10 @@ theory:
 
 3.       
         parent has parameterized Construtor
-         parent has  Default Construtor
+        parent has Default Construtor
 
-          child has parameterized Construtor
-             Child has Default Construtor 
+        Child has parameterized Construtor
+        Child has Default Construtor 
 
     then super keypword is not compulsory to execute parent Protected.
 
@@ -120,11 +118,9 @@ theory:
                     2.Return Type
                     3.Method name
                     4.parameter
-
-
                     Final Modifier can not be OverRide
 
-4.Abstarction
+    4.Abstarction
     It is use for Data-Hiding
     Abstarction method must be OverRide
     In Abstarction class we can create non-Abstarction method
@@ -137,7 +133,7 @@ theory:
     class - Interface = Implementation
     Interface - Interface = Extends
 
-    **Interface**:
+    **Interface**
         It is fully Abstarct class
         All methods are Public Abstarct
         All Instance Variable are Public final Static
@@ -159,6 +155,16 @@ theory:
 
 **Polymorphic**
     Referene of parent and Object of child class
+
+
+
+**Arrays**
+
+VarArgument:-
+In simple Array,if we create function and in it if we take three argument,then at the time of calling,we have to
+compulsory take three argument
+but idf use VarArgument = int ...a 
+then it will not compulsory to take only taken two or three Argument.
 
 
                     
