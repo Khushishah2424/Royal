@@ -3,7 +3,6 @@ using namespace std;
 class grandfather{
     public:
     char gname[30] = "Panubhai";
-
 };
 
 class father:public grandfather{
@@ -20,10 +19,10 @@ class daughter : public father{
          cout<<"\nMine = "<<dname;
     } 
 };
+
 int main(){
     daughter d1;
     d1.printdata();
     d1.printdata();
     d1.printdata();
-
 }

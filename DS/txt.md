@@ -73,9 +73,9 @@ graph = collection of vertices(node(data store)) and edges
     :degree of graph - howmany nodes are connected with one node
 
 
-greedy - minimum cost 
-sorting - sort and minimum
-greedy - from any edge
+greedy - minimum cost - Dijkstra's algorithm
+sorting - sort and minimum - Prim's algorithm
+greedy - from any edge - kruskal's algorithm
 
 
 

@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "DFS.C": "cpp"
+        "DFS.C": "cpp",
+        "AVL2.C": "cpp"
     }
 }

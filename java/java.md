@@ -1,10 +1,9 @@
-
 Java Installation:
     1.JDK - Java Development kit
             For running java program
     2.JRE - Java Runtime Enviorment 
             Help in executing program
-    3.JVM - Java Virtual MAchine
+    3.JVM - Java Virtual Machine
 
     1.Compilation:
     Source Code - .java (save) --> Compiler (IN JDK) --> Covert into byte code(JRE) - .class(save)
@@ -13,6 +12,8 @@ Java Installation:
 
 
 Static -  Without creating an object we can execute our class
+          static variable will create only one memory
+          
 
 Theory:
 --> Any non-Static Method can be called only with class object if we are calling from static Method , but if we
@@ -56,7 +57,7 @@ Theory:
 
     2.Data Hiding:
         1.Accsess 
-            Private
+            Private 
             Default
             Protected
             Public
@@ -120,20 +121,22 @@ Theory:
                     4.parameter
                     Final Modifier can not be OverRide
 
+
     4.Abstarction
     It is use for Data-Hiding
+    Abstract class must be declared with abstarct keyword
+    it can have abstract and non-abstract method 
     Abstarction method must be OverRide
     In Abstarction class we can create non-Abstarction method
     Abstarction method can not be called by object,
     by child class object we can call non-Abstarction method that in Abstarct class
 
 
-
     class - class =  Extends
     class - Interface = Implementation
     Interface - Interface = Extends
 
-    **Interface**
+**Interface** 
         It is fully Abstarct class
         All methods are Public Abstarct
         All Instance Variable are Public final Static
@@ -157,7 +160,6 @@ Theory:
     Referene of parent and Object of child class
 
 
-
 **Arrays**
 
 VarArgument:-
@@ -167,11 +169,32 @@ but idf use VarArgument = int ...a
 then it will not compulsory to take only taken two or three Argument.
 
 
-                    
+**Exception**
 
 
+error    : syntax problem: solve 
+exception: developer logica, system .... handle
+
+                                            Throwable
+                        Error                                   Exception
+
+*Types of Exception:
+    1.Run time      - Unchecked Excpetion
+    2.Compile time  - Checked Exception
 
 
+For Handling Exception, we have 2 Ways:-
+1.Throws Keyword:
+2.Try - Catch - (Finally(Transection management))
+    We can Create N number of Catch After try
+    After Try 1 catch is Complusory
+     
+Parent - Throwable
+child - Exception
 
-
-
+**Try-Resources:
+     if there is java class or Any user-define fuction method which will throws an Exception then it will
+     Cause Compile time Exception :
+     Then we will use throws or try and catch method
+     
+**Custom Exception**            

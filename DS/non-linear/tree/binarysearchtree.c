@@ -59,7 +59,7 @@ void Postorder(struct node *root){
 // void Max(struct node *root){
 //     if(root == NULL){
 //         return;
-//     }
+//     }2
 //     else if(root->right == NULL){
 //         printf("%d = Max",root->data);
 //     }

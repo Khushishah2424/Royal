@@ -14,6 +14,5 @@ btn.addEventListener("click",function(){
     item.appendChild(delbtn);
     ul.appendChild(item);
     inp.value = "";
-
 })
 
