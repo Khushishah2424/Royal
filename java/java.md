@@ -20,8 +20,8 @@ Theory:
     want to call non-static method from non-static no need of object
 --> Any static method can be called with class name or Without class name inside
 
-
 **Instance Variable**
+    class level variable
     Instance Variable need not to intilized compulsory
     If Instance Variable is not assigned , then it will give default value
     Can not use non-static Instance Variable in Static Method
@@ -89,7 +89,7 @@ Theory:
         parent has parameterized Construtor
         child has parameterized Construtor
     
-    Then if We want Accsess the the Property of parent Then in child class we have to use super(pass parameter)keyword.
+    Then if We want Accsess the the Property of parent Then in child class have to use super(pass parameter)keyword.
 
 3.       
         parent has parameterized Construtor
@@ -126,10 +126,11 @@ Theory:
     It is use for Data-Hiding
     Abstract class must be declared with abstarct keyword
     it can have abstract and non-abstract method 
-    Abstarction method must be OverRide
+    Abstarct method must be OverRide
     In Abstarction class we can create non-Abstarction method
     Abstarction method can not be called by object,
     by child class object we can call non-Abstarction method that in Abstarct class
+    in normal class we can nit 
 
 
     class - class =  Extends
@@ -154,10 +155,10 @@ Theory:
         We can call it by Referene of parent and object of class
     2.Static:
         With this non-Accsess Modifier it will not be compulsory to override in class
-        we can call it by it class name
 
-**Polymorphic**
+**Polymorphic** (Concept)
     Referene of parent and Object of child class
+    by Polymorphic concpet we can only call abstract methods(interface class)
 
 
 **Arrays**
@@ -198,3 +199,6 @@ child - Exception
      Then we will use throws or try and catch method
      
 **Custom Exception**            
+
+
+

@@ -9,3 +9,6 @@ const getdatafromfile = () =>{
         console.log(JSON.parse(xhr.responseText));
     }
 }
+
+
+

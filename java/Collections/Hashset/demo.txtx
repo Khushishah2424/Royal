@@ -1,0 +1,53 @@
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
+import java.util.TreeSet;
+
+public class StudentNameManager {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Set<String> studentNames = new HashSet<>();
+        int choice;
+
+        do {
+            System.out.println("\n--- Student Name Manager ---");
+            System.out.println("1. Add Student Name");
+            System.out.println("2. Display Unique Names");
+            System.out.println("3. Display Sorted Names");
+            System.out.println("4. Exit");
+            System.out.print("Enter your choice: ");
+            choice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter student name: ");
+                    String name = scanner.nextLine();
+                    if (studentNames.add(name)) {
+                        System.out.println("Name added successfully.");
+                    } else {
+                        System.out.println("Name already exists.");
+                    }
+                    break;
+
+                case 2:
+                    System.out.println("Unique Names: " + studentNames);
+                    break;
+
+                case 3:
+                    TreeSet<String> sortedNames = new TreeSet<>(studentNames);
+                    System.out.println("Sorted Names: " + sortedNames);
+                    break;
+
+                case 4:
+                    System.out.println("Exiting program. Goodbye!");
+                    break;
+
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+        } while (choice != 4);
+
+        scanner.close();
+    }
+}
