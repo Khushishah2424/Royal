@@ -1,0 +1,6 @@
+127.0.0.1 - - [31/Mar/2025:21:32:53 +0530] "GET / HTTP/1.1" 404 752
+0:0:0:0:0:0:0:1 - - [31/Mar/2025:21:32:53 +0530] "GET /Advjava/InputName.jsp HTTP/1.1" 200 284
+0:0:0:0:0:0:0:1 - - [31/Mar/2025:21:32:53 +0530] "GET /favicon.ico HTTP/1.1" 404 763
+0:0:0:0:0:0:0:1 - - [31/Mar/2025:21:32:59 +0530] "POST /Advjava/InputServlet HTTP/1.1" 200 284
+0:0:0:0:0:0:0:1 - - [31/Mar/2025:21:33:05 +0530] "POST /Advjava/InputServlet HTTP/1.1" 200 134
+0:0:0:0:0:0:0:1 - - [31/Mar/2025:21:33:07 +0530] "POST /Advjava/InputServlet HTTP/1.1" 200 284

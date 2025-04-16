@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        .main-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 450px;
+            text-align: center;
+            height:500px;
+        }
+        .name, .email, .pwd {
+            width: 300px;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .remember {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 14px;
+            margin-top: 40px;
+        }
+        .btn {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            margin-top: 40px;
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
+        .links {
+            margin-top: 45px;
+        }
+        .links a {
+            color: #007bff;
+        }
+    </style>
+
+</head>
+<body>
+	<div class="main-box">
+        <h2>Log In to Your Account</h2>
+        <form  action="login" method="post" >
+        	<input type="text" name="userName" placeholder="Name" class="name"><br>
+            <input type="email" name="email" placeholder="Email" class="email"><br>
+            <input type="password" name="passWord" placeholder="Password" class="pwd">
+            <div class="remember">
+                <label><input type="checkbox" name="cbox"> Remember Me</label>
+                <a href="#">Forgot Password?</a>
+            </div>
+            <input type="submit" class="btn" value="Log In">
+        </form>
+        <div class="links">
+            <p>Don't have an account? <a href="login.html">Sign In</a></p>
+        </div>
+    </div>
+	
+</body>
+</html>

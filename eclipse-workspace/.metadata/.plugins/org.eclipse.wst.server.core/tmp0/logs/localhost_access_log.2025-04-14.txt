@@ -1,0 +1,17 @@
+127.0.0.1 - - [14/Apr/2025:14:21:12 +0530] "GET / HTTP/1.1" 404 752
+0:0:0:0:0:0:0:1 - - [14/Apr/2025:14:21:13 +0530] "GET /Advjava/InputName.jsp HTTP/1.1" 200 365
+0:0:0:0:0:0:0:1 - - [14/Apr/2025:14:21:13 +0530] "GET /favicon.ico HTTP/1.1" 404 763
+0:0:0:0:0:0:0:1 - - [14/Apr/2025:14:21:18 +0530] "POST /Advjava/InputServlet HTTP/1.1" 200 393
+0:0:0:0:0:0:0:1 - - [14/Apr/2025:14:21:19 +0530] "POST /Advjava/InputServlet HTTP/1.1" 200 387
+0:0:0:0:0:0:0:1 - - [14/Apr/2025:14:21:23 +0530] "POST /Advjava/InputServlet HTTP/1.1" 200 134
+127.0.0.1 - - [14/Apr/2025:14:25:49 +0530] "GET / HTTP/1.1" 404 752
+0:0:0:0:0:0:0:1 - - [14/Apr/2025:14:25:50 +0530] "GET /Advjava/InputName.jsp HTTP/1.1" 200 367
+127.0.0.1 - - [14/Apr/2025:14:44:49 +0530] "GET / HTTP/1.1" 404 752
+0:0:0:0:0:0:0:1 - - [14/Apr/2025:14:44:49 +0530] "GET /Advjava/InputName.jsp HTTP/1.1" 200 367
+0:0:0:0:0:0:0:1 - - [14/Apr/2025:14:45:06 +0530] "POST /Advjava/InputServlet HTTP/1.1" 200 367
+0:0:0:0:0:0:0:1 - - [14/Apr/2025:14:45:07 +0530] "POST /Advjava/InputServlet HTTP/1.1" 200 389
+0:0:0:0:0:0:0:1 - - [14/Apr/2025:14:45:07 +0530] "POST /Advjava/InputServlet HTTP/1.1" 200 389
+0:0:0:0:0:0:0:1 - - [14/Apr/2025:14:45:07 +0530] "POST /Advjava/InputServlet HTTP/1.1" 200 389
+0:0:0:0:0:0:0:1 - - [14/Apr/2025:14:45:08 +0530] "POST /Advjava/InputServlet HTTP/1.1" 200 389
+0:0:0:0:0:0:0:1 - - [14/Apr/2025:14:45:08 +0530] "POST /Advjava/InputServlet HTTP/1.1" 200 389
+0:0:0:0:0:0:0:1 - - [14/Apr/2025:14:45:20 +0530] "POST /Advjava/InputServlet HTTP/1.1" 200 389

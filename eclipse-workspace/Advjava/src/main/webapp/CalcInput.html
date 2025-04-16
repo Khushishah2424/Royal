@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<Style>
+	/* .box1{
+		border :1px solid black;
+		height:100px;
+		width :100px;
+	} */
+</style>
+</head>
+<body>
+	<div class = "Box1">
+	<form action=" CalcInputServlet" method="post">
+		<input type="number" placeholder="Enter number 1" name="num1" class ="num1"><br>
+		<input type="number" placeholder="Enter number 2" name="num2" class ="num2">
+		<!-- <input type= "submit" value= "sum"  > -->
+		
+		<label>
+				<input type="radio" name="operation" value="add"> Addition
+				</label><br>
+			<label>
+				<input type="radio" name="operation" value="subtract"> Subtraction
+			</label><br>
+			<label>
+				<input type="radio" name="operation" value="multiply"> Multiplication
+			</label><br>
+			<label>
+				<input type="radio" name="operation" value="divide"> Division
+	</label><br>
+		 <input type="submit" value="Calculate">
+	</form>
+	</div>
+</body>
+</html>

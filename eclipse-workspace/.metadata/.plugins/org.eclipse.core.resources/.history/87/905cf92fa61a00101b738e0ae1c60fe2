@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Expense Form</title>
+<body>
+  <div class="container mt-5">
+    <h2 class="mb-4">Add Expense</h2>
+    <form>
+      <div class="mb-3">
+        <label for="vendorName" class="form-label">Vendor Name</label>
+        <input type="text" class="form-control" id="vendorName" placeholder="Enter vendor name">
+      </div>
+
+      <div class="mb-3">
+        <label for="amount" class="form-label">Amount</label>
+        <input type="number" class="form-control" id="amount" placeholder="Enter amount">
+      </div>
+
+      <div class="mb-3">
+        <label for="date" class="form-label">Date</label>
+        <input type="date" class="form-control" id="date">
+      </div>
+
+      <div class="mb-3">
+        <label for="category" class="form-label">Category</label>
+        <select class="form-select" id="category">
+          <option selected disabled>Choose category</option>
+          <option>Office Supplies</option>
+          <option>Travel</option>
+          <option>Meals</option>
+          <option>Utilities</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    // Set default date to today
+    document.addEventListener('DOMContentLoaded', () => {
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById('date').value = today;
+    });
+  </script>
+</body>
+</html>

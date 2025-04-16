@@ -1,0 +1,7 @@
+INDEX VERSION 1.131
+/Users/khushi/eclipse-workspace/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/1856273440.index
+/Advjava/src/main/java
+/Users/khushi/eclipse-workspace/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/46034359.index
+/Advjava/src/main/java
+/Users/khushi/eclipse-workspace/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/2432243158.index
+/ExpenseTracker/src/main/java

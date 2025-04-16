@@ -1,0 +1,42 @@
+package com.Google.Controller;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/InputServlet")
+public class InputServlet extends HttpServlet{
+	@Override
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("Input");
+		String firstname = req.getParameter("firstname");
+		boolean isError = false;
+		String error = "";
+		String regex = "[a-zA-z]+";
+		if(firstname == null || firstname.trim().length() == 0) {
+			req.setAttribute("firstname", "please enter firstname");
+			isError = true;
+				
+		}
+		else {
+			if(firstname.matches(regex) == false) {
+				req.setAttribute("firstname", "please enter valid firstname");
+				isError = true;
+			}
+		}
+		if(isError == true) {
+
+			RequestDispatcher rd = req.getRequestDispatcher("InputName.jsp");
+			rd.forward(req, resp);
+		}
+		else {
+			RequestDispatcher rd = req.getRequestDispatcher("output.jsp");
+			rd.forward(req, resp);
+		}
+	}
+}
