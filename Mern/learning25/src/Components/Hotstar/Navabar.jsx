@@ -56,6 +56,10 @@ export const Navabar = () => {
             <Link className="nav-link" to="/apidemo1">apidemo1</Link>
           </li>
           <li className="nav-item">
+            <Link className="nav-link" to="/apidemo11">Apidemo11</Link>
+          </li>
+         
+          <li className="nav-item">
             <Link className="nav-link" to="/apidemo2">apidemo2</Link>
           </li>
           <li className="nav-item">
@@ -64,8 +68,11 @@ export const Navabar = () => {
            <li className="nav-item">
             <Link className="nav-link" to="/apidemo5">apidemo5</Link>
           </li>
+           <li className="nav-item">
+            <Link className="nav-link" to="/apidemo6">Apidemo6</Link>
+          </li>
          
-         
+        
 
         </ul>
       </div>

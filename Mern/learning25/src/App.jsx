@@ -30,6 +30,8 @@ import { Apidemo2 } from './Api/Apidemo2';
 import { Apidemo3 } from './Api/Apidemo3';
 import { Apidemo4 } from './Api/Apidemo4';
 import { Apidemo5 } from './Api/Apidemo5';
+import { Apidemo11 } from './Api/Apidemo11';
+import { Apidemo6 } from './Api/Apidemo6';
 
 function App() {
 
@@ -64,7 +66,12 @@ function App() {
        <Route path='/apidemo3' element={<Apidemo3></Apidemo3>}></Route>
        {/* <Route path='/apidemo4' element={<Apidemo4></Apidemo4>}></Route> */}
         <Route path='/apidemo5' element = {<Apidemo5/>}>apidemo5</Route>
+        <Route path='/apidemo6' element = {<Apidemo6/>}>Apidemo6</Route>
+
         <Route path='/moviedetail/:id' element = {<Apidemo4/>}>moviedetail</Route>
+        <Route path='/apidemo11' element = {<Apidemo11/>}>Apidemo11</Route>
+
+
 
 
 

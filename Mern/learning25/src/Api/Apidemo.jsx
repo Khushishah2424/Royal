@@ -20,6 +20,15 @@ export const Apidemo = () => {
         setIsloading(false)
 
     }
+    const SearchName = async (value) => {
+   // setIsloading(true)
+   console.log(value);
+   
+    const res = await axios.get(`https://node5.onrender.com/user/filter?name=${value}`)
+    //setmessage(res.data.message)
+    setusers(res.data.data)
+    //setIsloading(false)
+  }
 
     const deleteUser = async(id)=>{
       const res = await axios.delete("https://node5.onrender.com/user/user/"+id)
@@ -38,9 +47,12 @@ export const Apidemo = () => {
         isLoading && <Loader></Loader>
       }
         <h1>API DEMO 1</h1>
+
+         <input type="text" placeholder='enter' onChange={(event)=>{SearchName(event.target.value)}}/>
         {/* <button onClick={()=>{getApiCall()}}>GET</button> */}
-        {message}
+          {message}
         {
+         
           <table>
             <thead>
               <tr>
